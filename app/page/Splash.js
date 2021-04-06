@@ -8,23 +8,16 @@
 
 import React from 'react';
 import styled from 'styled-components/native';
-import type {Node} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
   StatusBar,
-  StyleSheet,
   Text,
-  useColorScheme,
   View,
 } from 'react-native';
 
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
+const App = () => {
   return (
     <Container>
-        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <TopView/>
         <Logo>
           <LogoText>안가구</LogoText>
@@ -35,7 +28,7 @@ const App: () => Node = () => {
   );
 };
 
-const Container = styled.SafeAreaView`
+const Container = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
