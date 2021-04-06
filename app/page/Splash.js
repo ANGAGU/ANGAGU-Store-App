@@ -20,10 +20,12 @@ const App = () => {
     <Container>
         <TopView/>
         <Logo>
+          <LogoMediumText>어디 밖에 매장</LogoMediumText>
           <LogoText>안가구</LogoText>
-          <LogoSmallText>오픈마켓 가구 AR</LogoSmallText>
+          {/* <LogoSmallText>오픈마켓 가구 AR</LogoSmallText> */}
         </Logo>
         <BotView/>
+        <StatusBar hidden={false} backgroundColor='#35BCD6'/>    
     </Container>
   );
 };
@@ -45,10 +47,16 @@ const LogoText = styled.Text`
   color: #ffffff;
   font-weight: 800;
 `
+const LogoMediumText = styled.Text`
+  font-size: 25px;
+  color: #ffffff;
+  font-weight: 600;
+`
 const LogoSmallText = styled.Text`
   margin-top: 5px;
   font-size: 20px;
   color: #ffffff;
   font-weight: 600;
 `
+
 export default App;

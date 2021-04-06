@@ -26,7 +26,7 @@ const Page = () => {
     useEffect(() => {
         // Show splash for 2 seconds
         setTimeout(() =>  setIsLoading(false) , 2000);
-
+        
         // return () => clearTimeout(timeout)
     },[]);
     return (
@@ -34,7 +34,7 @@ const Page = () => {
             <Container/>
             {
                 isLoading ?
-                <App /> 
+                <Splash /> 
             :
                 <NavigationContainer>
                     <Stack.Navigator initialRouteName="Login">
@@ -49,5 +49,5 @@ const Page = () => {
 export default Page
 // react CSS (styled)
 const Container = styled.SafeAreaView`
-    background-color: #35BCD6;
+    background-color: #ffffff;
 `;
