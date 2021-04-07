@@ -18,8 +18,17 @@ import ButtonWithText from '../component/atom/ButtonWithText';
 
 // react HTML
 const Login = ({ navigation }) => {
+  // variables
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  // functions
+  const onLogin = () => {
+    navigation.navigate('ProductList', {
+        userEmail: "dummy",
+        authToken: "dummyToken"
+    });
+  }
   return (
     <Container>
       <LogoWrapper>
@@ -42,7 +51,7 @@ const Login = ({ navigation }) => {
             textContentType={'oneTimeCode'}
             onChangeText={setPassword}
           />
-          <LoginButton buttonColor='#35BCD6' textColor='#ffffff' onPress={() => {}}>
+          <LoginButton buttonColor='#35BCD6' textColor='#ffffff' onPress={onLogin}>
             {'로그인'}
           </LoginButton>
           <FindButton textColor='#C7C7C7' fontSize='15px' textDecoration='underline' onPress={() => {}}>

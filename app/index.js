@@ -14,6 +14,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 // local import
 import Splash from './page/Splash.js';
 import Login from './page/Login.js';
+import ProductList from './page/ProductList.js';
 
 const Stack = createStackNavigator();
 // react HTML (jsx)
@@ -39,6 +40,7 @@ const Page = () => {
                 <NavigationContainer>
                     <Stack.Navigator initialRouteName="Login">
                         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
+                        <Stack.Screen name="ProductList" component={ProductList} options={{ headerShown: false }}/>
                     </Stack.Navigator>
                 </NavigationContainer>
             }
