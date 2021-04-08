@@ -2,19 +2,20 @@ import React from 'react';
 import styled, { css } from 'styled-components/native';
 
 const ButtonWithText = ({
-  style, children, onPress, textColor, buttonColor, fontSize, textDecoration
+  style,
+  children,
+  onPress,
+  textColor,
+  buttonColor,
+  fontSize,
+  textDecoration,
 }) => {
   return (
-    <Button
-      style={style}
-      onPress={onPress}
-      buttonColor={buttonColor}
-    >
+    <Button style={style} onPress={onPress} buttonColor={buttonColor}>
       <ButtonInnerText
         textDecoration={textDecoration}
         textColor={textColor}
-        fontSize={fontSize}
-      >
+        fontSize={fontSize}>
         {children}
       </ButtonInnerText>
     </Button>
