@@ -184,7 +184,7 @@ const ProductImage = styled.Image`
     resize-mode: contain;
 `
 const ProductBrand = styled.Text`
-font-weight: 800;   
+    font-weight: 800;   
 `
 const ProductName = styled.Text`
     margin: 4px;

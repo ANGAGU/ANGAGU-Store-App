@@ -8,6 +8,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import Login from '../app/page/Login';
 import ProductList from '../app/page/ProductList';
+import ProductDetail from '../app/page/ProductDetail';
 
 it('Login UI Render Test', () => {
   renderer.create(<Login />);
@@ -15,4 +16,8 @@ it('Login UI Render Test', () => {
 
 it('ProductList UI Render Test', () => {
   renderer.create(<ProductList />);
+});
+
+it('ProductDetail UI Render Test', () => {
+  renderer.create(<ProductDetail />);
 });
