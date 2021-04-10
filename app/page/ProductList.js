@@ -26,9 +26,14 @@ import ep3 from '../asset/img/example_product_3.webp'
 
 // react HTML
 const ProductList = ({ navigation }) => {
-    
+    const ProductClick = (productId) => {
+        navigation.navigate('ProductDetail', {
+            productId,
+        });
+    }
     const [productList, setProductList] = useState([
         {
+            id: 1,
             image: ep1,
             brand: 'SVENBERTIL',
             name: '스벤베르틸 의자',
@@ -38,6 +43,7 @@ const ProductList = ({ navigation }) => {
             rating: '4.6'
         },
         {
+            id: 2,
             image: ep2,
             brand: 'LEIFARNE',
             name: '레이파르네 팔걸이의자',
@@ -47,6 +53,37 @@ const ProductList = ({ navigation }) => {
             rating: '0'
         },
         {
+            id: 3,
+            image: ep3,
+            brand: 'RONNINGE',
+            name: '뢴닝에 의자',
+            price: 99900,
+            commentCount: '6',
+            likeCount: '2',
+            rating: '4.3'
+        },
+        {
+            id: 4,
+            image: ep1,
+            brand: 'SVENBERTIL',
+            name: '스벤베르틸 의자',
+            price: 49900,
+            commentCount: '7',
+            likeCount: '0',
+            rating: '4.6'
+        },
+        {
+            id: 5,
+            image: ep2,
+            brand: 'LEIFARNE',
+            name: '레이파르네 팔걸이의자',
+            price: 69900,
+            commentCount: '0',
+            likeCount: '0',
+            rating: '0'
+        },
+        {
+            id: 6,
             image: ep3,
             brand: 'RONNINGE',
             name: '뢴닝에 의자',
@@ -65,6 +102,7 @@ const ProductList = ({ navigation }) => {
             rating: '4.6'
         },
         {
+            id: 7,
             image: ep2,
             brand: 'LEIFARNE',
             name: '레이파르네 팔걸이의자',
@@ -74,6 +112,7 @@ const ProductList = ({ navigation }) => {
             rating: '0'
         },
         {
+            id: 8,
             image: ep3,
             brand: 'RONNINGE',
             name: '뢴닝에 의자',
@@ -83,6 +122,7 @@ const ProductList = ({ navigation }) => {
             rating: '4.3'
         },
         {
+            id: 9,
             image: ep1,
             brand: 'SVENBERTIL',
             name: '스벤베르틸 의자',
@@ -92,6 +132,7 @@ const ProductList = ({ navigation }) => {
             rating: '4.6'
         },
         {
+            id: 10,
             image: ep2,
             brand: 'LEIFARNE',
             name: '레이파르네 팔걸이의자',
@@ -101,33 +142,7 @@ const ProductList = ({ navigation }) => {
             rating: '0'
         },
         {
-            image: ep3,
-            brand: 'RONNINGE',
-            name: '뢴닝에 의자',
-            price: 99900,
-            commentCount: '6',
-            likeCount: '2',
-            rating: '4.3'
-        },
-        {
-            image: ep1,
-            brand: 'SVENBERTIL',
-            name: '스벤베르틸 의자',
-            price: 49900,
-            commentCount: '7',
-            likeCount: '0',
-            rating: '4.6'
-        },
-        {
-            image: ep2,
-            brand: 'LEIFARNE',
-            name: '레이파르네 팔걸이의자',
-            price: 69900,
-            commentCount: '0',
-            likeCount: '0',
-            rating: '0'
-        },
-        {
+            id: 11,
             image: ep3,
             brand: 'RONNINGE',
             name: '뢴닝에 의자',
@@ -139,12 +154,12 @@ const ProductList = ({ navigation }) => {
     ]);
     return (
         <Container >
-            <Header navigation={navigation}/>
+            <Header navigation={navigation} title="로그아웃"/>
             <ProductWrapper
                 columnWrapperStyle={{justifyContent:'space-between'}}
                 data={productList}
                 renderItem={({ item }) => (
-                    <ProductBox>
+                    <ProductBox onPress={() => ProductClick(item.id)}>
                         <ProductImage source={item.image}/>
                         <ProductBrand>{item.brand}</ProductBrand>
                         <ProductName>{item.name}</ProductName>
@@ -168,7 +183,7 @@ const ProductWrapper = styled.FlatList`
     flex: 1;
     margin: 0px 10px;
 `
-const ProductBox = styled.View`
+const ProductBox = styled.TouchableOpacity`
     flex: 1;
     margin: 5px;
     padding: 10px;
