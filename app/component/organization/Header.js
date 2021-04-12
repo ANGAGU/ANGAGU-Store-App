@@ -16,7 +16,7 @@ import styled from 'styled-components/native';
 // local import
 import ButtonWithText from '../atom/ButtonWithText';
 
-const Header = ({navigation}) => {
+const Header = ({navigation, title}) => {
   const goBack = () => {
     navigation.goBack();
   };
@@ -24,7 +24,7 @@ const Header = ({navigation}) => {
   return (
     <Container>
       <LogoWrapper>
-        <BackButton onPress={goBack}>로그아웃</BackButton>
+        <BackButton onPress={goBack}>{title}</BackButton>
       </LogoWrapper>
       <SearchWrapper></SearchWrapper>
     </Container>
