@@ -16,6 +16,9 @@ import {screenWidth} from '../util/dimension';
 import Input from '../component/atom/Input';
 import ButtonWithText from '../component/atom/ButtonWithText';
 
+// local API
+import {login} from '../api/auth';
+
 // react HTML
 const Login = ({navigation}) => {
   // variables
@@ -24,10 +27,13 @@ const Login = ({navigation}) => {
 
   // functions
   const onLogin = () => {
-    navigation.navigate('ProductList', {
-      userEmail: 'dummy',
-      authToken: 'dummyToken',
-    });
+    // const authData = login(email, password);
+    // if (authData.status == true) 
+      navigation.navigate('ProductList', {
+        userEmail: 'dummy', // authData.data.user
+        authToken: 'dummyToken', // authData.data.token
+      });
+    // else alert(authData.message)
   };
   return (
     <Container>
