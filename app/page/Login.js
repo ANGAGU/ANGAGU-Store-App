@@ -17,7 +17,7 @@ import Input from '../component/atom/Input';
 import ButtonWithText from '../component/atom/ButtonWithText';
 
 // local API
-import {login} from '../api/auth';
+import login from '../api/auth/login';
 
 // react HTML
 const Login = ({navigation}) => {

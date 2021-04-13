@@ -11,10 +11,10 @@ import {
     Button,
 } from 'react-native';
 
-import Stars from 'react-native-stars';
 // lib import
 import styled from 'styled-components/native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Stars from 'react-native-stars';
+// import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 // local import 
 import {screenWidth} from '../util/dimension';
@@ -49,6 +49,11 @@ const ProductDetail = ({ navigation, route }) => {
             rating: '4.6'
         },
     )
+    const onPurchaseClick = () => {
+        navigation.navigate('ProductPayment', {
+            productId: route.params.productId
+        });
+    }
     return (
         <Container>
             <Header navigation={navigation} title="뒤로가기"/>
@@ -75,6 +80,7 @@ const ProductDetail = ({ navigation, route }) => {
             <PurchaseButton
                 buttonColor="#35BCD6"
                 textColor="#ffffff"
+                onPress={onPurchaseClick}
             >
                 {'구매하기'}
             </PurchaseButton>

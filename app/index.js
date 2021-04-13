@@ -16,6 +16,7 @@ import Splash from './page/Splash.js';
 import Login from './page/Login.js';
 import ProductList from './page/ProductList.js';
 import ProductDetail from './page/ProductDetail.js';
+import ProductPayment from './page/ProductPayment.js';
 
 const Stack = createStackNavigator();
 // react HTML (jsx)
@@ -43,6 +44,7 @@ const Page = () => {
                         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
                         <Stack.Screen name="ProductList" component={ProductList} options={{ headerShown: false }}/>
                         <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ headerShown: false }}/>
+                        <Stack.Screen name="ProductPayment" component={ProductPayment} options={{ headerShown: false }}/>
                     </Stack.Navigator>
                 </NavigationContainer>
             }
