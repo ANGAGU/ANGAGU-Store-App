@@ -30,8 +30,14 @@ import ep1 from '../asset/img/example_product_1.webp';
 
  
 // react HTML
-const ProductDetail = ({ navigation }) => {
-    
+const ProductDetail = ({ navigation, route }) => {
+    useEffect(() => {
+        // const productObject = product(route.params.productId);
+        // if (productObject.status == "success")
+        //     setProductInfo(productObject.data)
+        // else
+        //     alert("상품 정보를 불러오는데, 실패하였습니다.")
+    },[])
     const [productInfo, setProductInfo] = useState(
         {
             image: ep1,
