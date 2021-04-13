@@ -42,7 +42,47 @@ const ProductPayment = ({ navigation, route }) => {
     )
     return (
         <Container>
-
+            <Header navigation={navigation} title="뒤로가기"/>
+            <OrderBox>
+                <DeliveryWrapper>
+                    <Title>배송지 정보</Title>
+                    <DeliveryInput
+                        placeholder={'받는 사람'}
+                        autoCapitalize="none"
+                    />
+                    <DeliveryInput
+                        placeholder={'도로명 주소'}
+                        autoCapitalize="none"
+                    />
+                    <DeliveryInput
+                        placeholder={'상세 주소'}
+                        autoCapitalize="none"
+                    />
+                    <DeliveryInput
+                        placeholder={'배송요청사항'}
+                        autoCapitalize="none"
+                    />
+                </DeliveryWrapper>
+                <PaymentWrapper>
+                    <Title>결제 정보</Title>
+                    <Data>
+                        <DataLabel>상품 명</DataLabel>
+                        <DataValue>{productInfo.name}</DataValue>
+                    </Data>
+                    <Data>
+                        <DataLabel>총 금액</DataLabel>
+                        <DataValue>{productInfo.price}</DataValue>
+                    </Data>
+                
+                </PaymentWrapper>
+                <PurchaseButton
+                    buttonColor="#35BCD6"
+                    textColor="#ffffff"
+                    
+                >
+                    {'결제하기'}
+                </PurchaseButton>
+            </OrderBox>
         </Container>
     )
 }
@@ -50,6 +90,41 @@ const Container = styled.View`
     background-color: #ffffff;
     flex: 1;
 `;
+const OrderBox = styled.ScrollView`
+    flex: 1;
+    padding: 20px;
+`
+const Title = styled.Text`
+    text-align: center;
+    font-size: 20px;
+    margin: 20px 0px;
+`
+const DeliveryWrapper = styled.View`
+`
+const DeliveryInput = styled(Input)`
+  margin-bottom: 15px;
+  width: 100%;
+`;
+const PaymentWrapper = styled.View`
+    
+`
 
+const PurchaseButton = styled(ButtonWithText)`
+    height: 45px;
+    border-radius: 5px;
+    margin-top: 20px;
+`
+const Data = styled.View`
+    flex-direction: row;
+    margin: 10px 0px;
+`
+const DataLabel = styled.Text`
+    flex: 1;
+    font-size: 16px;
+    font-weight: 600;
+`
+const DataValue = styled.Text`
+    flex: 1;
+    font-size: 16px;
+`
 export default ProductPayment;
-
