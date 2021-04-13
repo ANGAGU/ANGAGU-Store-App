@@ -19,6 +19,9 @@ import Input from '../component/atom/Input';
 import ButtonWithText from '../component/atom/ButtonWithText';
 import Header from '../component/organization/Header'
 
+// local API
+import product from '../api/product/product';
+
 // example Image
 import ep1 from '../asset/img/example_product_1.webp'
 import ep2 from '../asset/img/example_product_2.webp'
@@ -31,6 +34,13 @@ const ProductList = ({ navigation }) => {
             productId,
         });
     }
+    useEffect(() => {
+        // const productObject = product();
+        // if (productObject.status == "success")
+        //     setProductList(productObject.data)
+        // else
+        //     alert("상품 정보를 불러오는데, 실패하였습니다.")
+    },[])
     const [productList, setProductList] = useState([
         {
             id: 1,

@@ -28,7 +28,7 @@ const Login = ({navigation}) => {
   // functions
   const onLogin = () => {
     // const authData = login(email, password);
-    // if (authData.status == true) 
+    // if (authData.status == "success") 
       navigation.navigate('ProductList', {
         userEmail: 'dummy', // authData.data.user
         authToken: 'dummyToken', // authData.data.token

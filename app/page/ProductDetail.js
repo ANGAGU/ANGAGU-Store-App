@@ -20,14 +20,18 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {screenWidth} from '../util/dimension';
 import Input from '../component/atom/Input';
 import ButtonWithText from '../component/atom/ButtonWithText';
-import Header from '../component/organization/Header'
+import Header from '../component/organization/Header';
+
+// local API
+import product from "../api/product/product";
 
 // example Image
-import ep1 from '../asset/img/example_product_1.webp'
+import ep1 from '../asset/img/example_product_1.webp';
 
  
 // react HTML
 const ProductDetail = ({ navigation }) => {
+    
     const [productInfo, setProductInfo] = useState(
         {
             image: ep1,
