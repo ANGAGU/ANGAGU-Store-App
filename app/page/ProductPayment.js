@@ -21,16 +21,15 @@ import Text from '../component/atom/Text';
 import Header from '../component/organization/Header';
 
 // local API
-import product from "../api/product/product";
-
+import createOrder from "../api/order/createOrder";
 // example Image
 import ep1 from '../asset/img/example_product_1.webp';
 
- 
 // react HTML
 const ProductPayment = ({ navigation, route }) => {
     const [productInfo, setProductInfo] = useState(
         {
+            id: 1,
             image: ep1,
             brand: 'SVENBERTIL',
             name: '스벤베르틸 의자',
@@ -40,6 +39,11 @@ const ProductPayment = ({ navigation, route }) => {
             rating: '4.6'
         },
     )
+    const onOrder = async () => {
+        // await createOrder(productInfo.id);
+        navigation.navigate("Main");
+    }
+    const 
     return (
         <Container>
             <Header navigation={navigation} title="뒤로가기"/>
@@ -78,7 +82,7 @@ const ProductPayment = ({ navigation, route }) => {
                 <PurchaseButton
                     buttonColor="#35BCD6"
                     textColor="#ffffff"
-                    
+                    onPress={onOrder}
                 >
                     {'결제하기'}
                 </PurchaseButton>

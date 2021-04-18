@@ -1,7 +1,7 @@
 // Create Token
 import api from '..';
 
-export default async (id = -1) => {
+export default async (productId) => {
     try {
         let endPoint = `/customer/order`
         

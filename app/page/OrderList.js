@@ -19,9 +19,12 @@ import ep1 from '../asset/img/example_product_1.webp'
 import ep2 from '../asset/img/example_product_2.webp'
 
 // local API
-import login from '../api/auth/login';
+import getOrder from '../api/order/getOrder';
+
+// local Components
 import Header from '../component/organization/Header';
 import Footer from '../component/organization/Footer';
+import { loadPartialConfigAsync } from '@babel/core';
 
 // react HTML
 const OrderList = ({navigation}) => {
@@ -47,6 +50,14 @@ const OrderList = ({navigation}) => {
       state: '배송 완료'
   },
   ])
+  const [isLoading, setIsLoading] = useState(false)
+  useEffect(() => {
+    // const Loading = async () => {
+    //   setOrderList(await getOrder());
+    //  setIsLoading(true);
+    // }
+    // Loading();
+  },[])
   return (
     <Container>
       <Header navigation={navigation} title="주문 목록"/>
