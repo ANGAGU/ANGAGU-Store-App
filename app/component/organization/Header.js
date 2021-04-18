@@ -23,21 +23,28 @@ const Header = ({navigation, title}) => {
 
   return (
     <Container>
+      <BackButton onPress={goBack}>{"<"}</BackButton>
       <LogoWrapper>
-        <BackButton onPress={goBack}>{title}</BackButton>
+        {title}
       </LogoWrapper>
       <SearchWrapper></SearchWrapper>
+      <BackButton/>
     </Container>
   );
 };
 
 const Container = styled.View`
   height: 60px;
+  flex-direction: row;
   border-bottom-width: 1px;
   border-bottom-color: #ffffff;
 `;
-const LogoWrapper = styled.View``;
-const BackButton = styled(ButtonWithText)``;
+const LogoWrapper = styled(ButtonWithText)`
+    flex: 1;
+`;
+const BackButton = styled(ButtonWithText)`
+    width: 60px;
+`;
 
 const SearchWrapper = styled.View``;
 export default Header;

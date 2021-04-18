@@ -56,7 +56,7 @@ const ProductDetail = ({ navigation, route }) => {
     }
     return (
         <Container>
-            <Header navigation={navigation} title="뒤로가기"/>
+            <Header navigation={navigation} title="상품 정보"/>
             <ProductWrapper>
                 <ProductImage source={productInfo.image}/>
                 <ProductInfoWrapper>

@@ -34,13 +34,13 @@ const Login = ({navigation}) => {
         userEmail: 'dummy', // authData.data.user
         authToken: 'dummyToken', // authData.data.token
       });
-      AsyncStorage.setItem('token', "masterToken");
+      AsyncStorage.setItem('token', 'masterToken');
       
     // else alert(authData.message)
   };
   return (
     <Container>
-      <LogoWrapper>
+      <LogoWrapper onPress={() =>  navigation.navigate('Main')}>
         <LogoSmallText>어디 밖에 매장</LogoSmallText>
         <LogoText>안가구</LogoText>
       </LogoWrapper>
@@ -89,7 +89,7 @@ const Container = styled.View`
   background-color: #ffffff;
   flex: 1;
 `;
-const LogoWrapper = styled.View`
+const LogoWrapper = styled.TouchableOpacity`
   flex: 1;
   justify-content: center;
   align-items: center;

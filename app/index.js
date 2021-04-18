@@ -42,7 +42,7 @@ const Page = () => {
                 <Splash /> 
             :
                 <NavigationContainer>
-                    <Stack.Navigator initialRouteName="Login">
+                    <Stack.Navigator initialRouteName="Main">
                         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
                         <Stack.Screen name="ProductList" component={ProductList} options={{ headerShown: false }}/>
                         <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ headerShown: false }}/>

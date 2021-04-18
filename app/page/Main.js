@@ -45,11 +45,13 @@ const OrderList = ({navigation}) => {
             <LogoSmallText>어디 밖에 매장</LogoSmallText>
             <LogoText>안가구</LogoText>
         </LogoWrapper>
-        <MainWrapper>
-            <Text>서비스 준비 중 입니다.</Text>
-        </MainWrapper>
         {isLoading &&
+        <>
+            <MainWrapper>
+                <Text>서비스 준비 중 입니다.</Text>
+            </MainWrapper>
             <Footer navigation={navigation}/>
+        </>
         }
         
     </Container>
