@@ -43,9 +43,9 @@ const Footer = ({navigation, title}) => {
   return (
     <MenuWrapper>
     {
-        menuList.map((item) => {
+        menuList.map((item, index) => {
             return (
-                <Menu onPress={() => goLink(item.link)}>
+                <Menu key={index} onPress={() => goLink(item.link)}>
                     <MenuIcon source={item.icon}/>
                     <MenuText>{item.name}</MenuText>
                 </Menu>

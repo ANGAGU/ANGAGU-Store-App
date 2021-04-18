@@ -43,7 +43,7 @@ const ProductPayment = ({ navigation, route }) => {
         // await createOrder(productInfo.id);
         navigation.navigate("Main");
     }
-    const 
+    
     return (
         <Container>
             <Header navigation={navigation} title="뒤로가기"/>

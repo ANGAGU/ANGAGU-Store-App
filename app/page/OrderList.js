@@ -62,9 +62,9 @@ const OrderList = ({navigation}) => {
     <Container>
       <Header navigation={navigation} title="주문 목록"/>
       <OrderWrapper>
-        {orderList.map((order) => {
+        {orderList.map((order, index) => {
           return (
-            <OrderItem>
+            <OrderItem key={index}>
               <OrderImage source={order.image}/>
               <OrderInfo>
                 <OrderBrand>{order.brand}</OrderBrand>
