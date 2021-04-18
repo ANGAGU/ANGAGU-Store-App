@@ -33,5 +33,5 @@ it('OrderList UI Render Test', () => {
   renderer.create(<OrderList />);
 });
 it('Main UI Render Test', () => {
-  renderer.create(<Main />);
+   renderer.create(<Main />);
 });
