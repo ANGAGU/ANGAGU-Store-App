@@ -164,7 +164,7 @@ const ProductList = ({ navigation }) => {
     ]);
     return (
         <Container >
-            <Header navigation={navigation} title="로그아웃"/>
+            <Header navigation={navigation} title="뒤로가기"/>
             <ProductWrapper
                 columnWrapperStyle={{justifyContent:'space-between'}}
                 data={productList}

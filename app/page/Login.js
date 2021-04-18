@@ -7,6 +7,7 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // lib import
 import styled from 'styled-components/native';
@@ -26,13 +27,15 @@ const Login = ({navigation}) => {
   const [password, setPassword] = useState('');
 
   // functions
-  const onLogin = () => {
+  const onLogin = async () => {
     // const authData = login(email, password);
     // if (authData.status == "success") 
-      navigation.navigate('ProductList', {
+      navigation.navigate('Main', {
         userEmail: 'dummy', // authData.data.user
         authToken: 'dummyToken', // authData.data.token
       });
+      AsyncStorage.setItem('token', "masterToken");
+      
     // else alert(authData.message)
   };
   return (

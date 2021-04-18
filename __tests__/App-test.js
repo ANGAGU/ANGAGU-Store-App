@@ -11,6 +11,7 @@ import ProductList from '../app/page/ProductList';
 import ProductDetail from '../app/page/ProductDetail';
 import ProductPayment from '../app/page/ProductPayment';
 import OrderList from '../app/page/OrderList';
+import Main from '../app/page/Main';
 
 it('Login UI Render Test', () => {
   renderer.create(<Login />);
@@ -30,4 +31,7 @@ it('ProductPayment UI Render Test', () => {
 
 it('OrderList UI Render Test', () => {
   renderer.create(<OrderList />);
+});
+it('Main UI Render Test', () => {
+  renderer.create(<Main />);
 });

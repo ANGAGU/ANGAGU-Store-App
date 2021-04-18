@@ -17,6 +17,8 @@ import Login from './page/Login.js';
 import ProductList from './page/ProductList.js';
 import ProductDetail from './page/ProductDetail.js';
 import ProductPayment from './page/ProductPayment.js';
+import Main from './page/Main.js';
+import OrderList from './page/OrderList.js';
 
 const Stack = createStackNavigator();
 // react HTML (jsx)
@@ -45,6 +47,8 @@ const Page = () => {
                         <Stack.Screen name="ProductList" component={ProductList} options={{ headerShown: false }}/>
                         <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ headerShown: false }}/>
                         <Stack.Screen name="ProductPayment" component={ProductPayment} options={{ headerShown: false }}/>
+                        <Stack.Screen name="Main" component={Main} options={{ headerShown: false }}/>
+                        <Stack.Screen name="OrderList" component={OrderList} options={{ headerShown: false }}/>
                     </Stack.Navigator>
                 </NavigationContainer>
             }
