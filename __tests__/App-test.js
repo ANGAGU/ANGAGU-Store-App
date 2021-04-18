@@ -10,6 +10,7 @@ import Login from '../app/page/Login';
 import ProductList from '../app/page/ProductList';
 import ProductDetail from '../app/page/ProductDetail';
 import ProductPayment from '../app/page/ProductPayment';
+import OrderList from '../app/page/OrderList';
 
 it('Login UI Render Test', () => {
   renderer.create(<Login />);
@@ -25,4 +26,8 @@ it('ProductDetail UI Render Test', () => {
 
 it('ProductPayment UI Render Test', () => {
   renderer.create(<ProductPayment />);
+});
+
+it('OrderList UI Render Test', () => {
+  renderer.create(<OrderList />);
 });
