@@ -36,7 +36,11 @@ const Footer = ({navigation, title}) => {
         }
         initFunction();
     })
-    
+    const logout = async () => {
+        await AsyncStorage.setItem('token', '');
+        setToken(await AsyncStorage.getItem('token'));
+        Alert.alert("로그아웃", "로그아웃이 정상적으로 처리되었습니다.")
+    }
     const menuList = [
         {
         icon: IconSearch,
