@@ -36,7 +36,9 @@ const Button = styled.TouchableOpacity`
 `;
 
 const ButtonInnerText = styled.Text`
-  ${({ textDecoration  = 'none' }) => textDecoration && css`
+  ${({textDecoration = 'none'}) =>
+    textDecoration &&
+    css`
     text-decoration-line: ${textDecoration};
   `};
   ${({ fontSize = '18px' }) => fontSize && css`

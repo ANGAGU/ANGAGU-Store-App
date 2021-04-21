@@ -27,12 +27,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const OrderList = ({navigation}) => {
   // variables
     const [isLoading, setIsLoading] = useState(false);
-    const [isLogin, setIsLogin] = useState(false);
+    
 
     useEffect(()=> {
         const Loading = async() => {
-            if ((await AsyncStorage.getItem('token')).length > 1)
-                setIsLogin(true);
             setIsLoading(true);
         }
         Loading();
