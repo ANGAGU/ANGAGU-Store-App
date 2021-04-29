@@ -59,7 +59,7 @@ const Footer = ({navigation = "", title = ""}) => {
         <MenuWrapper>
             {isLoading && 
             <>
-                <Menu onPress={() => token != null && token != '' ? logout() : goLink('Login')}>
+                <Menu onPress={() => token != null && token != '' ? logout() : goLink('SignIn')}>
                     <MenuIcon source={IconLogin} />
                     <MenuText>{token != null && token != '' ? '로그아웃' : '로그인'}</MenuText>
                 </Menu>  

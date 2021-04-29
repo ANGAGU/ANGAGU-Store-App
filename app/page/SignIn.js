@@ -73,7 +73,7 @@ const Login = ({navigation}) => {
             onPress={() => {}}>
             {'로그인 정보를 잊으셨나요?'}
           </FindButton>
-          <JoinButton textColor="#C7C7C7" fontSize="15px" onPress={() => {}}>
+          <JoinButton textColor="#C7C7C7" fontSize="15px" onPress={() => navigation.navigate('SignUp')}>
             {'새로운 안가구계정 만들기'}
           </JoinButton>
         </LoginForm>

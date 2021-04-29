@@ -7,7 +7,8 @@ import 'react-native';
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
-import Login from '../app/page/Login';
+import SignIn from '../app/page/SignIn';
+import SignUp from '../app/page/SignUp';
 import ProductList from '../app/page/ProductList';
 import ProductDetail from '../app/page/ProductDetail';
 import ProductPayment from '../app/page/ProductPayment';
@@ -21,8 +22,8 @@ const mockImpl = new MockAsyncStorage();
 jest.mock('@react-native-async-storage/async-storage', () => mockImpl);
 
 
-it('Login UI Render Test', () => {
-  renderer.create(<Login />);
+it('Login SignIn UI Render Test', () => {
+  renderer.create(<SignIn />);
 });
 
 
@@ -48,6 +49,10 @@ it('Main UI Render Test', () => {
 
 it('Footer UI and Logout Render Test', () => {
   renderer.create(<Footer />);
+})
+
+it('SignUp UI and Logout Render Test', () => {
+  renderer.create(<SignUp />);
 })
 
 
