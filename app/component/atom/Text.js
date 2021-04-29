@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components/native';
+import styled, {css} from 'styled-components/native';
 
 export function getLineHeight(fontSize) {
   const multiplier = 1.45;
@@ -11,9 +11,11 @@ export const textStyles = css`
 
 const Text = styled.Text`
   ${textStyles}
-  ${({ fontSize }) => fontSize && css`
-    line-height: ${getLineHeight(fontSize)}px;
-  `};
+  ${({fontSize}) =>
+    fontSize &&
+    css`
+      line-height: ${getLineHeight(fontSize)}px;
+    `};
 `;
 
 export default Text;

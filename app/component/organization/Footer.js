@@ -21,8 +21,8 @@ import IconOrder from '../../asset/icon/icon_order.png';
 import IconSearch from '../../asset/icon/icon_search.png';
 import { useEffect, useState } from 'react/cjs/react.development';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useIsFocused } from '@react-navigation/core';
-const Footer = ({navigation, title}) => {
+
+const Footer = ({navigation = "", title = ""}) => {
     const [token, setToken] = useState("")
     const [isLoading, setIsLoading] = useState(false);
     const goLink = link => {
@@ -40,6 +40,7 @@ const Footer = ({navigation, title}) => {
         await AsyncStorage.setItem('token', '');
         setToken(await AsyncStorage.getItem('token'));
         Alert.alert("로그아웃", "로그아웃이 정상적으로 처리되었습니다.")
+        return token;
     }
     const menuList = [
         {
@@ -75,6 +76,7 @@ const Footer = ({navigation, title}) => {
         </MenuWrapper>
     );
 };
+export default Footer;
 const MenuWrapper = styled.View`
   flex-direction: row;
   height: 80px;
@@ -94,4 +96,4 @@ const MenuIcon = styled.Image`
 const MenuText = styled.Text`
   font-weight: 700;
 `;
-export default Footer;
+

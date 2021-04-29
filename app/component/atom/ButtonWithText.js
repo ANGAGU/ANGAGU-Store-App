@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components/native';
+import styled, {css} from 'styled-components/native';
 
 const ButtonWithText = ({
   style,
@@ -25,9 +25,11 @@ const ButtonWithText = ({
 export default ButtonWithText;
 
 const Button = styled.TouchableOpacity`
-  ${({ buttonColor = '#ffffff' }) => buttonColor && css`
-    background-color: ${buttonColor};
-  `};
+  ${({buttonColor = '#ffffff'}) =>
+    buttonColor &&
+    css`
+      background-color: ${buttonColor};
+    `};
   padding: 13px 0;
   display: flex;
   align-items: center;
@@ -39,12 +41,16 @@ const ButtonInnerText = styled.Text`
   ${({textDecoration = 'none'}) =>
     textDecoration &&
     css`
-    text-decoration-line: ${textDecoration};
-  `};
-  ${({ fontSize = '18px' }) => fontSize && css`
-    font-size: ${fontSize};
-  `};
-  ${({ textColor = '#35BCD6' }) => textColor && css`
-    color: ${textColor};
-  `};
+      text-decoration-line: ${textDecoration};
+    `};
+  ${({fontSize = '18px'}) =>
+    fontSize &&
+    css`
+      font-size: ${fontSize};
+    `};
+  ${({textColor = '#35BCD6'}) =>
+    textColor &&
+    css`
+      color: ${textColor};
+    `};
 `;
