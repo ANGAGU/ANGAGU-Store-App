@@ -20,6 +20,7 @@ import ProductPayment from './page/ProductPayment.js';
 import Main from './page/Main.js';
 import OrderList from './page/OrderList.js';
 import SignUp from './page/SignUp.js';
+import SignUpDetail from './page/SignUpDetail.js';
 
 const Stack = createStackNavigator();
 // react HTML (jsx)
@@ -46,6 +47,7 @@ const Page = () => {
                     <Stack.Navigator initialRouteName="Main">
                         <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }}/>
                         <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }}/>
+                        <Stack.Screen name="SignUpDetail" component={SignUpDetail} options={{ headerShown: false }}/>
                         <Stack.Screen name="ProductList" component={ProductList} options={{ headerShown: false }}/>
                         <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ headerShown: false }}/>
                         <Stack.Screen name="ProductPayment" component={ProductPayment} options={{ headerShown: false }}/>

@@ -5,17 +5,19 @@ export function getLineHeight(fontSize) {
   return parseInt(fontSize * multiplier, 10);
 }
 
-export const textStyles = css`
-  font-family: 'NotoSansKR-Regular';
-`;
-
 const Text = styled.Text`
-  ${textStyles}
   ${({fontSize}) =>
     fontSize &&
     css`
       line-height: ${getLineHeight(fontSize)}px;
-    `};
+    `
+  };
+  ${({fontWeight}) =>
+    fontWeight &&
+    css`
+      text-weight: ${fontWeight}px;
+    `
+  };
 `;
 
 export default Text;

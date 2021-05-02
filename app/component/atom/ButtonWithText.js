@@ -9,15 +9,21 @@ const ButtonWithText = ({
   buttonColor,
   fontSize,
   textDecoration,
+  imageMode=false,
 }) => {
   return (
     <Button style={style} onPress={onPress} buttonColor={buttonColor}>
-      <ButtonInnerText
-        textDecoration={textDecoration}
-        textColor={textColor}
-        fontSize={fontSize}>
-        {children}
-      </ButtonInnerText>
+      {imageMode ? 
+        children
+      :
+        <ButtonInnerText
+          textDecoration={textDecoration}
+          textColor={textColor}
+          fontSize={fontSize}>
+          {children}
+        </ButtonInnerText>
+      }
+      
     </Button>
   );
 };
