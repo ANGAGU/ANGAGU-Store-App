@@ -34,6 +34,18 @@ const SignUp = ({navigation}) => {
                     secureTextEntry
                     onChangeText={setPassword}
                 />
+                <FormInput
+                    label={'이름'}
+                    placeholder={'이름을 입력해주세요'}
+                    value={email}
+                    onChangeText={setEmail}
+                />
+                <FormInput
+                    label={'생년월일'}
+                    placeholder={'19000101'}
+                    value={email}
+                    onChangeText={setEmail}
+                />
                 {/* <FormInput
                     label={'비밀번호 확인'}
                     placeholder={'example@abc.com'}

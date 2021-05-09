@@ -30,12 +30,14 @@ const Login = ({navigation}) => {
   const onLogin = async () => {
     // const authData = login(email, password);
     // if (authData.status == "success") 
-      navigation.navigate('Main', {
-        userEmail: 'dummy', // authData.data.user
-        authToken: 'dummyToken', // authData.data.token
-      });
-      AsyncStorage.setItem('token', 'masterToken');
-      
+    // {
+        AsyncStorage.setItem('token', 'masterToken');
+        navigation.navigate('Main', {
+          userEmail: 'dummy', // authData.data.user
+          authToken: 'dummyToken', // authData.data.token
+        });
+       
+    // } 
     // else alert(authData.message)
   };
   return (

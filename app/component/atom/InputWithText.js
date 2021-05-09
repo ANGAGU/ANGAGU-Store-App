@@ -27,6 +27,7 @@ const InputWithText = ({
                 onChangeText={enable && onChangeText}
                 placeholder={placeholder}
                 secureTextEntry={secureTextEntry}
+                autoCapitalize="none"
             />
 
             {/* 하단 오류 레이블 */}
