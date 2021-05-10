@@ -21,6 +21,7 @@ import Main from './page/Main.js';
 import OrderList from './page/OrderList.js';
 import SignUp from './page/SignUp.js';
 import SignUpDetail from './page/SignUpDetail.js';
+import ARView from './page/ARView.js';
 
 const Stack = createStackNavigator();
 // react HTML (jsx)
@@ -53,6 +54,7 @@ const Page = () => {
                         <Stack.Screen name="ProductPayment" component={ProductPayment} options={{ headerShown: false }}/>
                         <Stack.Screen name="Main" component={Main} options={{ headerShown: false }}/>
                         <Stack.Screen name="OrderList" component={OrderList} options={{ headerShown: false }}/>
+                        <Stack.Screen name="ARView" component={ARView} options={{ headerShown: false }}/>
                     </Stack.Navigator>
                 </NavigationContainer>
             }

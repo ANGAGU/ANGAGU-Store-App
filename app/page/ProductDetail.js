@@ -54,6 +54,11 @@ const ProductDetail = ({ navigation, route }) => {
             productId: route.params.productId
         });
     }
+    const onARClick = () => {
+        navigation.navigate('ARView', {
+            productId: route.params.productId
+        });
+    }
     return (
         <Container>
             <Header navigation={navigation} title="상품 정보"/>
@@ -76,6 +81,7 @@ const ProductDetail = ({ navigation, route }) => {
                     <ProductName>{productInfo.name}</ProductName>
                     <ProductPrice>￦ {productInfo.price.toLocaleString()}</ProductPrice>
                 </ProductInfoWrapper>
+                <PurchaseButton onPress={onARClick}>AR</PurchaseButton>
             </ProductWrapper>    
             <PurchaseButton
                 buttonColor="#35BCD6"

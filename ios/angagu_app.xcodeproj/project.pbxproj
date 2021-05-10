@@ -14,6 +14,7 @@
 		178752343EABFCD940CB4B07 /* libPods-angagu_app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD28E9BAE43595C1FFC5751 /* libPods-angagu_app.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		E624C2A2C95124AAC3B09B10 /* libPods-angagu_app-angagu_appTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4B91218781D1B10A1D1AF1 /* libPods-angagu_app-angagu_appTests.a */; };
+		6CF6B2026F3B473AB906BD9D /* libRNUnityView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1558CC83372413E8AC42D55 /* libRNUnityView.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F9965C1E973B7F78ACF4AA52 /* Pods-angagu_app-angagu_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-angagu_app-angagu_appTests.release.xcconfig"; path = "Target Support Files/Pods-angagu_app-angagu_appTests/Pods-angagu_app-angagu_appTests.release.xcconfig"; sourceTree = "<group>"; };
 		FCD28E9BAE43595C1FFC5751 /* libPods-angagu_app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-angagu_app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		01342EE3406C48D18CD45192 /* RNUnityView.xcodeproj */ = {isa = PBXFileReference; name = "RNUnityView.xcodeproj"; path = "../node_modules/react-native-unity-view/ios/RNUnityView.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		A1558CC83372413E8AC42D55 /* libRNUnityView.a */ = {isa = PBXFileReference; name = "libRNUnityView.a"; path = "libRNUnityView.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				178752343EABFCD940CB4B07 /* libPods-angagu_app.a in Frameworks */,
+				6CF6B2026F3B473AB906BD9D /* libRNUnityView.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +113,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				01342EE3406C48D18CD45192 /* RNUnityView.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -451,6 +456,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/angagu_app.app/angagu_app";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-unity-view/ios",
+				);
 			};
 			name = Debug;
 		};
@@ -475,6 +488,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/angagu_app.app/angagu_app";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-unity-view/ios",
+				);
 			};
 			name = Release;
 		};
@@ -501,6 +522,10 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-unity-view/ios",
+				);
 			};
 			name = Debug;
 		};
@@ -525,6 +550,10 @@
 				PRODUCT_NAME = angagu_app;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-unity-view/ios",
+				);
 			};
 			name = Release;
 		};

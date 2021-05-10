@@ -16,6 +16,8 @@ target 'angagu_app' do
 
   pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-async-storage/async-storage'
 
+  pod 'react-native-unity-view', :path => '../node_modules/@asmadsen/react-native-unity-view'
+
   target 'angagu_appTests' do
     inherit! :complete
     # Pods for testing
