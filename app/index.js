@@ -22,6 +22,7 @@ import OrderList from './page/OrderList.js';
 import SignUp from './page/SignUp.js';
 import SignUpDetail from './page/SignUpDetail.js';
 import ARView from './page/ARView.js';
+import Toast from 'react-native-toast-message';
 
 const Stack = createStackNavigator();
 // react HTML (jsx)
@@ -58,6 +59,7 @@ const Page = () => {
                     </Stack.Navigator>
                 </NavigationContainer>
             }
+            <Toast ref={(ref) => Toast.setRef(ref)} />
         </KeyboardAvoidingView>
     );  
 }

@@ -80,7 +80,6 @@ export default Footer;
 const MenuWrapper = styled.View`
   flex-direction: row;
   height: 80px;
-  margin-bottom: 10px;
 `;
 const Menu = styled(TouchableOpacity)`
   flex: 1;
@@ -94,6 +93,7 @@ const MenuIcon = styled.Image`
   resize-mode: contain;
 `;
 const MenuText = styled.Text`
-  font-weight: 700;
+    font-size: 12px;
+    font-weight: 700;
 `;
 

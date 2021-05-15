@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* angagu_appTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* angagu_appTests.m */; };
+		04065578264CD0AD004A2250 /* UnityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04065576264CD0A4004A2250 /* UnityFramework.framework */; };
+		04065579264CD0B2004A2250 /* UnityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04065576264CD0A4004A2250 /* UnityFramework.framework */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		178752343EABFCD940CB4B07 /* libPods-angagu_app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD28E9BAE43595C1FFC5751 /* libPods-angagu_app.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		E624C2A2C95124AAC3B09B10 /* libPods-angagu_app-angagu_appTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4B91218781D1B10A1D1AF1 /* libPods-angagu_app-angagu_appTests.a */; };
-		6CF6B2026F3B473AB906BD9D /* libRNUnityView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1558CC83372413E8AC42D55 /* libRNUnityView.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,12 +26,51 @@
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = angagu_app;
 		};
+		04065571264CD0A4004A2250 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0406556B264CD0A3004A2250 /* Unity-iPhone.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1D6058910D05DD3D006BFB54;
+			remoteInfo = "Unity-iPhone";
+		};
+		04065573264CD0A4004A2250 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0406556B264CD0A3004A2250 /* Unity-iPhone.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5623C57317FDCB0800090B9E;
+			remoteInfo = "Unity-iPhone Tests";
+		};
+		04065575264CD0A4004A2250 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0406556B264CD0A3004A2250 /* Unity-iPhone.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9D25AB9D213FB47800354C27;
+			remoteInfo = UnityFramework;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		04064E9D264C915C004A2250 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00E356EE1AD99517003FC87E /* angagu_appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = angagu_appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* angagu_appTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = angagu_appTests.m; sourceTree = "<group>"; };
+		01342EE3406C48D18CD45192 /* RNUnityView.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNUnityView.xcodeproj; path = "../node_modules/react-native-unity-view/ios/RNUnityView.xcodeproj"; sourceTree = "<group>"; };
+		04065478264CC1C0004A2250 /* libreact-native-unity-view.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libreact-native-unity-view.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04065509264CCB68004A2250 /* libreact-native-unity-view.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libreact-native-unity-view.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0406550E264CCB78004A2250 /* libreact-native-unity-view.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libreact-native-unity-view.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0406556B264CD0A3004A2250 /* Unity-iPhone.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Unity-iPhone.xcodeproj"; path = "UnityExport/Unity-iPhone.xcodeproj"; sourceTree = "<group>"; };
 		0B4B91218781D1B10A1D1AF1 /* libPods-angagu_app-angagu_appTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-angagu_app-angagu_appTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* angagu_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = angagu_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = angagu_app/AppDelegate.h; sourceTree = "<group>"; };
@@ -42,11 +82,10 @@
 		3A153D1C23221D377079CA14 /* Pods-angagu_app-angagu_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-angagu_app-angagu_appTests.debug.xcconfig"; path = "Target Support Files/Pods-angagu_app-angagu_appTests/Pods-angagu_app-angagu_appTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = angagu_app/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A97919DDD3A09F36340C327 /* Pods-angagu_app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-angagu_app.debug.xcconfig"; path = "Target Support Files/Pods-angagu_app/Pods-angagu_app.debug.xcconfig"; sourceTree = "<group>"; };
+		A1558CC83372413E8AC42D55 /* libRNUnityView.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNUnityView.a; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F9965C1E973B7F78ACF4AA52 /* Pods-angagu_app-angagu_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-angagu_app-angagu_appTests.release.xcconfig"; path = "Target Support Files/Pods-angagu_app-angagu_appTests/Pods-angagu_app-angagu_appTests.release.xcconfig"; sourceTree = "<group>"; };
 		FCD28E9BAE43595C1FFC5751 /* libPods-angagu_app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-angagu_app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		01342EE3406C48D18CD45192 /* RNUnityView.xcodeproj */ = {isa = PBXFileReference; name = "RNUnityView.xcodeproj"; path = "../node_modules/react-native-unity-view/ios/RNUnityView.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		A1558CC83372413E8AC42D55 /* libRNUnityView.a */ = {isa = PBXFileReference; name = "libRNUnityView.a"; path = "libRNUnityView.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04065579264CD0B2004A2250 /* UnityFramework.framework in Frameworks */,
 				E624C2A2C95124AAC3B09B10 /* libPods-angagu_app-angagu_appTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,8 +102,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04065578264CD0AD004A2250 /* UnityFramework.framework in Frameworks */,
 				178752343EABFCD940CB4B07 /* libPods-angagu_app.a in Frameworks */,
-				6CF6B2026F3B473AB906BD9D /* libRNUnityView.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +127,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		04064DED264C802F004A2250 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				A1558CC83372413E8AC42D55 /* libRNUnityView.a */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		0406556C264CD0A3004A2250 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04065572264CD0A4004A2250 /* Unity-Target-New.app */,
+				04065574264CD0A4004A2250 /* Unity-iPhone Tests.xctest */,
+				04065576264CD0A4004A2250 /* UnityFramework.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		13B07FAE1A68108700A75B9A /* angagu_app */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +161,9 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0406550E264CCB78004A2250 /* libreact-native-unity-view.a */,
+				04065509264CCB68004A2250 /* libreact-native-unity-view.a */,
+				04065478264CC1C0004A2250 /* libreact-native-unity-view.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				FCD28E9BAE43595C1FFC5751 /* libPods-angagu_app.a */,
 				0B4B91218781D1B10A1D1AF1 /* libPods-angagu_app-angagu_appTests.a */,
@@ -121,12 +182,14 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				0406556B264CD0A3004A2250 /* Unity-iPhone.xcodeproj */,
 				13B07FAE1A68108700A75B9A /* angagu_app */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* angagu_appTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				F67AE35108CADE7A0983320A /* Pods */,
+				04064DED264C802F004A2250 /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -150,7 +213,6 @@
 				3A153D1C23221D377079CA14 /* Pods-angagu_app-angagu_appTests.debug.xcconfig */,
 				F9965C1E973B7F78ACF4AA52 /* Pods-angagu_app-angagu_appTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -165,7 +227,6 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				EF82CC949CEC4D8A9BD9C487 /* [CP] Embed Pods Frameworks */,
 				14374FBE083EC07086F0E755 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -188,8 +249,8 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				5BFD83CE5517903155C8E743 /* [CP] Embed Pods Frameworks */,
 				499C4E240EBDB03F187B61E9 /* [CP] Copy Pods Resources */,
+				04064E9D264C915C004A2250 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -228,6 +289,12 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0406556C264CD0A3004A2250 /* Products */;
+					ProjectRef = 0406556B264CD0A3004A2250 /* Unity-iPhone.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* angagu_app */,
@@ -235,6 +302,31 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		04065572264CD0A4004A2250 /* Unity-Target-New.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			name = "Unity-Target-New.app";
+			path = angaguapp.app;
+			remoteRef = 04065571264CD0A4004A2250 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		04065574264CD0A4004A2250 /* Unity-iPhone Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Unity-iPhone Tests.xctest";
+			remoteRef = 04065573264CD0A4004A2250 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		04065576264CD0A4004A2250 /* UnityFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = UnityFramework.framework;
+			remoteRef = 04065575264CD0A4004A2250 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00E356EC1AD99517003FC87E /* Resources */ = {
@@ -326,23 +418,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-angagu_app/Pods-angagu_app-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5BFD83CE5517903155C8E743 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-angagu_app/Pods-angagu_app-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-angagu_app/Pods-angagu_app-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-angagu_app/Pods-angagu_app-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		99FBB4EC9029E14CD6ADC222 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -363,23 +438,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EF82CC949CEC4D8A9BD9C487 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-angagu_app-angagu_appTests/Pods-angagu_app-angagu_appTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-angagu_app-angagu_appTests/Pods-angagu_app-angagu_appTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-angagu_app-angagu_appTests/Pods-angagu_app-angagu_appTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -441,14 +499,27 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-unity-view/ios",
+				);
 				INFOPLIST_FILE = angagu_appTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				"OTHER_LDFLAGS[sdk=iphonesimulator*]" = (
 					"-ObjC",
 					"-lc++",
 					"$(inherited)",
@@ -456,14 +527,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/angagu_app.app/angagu_app";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-unity-view/ios",
-				);
 			};
 			name = Debug;
 		};
@@ -473,12 +536,20 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-unity-view/ios",
+				);
 				INFOPLIST_FILE = angagu_appTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -488,14 +559,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/angagu_app.app/angagu_app";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-unity-view/ios",
-				);
 			};
 			name = Release;
 		};
@@ -507,6 +570,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-unity-view/ios",
+				);
 				INFOPLIST_FILE = angagu_app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -522,10 +589,6 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-unity-view/ios",
-				);
 			};
 			name = Debug;
 		};
@@ -536,6 +599,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-unity-view/ios",
+				);
 				INFOPLIST_FILE = angagu_app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -550,10 +617,6 @@
 				PRODUCT_NAME = angagu_app;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-unity-view/ios",
-				);
 			};
 			name = Release;
 		};
@@ -606,7 +669,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -664,7 +727,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",

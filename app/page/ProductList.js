@@ -1,26 +1,18 @@
 // react import
 import React, { useEffect, useState } from 'react';
-import {
-    FlatList,   
-    ScrollView,
-    Text,
-    TextInput,
-    View,
-    TouchableOpacity,
-    Image,
-} from 'react-native';
+import { Alert } from 'react-native';
 
 // lib import
 import styled from 'styled-components/native';
+import Stars from 'react-native-stars';
 
 // local import 
 import {screenWidth} from '../util/dimension';
-import Input from '../component/atom/Input';
-import ButtonWithText from '../component/atom/ButtonWithText';
-import Header from '../component/organization/Header'
+import Text from '../component/atom/Text';
+import Header from '../component/organization/Header';
 
 // local API
-import product from '../api/product/product';
+import { getProduct } from '../api/product/product';
 
 // example Image
 import ep1 from '../asset/img/example_product_1.webp'
@@ -35,6 +27,18 @@ const ProductList = ({ navigation }) => {
         });
     }
     useEffect(() => {
+        const init = async () => {
+            let result = await getProduct();
+            if (result.status == 'success'){
+                let temp_list = result.data;
+                temp_list.pop();
+                if (temp_list.length % 2 == 1) temp_list.push({id: -1})
+                setProductList(temp_list);
+            } else {
+                Alert.alert("상품 불러오기 실패", "상품을 불러오는데 실패하였습니다.")
+            }
+        }
+        init();
         // const productObject = product();
         // if (productObject.status == "success")
         //     setProductList(productObject.data)
@@ -50,7 +54,23 @@ const ProductList = ({ navigation }) => {
             price: 49900,
             commentCount: '7',
             likeCount: '0',
-            rating: '4.6'
+            rating: '4.6',
+            // "id": 1,
+            // "company_id": 1,
+            // "description_url": "product/desc/UBill5Imv",
+            // "thumb_url": "product/thumb/HyV_GXzk-i",
+            // "3d_model_url": "product/ar/FBwNaU1ev",
+            // "description": "updated description",
+            // "name": "updated name",
+            // "price": 100000000,
+            // "stock": 11111,
+            // "sell_count": 0,
+            // "view_count": 17,
+            // "delivery_charge": 2222222,
+            // "free_delivery_condition": null,
+            // "is_approve": 1,
+            // "create_time": "2021-04-18T04:14:22.000Z",
+            // "update_time": "2021-05-14T06:36:44.000Z"
         },
         {
             id: 2,
@@ -64,26 +84,6 @@ const ProductList = ({ navigation }) => {
         },
         {
             id: 3,
-            image: ep3,
-            brand: 'RONNINGE',
-            name: '뢴닝에 의자',
-            price: 99900,
-            commentCount: '6',
-            likeCount: '2',
-            rating: '4.3'
-        },
-        {
-            id: 4,
-            image: ep1,
-            brand: 'SVENBERTIL',
-            name: '스벤베르틸 의자',
-            price: 49900,
-            commentCount: '7',
-            likeCount: '0',
-            rating: '4.6'
-        },
-        {
-            id: 5,
             image: ep2,
             brand: 'LEIFARNE',
             name: '레이파르네 팔걸이의자',
@@ -91,76 +91,7 @@ const ProductList = ({ navigation }) => {
             commentCount: '0',
             likeCount: '0',
             rating: '0'
-        },
-        {
-            id: 6,
-            image: ep3,
-            brand: 'RONNINGE',
-            name: '뢴닝에 의자',
-            price: 99900,
-            commentCount: '6',
-            likeCount: '2',
-            rating: '4.3'
-        },
-        {
-            image: ep1,
-            brand: 'SVENBERTIL',
-            name: '스벤베르틸 의자',
-            price: 49900,
-            commentCount: '7',
-            likeCount: '0',
-            rating: '4.6'
-        },
-        {
-            id: 7,
-            image: ep2,
-            brand: 'LEIFARNE',
-            name: '레이파르네 팔걸이의자',
-            price: 69900,
-            commentCount: '0',
-            likeCount: '0',
-            rating: '0'
-        },
-        {
-            id: 8,
-            image: ep3,
-            brand: 'RONNINGE',
-            name: '뢴닝에 의자',
-            price: 99900,
-            commentCount: '6',
-            likeCount: '2',
-            rating: '4.3'
-        },
-        {
-            id: 9,
-            image: ep1,
-            brand: 'SVENBERTIL',
-            name: '스벤베르틸 의자',
-            price: 49900,
-            commentCount: '7',
-            likeCount: '0',
-            rating: '4.6'
-        },
-        {
-            id: 10,
-            image: ep2,
-            brand: 'LEIFARNE',
-            name: '레이파르네 팔걸이의자',
-            price: 69900,
-            commentCount: '0',
-            likeCount: '0',
-            rating: '0'
-        },
-        {
-            id: 11,
-            image: ep3,
-            brand: 'RONNINGE',
-            name: '뢴닝에 의자',
-            price: 99900,
-            commentCount: '6',
-            likeCount: '2',
-            rating: '4.3'
-        },
+        }
     ]);
     return (
         <Container >
@@ -169,13 +100,25 @@ const ProductList = ({ navigation }) => {
                 columnWrapperStyle={{justifyContent:'space-between'}}
                 data={productList}
                 renderItem={({ item }) => (
+                    item.id != -1 ?
                     <ProductBox onPress={() => ProductClick(item.id)}>
-                        <ProductImage source={item.image}/>
-                        <ProductBrand>{item.brand}</ProductBrand>
+                        {/* <ProductImage source={require("https://angagu.s3.ap-northeast-2.amazonaws.com/" + item.image)}/> */}
+                        {/* <ProductImage source={{uri: "https://angagu.s3.ap-northeast-2.amazonaws.com/product/desc/aUj2027nQa.png"}}/> */}
+                        <ProductImage source={ep1}/>
+                        {/* <ProductBrand>{item.brand}</ProductBrand> */}
                         <ProductName>{item.name}</ProductName>
-                        <ProductPrice>￦ {item.price.toLocaleString()}</ProductPrice>
-                        
+                        <ProductPrice>￦ {item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</ProductPrice>
+                        {/* <Stars
+                                display={3.67}
+                                spacing={2}
+                                count={5}
+                                starSize={12}
+                                fullStar= {require('../asset/img/star_full.png')}
+                                emptyStar= {require('../asset/img/star_empty.png')}
+                        />     */}
                     </ProductBox>
+                    :
+                    <ProductBox />
                 )}
                 //Setting the number of column
                 numColumns={2}
@@ -191,31 +134,35 @@ const Container = styled.View`
 `;
 const ProductWrapper = styled.FlatList`
     flex: 1;
-    margin: 0px 10px;
+    
 `
 const ProductBox = styled.TouchableOpacity`
     flex: 1;
-    margin: 5px;
-    padding: 10px;
+    width: ${(screenWidth) / 2}px;
+    height: ${(screenWidth * 3 / 5)}px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-color: #979797;
+    padding: 10px 0px;
     align-items: center;
 `
 const ProductImage = styled.Image`
     flex: 1;
     width: ${(screenWidth - 81) / 2}px;
     height: ${(screenWidth - 81) / 2}px;
-    
-    border-radius: 5px;
     margin-bottom: 13px;
     resize-mode: contain;
 `
-const ProductBrand = styled.Text`
+const ProductBrand = styled(Text)`
     font-weight: 800;   
 `
-const ProductName = styled.Text`
+const ProductName = styled(Text)`
+    font-weight: 800;   
+    font-size: 16px;
     margin: 4px;
 `
-const ProductPrice = styled.Text`
-    
+const ProductPrice = styled(Text)`
+    font-size: 12px;
 `
 export default ProductList;
 

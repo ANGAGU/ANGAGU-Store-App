@@ -10,10 +10,18 @@ const ARView = () => {
     useEffect(() => {
         UnityModule.pause();
         UnityModule.resume();
+        UnityModule.addMessageListener( (message) => {
+            if (message == "loading-end")
+                UnityModule.postMessage("", "method", "")
+        })
+        
     })
     return (
         <Container>
-            <UnityView style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, }} /> 
+            <UnityView
+                style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, }}
+                onMessage={this.onMessage.bind(this)}
+            /> 
         </Container>
     )
 }

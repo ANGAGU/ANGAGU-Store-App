@@ -1,12 +1,5 @@
 // react import
 import React, {useEffect, useState} from 'react';
-import {
-  ScrollView,
-  Text,
-  TextInput,
-  View,
-  TouchableOpacity,
-} from 'react-native';
 
 // lib import
 import styled from 'styled-components/native';
@@ -14,6 +7,7 @@ import styled from 'styled-components/native';
 // local import
 import {screenWidth} from '../util/dimension';
 import Input from '../component/atom/Input';
+import Text from '../component/atom/Text';
 import ButtonWithText from '../component/atom/ButtonWithText';
 import ep1 from '../asset/img/example_product_1.webp'
 import ep2 from '../asset/img/example_product_2.webp'
@@ -106,17 +100,17 @@ const OrderItem = styled.View`
 const OrderInfo = styled.View`
 
 `
-const OrderBrand = styled.Text`
+const OrderBrand = styled(Text)`
   font-weight: 700;
   margin: 5px;
 `
-const OrderName = styled.Text`
+const OrderName = styled(Text)`
   margin: 5px;
 `
-const OrderPrice = styled.Text`
+const OrderPrice = styled(Text)`
   margin: 5px;
 `
-const OrderState = styled.Text`
+const OrderState = styled(Text)`
   font-size: 20px;
   margin: 10px 5px;
 `
@@ -127,7 +121,5 @@ const OrderImage = styled.Image`
 `
 const OrderButtonWrapper = styled.View`
   flex-direction: row;
-`
-const ReviewButton = styled(ButtonWithText)`
 `
 

@@ -1,8 +1,5 @@
 // react import
 import React, {useEffect, useState} from 'react';
-import {
-  Text,
-} from 'react-native';
 
 // lib import
 import styled from 'styled-components/native';
@@ -10,6 +7,8 @@ import styled from 'styled-components/native';
 // local API
 import Footer from '../component/organization/Footer';
 
+// local Components
+import Text from '../component/atom/Text';
 // react HTML
 const OrderList = ({navigation}) => {
   // variables
@@ -33,7 +32,7 @@ const OrderList = ({navigation}) => {
         {isLoading &&
         <>
             <MainWrapper>
-                <Text>서비스 준비 중 입니다.</Text>
+                <LogoText>서비스 준비 중 입니다.</LogoText>
             </MainWrapper>
             <Footer navigation={navigation}/>
         </>
@@ -55,14 +54,14 @@ const LogoWrapper = styled.View`
     justify-content: center;
     align-items: center;
 `;
-const LogoText = styled.Text`
+const LogoText = styled(Text)`
     margin-top: 5px;
-    font-size: 45px;
+    font-size: 44px;
     color: #35bcd6;
     font-weight: 800;
 `;
-const LogoSmallText = styled.Text`
-    font-size: 19.5px;
+const LogoSmallText = styled(Text)`
+    font-size: 20px;
     color: #000000;
     font-weight: 500;
 `;

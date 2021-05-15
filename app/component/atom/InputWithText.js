@@ -11,7 +11,10 @@ const InputWithText = ({
     placeholder="",
     enable=true,
     secureTextEntry=null,
+    keyboardType="default",
+    onBlur=null,
 }) => {
+    
     return (
         <InputBox>
             {/* 상단 설명 레이블 */}
@@ -28,6 +31,8 @@ const InputWithText = ({
                 placeholder={placeholder}
                 secureTextEntry={secureTextEntry}
                 autoCapitalize="none"
+                keyboardType={keyboardType}
+                onBlur={onBlur}
             />
 
             {/* 하단 오류 레이블 */}
@@ -48,17 +53,18 @@ const InputBox = styled.View`
     margin-bottom: 10px;
 `
 const InputText = styled(Input)`
+    font-size: 15px;
     border-bottom-width: 1px;
     border-bottom-color: #999999;
     background-color: #ffffff;
     color: #121212;
 `
 const Label = styled(Text)`
-    font-size: 17px;
+    font-size: 15px;
     margin: 8px 0px;
 `
 const ErrorLabel = styled(Text)`
     font-size: 12px;
-    margin: 4px 0px;
+    margin: 4px 2px;
     color: #F70000;
 `

@@ -8,15 +8,30 @@ import Input from '../component/atom/Input';
 import ButtonWithText from '../component/atom/ButtonWithText';
 import InputWithText from '../component/atom/InputWithText';
 
+// local api import
+import { signUpMessageRequest, signUpMessageResponse} from '../api/auth/signUp';
+import { Alert } from 'react-native';
 const SignUp = ({navigation}) => {
     const [phone, setPhone] = useState("");             // 휴대폰 번호
     const [isRequest, setIsRequest] = useState(false);  // 인증번호 요청 여부
     const [auth, setAuth] = useState("");               // 인증번호
-    const requestPhoneAuth = () => {
-        setIsRequest(true);
+    const requestPhoneAuth = async () => {
+        const result = await signUpMessageRequest(phone);
+        console.log(result);
+        if (result.status == "success")
+            setIsRequest(true);
+        else
+            Alert.alert("인증번호 발송 실패", result.message);
     }
-    const checkPhoneAuth = () => {
-        navigation.navigate("SignUpDetail");
+    const checkPhoneAuth = async () => {
+        const result = await signUpMessageResponse(phone, auth)
+        if (result.status == "success")
+            navigation.navigate("SignUpDetail", {
+                phoneToken: result.data.token,
+                phoneNumber: phone
+            });
+        else 
+            Alert.alert("인증번호 인증 실패", result.message);
     }
     // 핸드폰 번호의 format 을 맞춘다.
     const formatPhone = (phoneNumber) => {
@@ -45,6 +60,8 @@ const SignUp = ({navigation}) => {
                     placeholder={'010-0000-0000'}
                     value={formatPhone(phone)}
                     onChangeText={setPhoneNumber}
+                    keyboardType="numeric"
+                    
                 />
                 {!isRequest ? 
                     <FormButton
@@ -59,6 +76,7 @@ const SignUp = ({navigation}) => {
                             label={'인증번호'}
                             placeholder={'인증번호를 입력해주세요'}
                             value={auth}
+                            keyboardType="numeric"
                             onChangeText={setAuth}
                         />
                         <FormButton
@@ -86,6 +104,7 @@ const FormWrapper = styled.ScrollView`
 `
 const FormInput = styled(InputWithText)`
   margin-bottom: 15px;
+  font-size: 15px;
   background-color: #ffffff;
   border-bottom-width: 1px;
   border-bottom-color: #000000;
