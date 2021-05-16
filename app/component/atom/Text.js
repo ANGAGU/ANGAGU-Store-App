@@ -10,7 +10,7 @@ const Text = styled.Text`
     fontSize &&
     css`
       line-height: ${getLineHeight(fontSize)}px;
-    `
+    ` 
   };
   ${({fontWeight}) =>
     fontWeight &&

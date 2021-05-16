@@ -1,5 +1,5 @@
 // react import
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   FlatList,
   ScrollView,
@@ -19,7 +19,6 @@ import ButtonWithText from '../atom/ButtonWithText';
 import IconLogin from '../../asset/icon/icon_login.png';
 import IconOrder from '../../asset/icon/icon_order.png';
 import IconSearch from '../../asset/icon/icon_search.png';
-import { useEffect, useState } from 'react/cjs/react.development';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Footer = ({navigation = "", title = ""}) => {
@@ -94,6 +93,6 @@ const MenuIcon = styled.Image`
 `;
 const MenuText = styled.Text`
     font-size: 12px;
-  font-weight: 700;
+    font-weight: 700;
 `;
 
