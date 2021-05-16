@@ -126,6 +126,12 @@ const SignUp = ({route, navigation}) => {
                             errorLabel={(!passwordFormat && passwordMessage) ? "비밀번호를 정확히 입력해주세요. (영문, 숫자, 특수문자를 포함한 8~15자리)" : ""}
                         />
                         <FormInput
+                            label={'비밀번호 확인'}
+                            placeholder={'example@abc.com'}
+                            value={checkPassword}
+                            onChangeText={setCheckPassword}
+                        />
+                        <FormInput
                             label={'이름'}
                             placeholder={'이름을 입력해주세요'}
                             value={name}
@@ -143,13 +149,7 @@ const SignUp = ({route, navigation}) => {
                             keyboardType="numeric"
                         />
                     
-                
-                {/* <FormInput
-                    label={'비밀번호 확인'}
-                    placeholder={'example@abc.com'}
-                    value={checkPassword}
-                    onChangeText={setCheckPassword}
-                /> */}
+                    
                 
                     <FormButton
                         buttonColor={(emailFormat && passwordFormat && birthFormat && name != "") ? "#35BCD6" : "#E7E7E7"}

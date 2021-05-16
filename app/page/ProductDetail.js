@@ -20,7 +20,7 @@ import {getProduct} from "../api/product/product";
 
 // example Image
 import ep1 from '../asset/img/example_product_1.webp';
-import ep4 from '../asset/img/example_product_2.jpeg';
+import ep4 from '../asset/img/example_product_4.jpeg';
 import epd1 from '../asset/img/example_product_description.jpeg'
 import { View, Alert, Dimensions, Image, StyleSheet } from 'react-native';
 
@@ -146,14 +146,14 @@ const ProductDetail = ({ navigation, route }) => {
                         {/* <ProductBrand>
                             {productInfo.brand}
                         </ProductBrand> */}
-                        {/* <Stars
+                        <Stars
                                 display={3.67}
                                 spacing={2}
                                 count={5}
                                 starSize={12}
                                 fullStar= {require('../asset/img/star_full.png')}
                                 emptyStar= {require('../asset/img/star_empty.png')}
-                        />     */}
+                        />    
                         <ProductDeliveryCharge>
                             배송비 {productInfo.delivery_charge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} 원
                         </ProductDeliveryCharge>
@@ -166,6 +166,7 @@ const ProductDetail = ({ navigation, route }) => {
                 </ProductDescriptionWrapper>
             </ProductWrapper>    
             }
+            <PurchaseButton onPress={onARClick}>AR View</PurchaseButton>
             <PurchaseButton
                 buttonColor="#35BCD6"
                 textColor="#ffffff"
@@ -222,6 +223,7 @@ const ProductDescription = styled(AutoHeightImage)`
     resize-mode: contain;
 `
 const ProductDeliveryCharge = styled(Text)`
+    margin-left: 10px;
     font-size: 12px;
 `
 const ProductDescriptionWrapper = styled.View`

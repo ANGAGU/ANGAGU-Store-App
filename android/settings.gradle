@@ -1,8 +1,6 @@
 rootProject.name = 'angagu_app'
 include ':@asmadsen_react-native-unity-view'
 project(':@asmadsen_react-native-unity-view').projectDir = new File(rootProject.projectDir, '../node_modules/@asmadsen/react-native-unity-view/android')
-include ':@asmadsen_react-native-unity-view'
-project(':@asmadsen_react-native-unity-view').projectDir = new File(rootProject.projectDir, '../node_modules/@asmadsen/react-native-unity-view/android')
 include ':react-native-unity-view'
 project(':react-native-unity-view').projectDir = new File(rootProject.projectDir, '../node_modules/@asmadsen/react-native-unity-view/android')
 include ':@react-native-async-storage_async-storage'

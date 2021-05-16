@@ -1,6 +1,6 @@
 // react import
 import React, {useEffect, useState} from 'react';
-
+import {View} from 'react-native'
 // lib import
 import styled from 'styled-components/native';
 
@@ -14,32 +14,30 @@ const OrderList = ({navigation}) => {
   // variables
     const [isLoading, setIsLoading] = useState(false);
     
-
     useEffect(()=> {
-        const Loading = async() => {
+        const Loading = async () => {
             setIsLoading(true);
         }
         Loading();
-        
     })
     
-  return (
-    <Container>
-        <LogoWrapper>
-            <LogoSmallText>어디 밖에 매장</LogoSmallText>
-            <LogoText>안가구</LogoText>
-        </LogoWrapper>
-        {isLoading &&
-        <>
-            <MainWrapper>
-                <LogoText>서비스 준비 중 입니다.</LogoText>
-            </MainWrapper>
-            <Footer navigation={navigation}/>
-        </>
-        }
-        
-    </Container>
-  );
+    return (
+        <Container>
+            <LogoWrapper>
+                <LogoSmallText>어디 밖에 매장</LogoSmallText>
+                <LogoText>안가구</LogoText>
+            </LogoWrapper>
+            {isLoading &&
+                <>
+                    <MainWrapper>
+                        <LogoText>서비스 준비 중 입니다.</LogoText>
+                    </MainWrapper>
+                    <Footer navigation={navigation}/>
+                </>
+            }
+            
+        </Container>
+    );
 };
 
 export default OrderList;
@@ -56,7 +54,7 @@ const LogoWrapper = styled.View`
 `;
 const LogoText = styled(Text)`
     margin-top: 5px;
-    font-size: 44px;
+    font-size: 22px;
     color: #35bcd6;
     font-weight: 800;
 `;

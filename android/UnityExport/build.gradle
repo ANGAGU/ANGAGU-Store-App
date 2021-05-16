@@ -44,6 +44,3 @@ android {
         doNotStrip '*/armeabi-v7a/*.so'
     }
 }
-
-
-

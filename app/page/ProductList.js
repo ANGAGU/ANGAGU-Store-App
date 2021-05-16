@@ -33,7 +33,7 @@ const ProductList = ({ navigation }) => {
                 let temp_list = result.data;
                 temp_list.pop();
                 if (temp_list.length % 2 == 1) temp_list.push({id: -1})
-                setProductList(temp_list);
+                // setProductList(temp_list);
             } else {
                 Alert.alert("상품 불러오기 실패", "상품을 불러오는데 실패하였습니다.")
             }
@@ -108,14 +108,14 @@ const ProductList = ({ navigation }) => {
                         {/* <ProductBrand>{item.brand}</ProductBrand> */}
                         <ProductName>{item.name}</ProductName>
                         <ProductPrice>￦ {item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</ProductPrice>
-                        {/* <Stars
+                        <Stars
                                 display={3.67}
                                 spacing={2}
                                 count={5}
                                 starSize={12}
                                 fullStar= {require('../asset/img/star_full.png')}
                                 emptyStar= {require('../asset/img/star_empty.png')}
-                        />     */}
+                        />    
                     </ProductBox>
                     :
                     <ProductBox />
