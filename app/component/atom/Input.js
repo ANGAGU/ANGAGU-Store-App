@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 
 const Input = styled.TextInput.attrs({
   placeholderTextColor: '#A8A8A8',
+  autoCapitalize: 'none'
 })`
   background-color: #f4f4f5;
   padding: 10px 10px;
@@ -11,7 +12,7 @@ const Input = styled.TextInput.attrs({
   justify-content: center;
 
   border-radius: 4px;
-  font-size: 17px;
+  font-size: 15px;
 `;
 
 export default Input;

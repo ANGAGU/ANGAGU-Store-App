@@ -98,7 +98,7 @@ const OrderBox = styled.ScrollView`
     flex: 1;
     padding: 20px;
 `
-const Title = styled.Text`
+const Title = styled(Text)`
     text-align: center;
     font-size: 20px;
     margin: 20px 0px;
@@ -122,12 +122,12 @@ const Data = styled.View`
     flex-direction: row;
     margin: 10px 0px;
 `
-const DataLabel = styled.Text`
+const DataLabel = styled(Text)`
     flex: 1;
     font-size: 16px;
     font-weight: 600;
 `
-const DataValue = styled.Text`
+const DataValue = styled(Text)`
     flex: 1;
     font-size: 16px;
 `

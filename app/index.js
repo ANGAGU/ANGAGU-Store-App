@@ -10,6 +10,7 @@ import {
 import styled from 'styled-components/native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import Toast from 'react-native-toast-message';
 
 // local import
 import Splash from './page/Splash.js';

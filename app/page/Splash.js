@@ -8,11 +8,10 @@
 
 import React from 'react';
 import styled from 'styled-components/native';
+import {StatusBar} from 'react-native'
+import Text from '../component/atom/Text'
 import {
-  SafeAreaView,
-  StatusBar,
-  Text,
-  View,
+
 } from 'react-native';
 
 const App = () => {
@@ -43,12 +42,12 @@ const Logo = styled.View`
   align-items: center;
 `
 const LogoText = styled.Text`
-  font-size: 60px;
+  font-size: 44px;
   color: #ffffff;
   font-weight: 800;
 `
 const LogoMediumText = styled.Text`
-  font-size: 25px;
+  font-size: 20px;
   color: #ffffff;
   font-weight: 600;
 `

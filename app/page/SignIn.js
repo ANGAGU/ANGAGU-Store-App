@@ -1,16 +1,11 @@
 // react import
 import React, {useEffect, useState} from 'react';
-import {
-  ScrollView,
-  Text,
-  TextInput,
-  View,
-  TouchableOpacity,
-} from 'react-native';
+import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // lib import
 import styled from 'styled-components/native';
+import Toast from 'react-native-toast-message';
 
 // local import
 import {screenWidth} from '../util/dimension';
@@ -24,22 +19,41 @@ import login from '../api/auth/login';
 const Login = ({navigation}) => {
   // variables
   const [email, setEmail] = useState('');
+  const [emailFormat, setEmailFormat] = useState('');
+  
   const [password, setPassword] = useState('');
-
+  
   // functions
   const onLogin = async () => {
-    // const authData = login(email, password);
-    // if (authData.status == "success") 
-    // {
-        AsyncStorage.setItem('token', 'masterToken');
+    if (!emailFormat || password.length < 8) return;
+    const authData = await login(email, password);
+
+    if (authData.status == 'success') {
+        const {user, token} = authData.data;
+        
+        AsyncStorage.setItem('token', token);
+        Toast.show({
+          text1: '로그인 성공!',
+          text2: `안가구에 오신 것을 환영합니다.`
+        })
         navigation.navigate('Main', {
-          userEmail: 'dummy', // authData.data.user
-          authToken: 'dummyToken', // authData.data.token
+          userEmail: user.email, // authData.data.user
+          authToken: token, // authData.data.token
         });
-       
-    // } 
-    // else alert(authData.message)
+    } 
+    else 
+      Alert.alert('로그인 실패', authData.message)
   };
+  const onEmailChange = (email) => {   
+    // format check
+    const regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;    
+    if (regExp.test(email))
+        setEmailFormat(true);
+    else
+        setEmailFormat(false);
+
+    setEmail(email);
+  }
   return (
     <Container>
       <LogoWrapper onPress={() =>  navigation.navigate('Main')}>
@@ -51,7 +65,7 @@ const Login = ({navigation}) => {
           <LoginInput
             placeholder={'이메일'}
             value={email}
-            onChangeText={setEmail}
+            onChangeText={onEmailChange}
             keyboardType="email-address"
             autoCapitalize="none"
           />
@@ -63,19 +77,19 @@ const Login = ({navigation}) => {
             onChangeText={setPassword}
           />
           <LoginButton
-            buttonColor="#35BCD6"
+            buttonColor={password.length > 7 && emailFormat ? "#35BCD6": "#E7E7E7"} // login condition
             textColor="#ffffff"
             onPress={onLogin}>
             {'로그인'}
           </LoginButton>
           <FindButton
-            textColor="#C7C7C7"
-            fontSize="15px"
+            textColor="#979797"
+            fontSize="12px"
             textDecoration="underline"
             onPress={() => {}}>
             {'로그인 정보를 잊으셨나요?'}
           </FindButton>
-          <JoinButton textColor="#C7C7C7" fontSize="15px" onPress={() => navigation.navigate('SignUp')}>
+          <JoinButton textColor="#979797" fontSize="12px" onPress={() => navigation.navigate('SignUp')}>
             {'새로운 안가구계정 만들기'}
           </JoinButton>
         </LoginForm>
@@ -120,10 +134,11 @@ const LoginForm = styled.View`
   margin: 0 auto;
   padding-top: 40px;
   border-top-width: 1px;
-  border-top-color: #c7c7c7;
+  border-top-color: #979797;
 `;
 const LoginInput = styled(Input)`
   margin-bottom: 15px;
+  font-size: 16px;
   width: 100%;
 `;
 const LoginButton = styled(ButtonWithText)`
@@ -137,6 +152,6 @@ const FindButton = styled(ButtonWithText)`
 const JoinButton = styled(ButtonWithText)`
   margin-top: 15px;
   padding: 10px 20px;
-  border: 1px solid #c7c7c7;
+  border: 1px solid #979797;
   border-radius: 40px;
 `;

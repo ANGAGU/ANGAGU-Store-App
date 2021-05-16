@@ -1,54 +1,51 @@
 // react import
-import React, { useEffect, useState } from 'react';
-import {
-    FlatList,   
-    ScrollView,
-    Text,
-    TextInput,
-    View,
-    TouchableOpacity,
-    Image,
-    Button,
-} from 'react-native';
+import React, { useEffect, useState, useRef } from 'react';
 
 // lib import
 import styled from 'styled-components/native';
 import Stars from 'react-native-stars';
+// import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
+// import AutoHeightImage from 'react-native-fast-auto-height-image';
+import FastImage from 'react-native-fast-image'
 // import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 // local import 
 import {screenWidth} from '../util/dimension';
 import Input from '../component/atom/Input';
+import Text from '../component/atom/Text';
 import ButtonWithText from '../component/atom/ButtonWithText';
 import Header from '../component/organization/Header';
-
+import { BACKEND_ASSET_URL } from '../api/constants';
 // local API
-import product from "../api/product/product";
+import {getProduct} from "../api/product/product";
 
 // example Image
 import ep1 from '../asset/img/example_product_1.webp';
+// import ep4 from '../asset/img/example_product_4.jpeg';
+// import epd1 from '../asset/img/example_product_description.jpeg'
+import { View, Alert, Dimensions, Image, StyleSheet, Slider } from 'react-native';
 
  
 // react HTML
 const ProductDetail = ({ navigation, route }) => {
+    const SliderWidth = Dimensions.get('screen').width;
+    
+    const [imgHeight, setImgHeight] = useState(0);
     useEffect(() => {
-        // const productObject = product(route.params.productId);
-        // if (productObject.status == "success")
-        //     setProductInfo(productObject.data)
-        // else
-        //     alert("상품 정보를 불러오는데, 실패하였습니다.")
+        const init = async () =>{
+            const productObject = await getProduct(route.params.productId);
+            if (productObject.status == "success") {
+                await setProductInfo(productObject.data);
+                
+                setLoading(true);
+            }
+            else
+                Alert.alert('상품 정보 호출에 실패하였습니다.');
+        }
+        init();
     },[])
-    const [productInfo, setProductInfo] = useState(
-        {
-            image: ep1,
-            brand: 'SVENBERTIL',
-            name: '스벤베르틸 의자',
-            price: 49900,
-            commentCount: '7',
-            likeCount: '0',
-            rating: '4.6'
-        },
-    )
+    const [loading, setLoading] = useState(false);    
+    const [productInfo, setProductInfo] = useState([])
     const onPurchaseClick = () => {
         navigation.navigate('ProductPayment', {
             productId: route.params.productId
@@ -59,30 +56,52 @@ const ProductDetail = ({ navigation, route }) => {
             productId: route.params.productId
         });
     }
+
+    // const carousel = useRef(null);
     return (
         <Container>
-            <Header navigation={navigation} title="상품 정보"/>
+            <Header navigation={navigation} title='상품 정보'/>
+            {loading &&
             <ProductWrapper>
-                <ProductImage source={productInfo.image}/>
+                <ProductImage source={{uri: BACKEND_ASSET_URL + '/' + productInfo.thumb_url}}/>
+                
                 <ProductInfoWrapper>
-                    <ReviewWrapper>
-                        <ProductBrand>
-                            {productInfo.brand}
-                        </ProductBrand>
-                        <Stars
-                                display={3.67}
-                                spacing={8}
-                                count={5}
-                                starSize={15}
-                                fullStar= {require('../asset/img/star_full.png')}
-                                emptyStar= {require('../asset/img/star_empty.png')}
-                        />    
-                    </ReviewWrapper>
                     <ProductName>{productInfo.name}</ProductName>
-                    <ProductPrice>￦ {productInfo.price.toLocaleString()}</ProductPrice>
+                    <ProductPrice>￦ {productInfo.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</ProductPrice>
+                    <ReviewWrapper>
+                    
+                        {/* <ProductBrand>
+                            {productInfo.brand}
+                        </ProductBrand> */}
+                        <Stars
+                            display={3.67}
+                            spacing={2}
+                            count={5}
+                            starSize={12}
+                            fullStar= {require('../asset/img/star_full.png')}
+                            emptyStar= {require('../asset/img/star_empty.png')}
+                        />    
+                        <ProductDeliveryCharge>
+                            배송비 {productInfo.delivery_charge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} 원
+                        </ProductDeliveryCharge>
+                        
+                    </ReviewWrapper>
                 </ProductInfoWrapper>
-                <PurchaseButton onPress={onARClick}>AR</PurchaseButton>
+                
+                <ProductDescriptionWrapper>
+                    <FastImage 
+                        source={{
+                            uri: BACKEND_ASSET_URL + '/' + productInfo.description_url,
+                            priority: FastImage.priority.normal
+                        }} 
+                        style={{ width: SliderWidth, height: imgHeight}}
+                        onLoad={evt => setImgHeight(evt.nativeEvent.height / evt.nativeEvent.width * SliderWidth) }
+                        resizeMode={FastImage.resizeMode.contain}
+                    />
+                </ProductDescriptionWrapper>
             </ProductWrapper>    
+            }
+            <PurchaseButton onPress={onARClick}>AR View</PurchaseButton>
             <PurchaseButton
                 buttonColor="#35BCD6"
                 textColor="#ffffff"
@@ -90,6 +109,7 @@ const ProductDetail = ({ navigation, route }) => {
             >
                 {'구매하기'}
             </PurchaseButton>
+            
         </Container>
     )
 }
@@ -100,7 +120,6 @@ const Container = styled.View`
 const ProductWrapper = styled.ScrollView`
     flex: 1;
     flex-direction: column;
-    
 `
 const ProductInfoWrapper = styled.View`
     flex: 1;
@@ -109,35 +128,43 @@ const ProductInfoWrapper = styled.View`
     flex-direction: column;
 `
 const ProductImage = styled.Image`
-    flex: 1;
     width: ${(screenWidth)}px;
     height: ${(screenWidth)}px;
-    border-radius: 5px;
-    margin-bottom: 13px;
     resize-mode: contain;
 `
-const ProductName = styled.Text`
-    flex: 1;
+
+const ProductName = styled(Text)`
     margin-top: 10px;
-    font-size: 20px;
+    font-size: 22px;
 `
-const ProductPrice = styled.Text`
+const ProductPrice = styled(Text)`
     margin-top: 10px;
-    font-size: 18px;
-    flex: 1;
+    font-size: 16px;
 `
-const ProductBrand = styled.Text`
+const ProductBrand = styled(Text)`
     flex: 1;
     font-size: 18px;
     font-weight: 600;
     color: #35BCD6;
 `
+const ProductDescription = styled(FastImage)`
+    flex:1;
+    width=${screenWidth};
+`
+const ProductDeliveryCharge = styled(Text)`
+    margin-left: 10px;
+    font-size: 12px;
+`
+const ProductDescriptionWrapper = styled.View`
+    margin-top: 20px;
+`
 const ReviewWrapper = styled.View`
     flex-direction: row;
+    justify-content: flex-end;
     align-items: center;
 `
 const PurchaseButton = styled(ButtonWithText)`
-    height: 60px;
+    height: 48px;
     border-radius: 0px;
 `
 export default ProductDetail;

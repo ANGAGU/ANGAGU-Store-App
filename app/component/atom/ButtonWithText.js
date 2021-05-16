@@ -36,7 +36,7 @@ const Button = styled.TouchableOpacity`
     css`
       background-color: ${buttonColor};
     `};
-  padding: 13px 0;
+  padding: 10px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,7 +49,7 @@ const ButtonInnerText = styled.Text`
     css`
       text-decoration-line: ${textDecoration};
     `};
-  ${({fontSize = '18px'}) =>
+  ${({fontSize = '15px'}) =>
     fontSize &&
     css`
       font-size: ${fontSize};

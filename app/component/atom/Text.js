@@ -18,6 +18,7 @@ const Text = styled.Text`
       text-weight: ${fontWeight}px;
     `
   };
+  letter-spacing: -1px;
 `;
 
 export default Text;
