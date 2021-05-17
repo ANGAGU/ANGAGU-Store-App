@@ -43,14 +43,16 @@ const Footer = ({navigation = "", title = ""}) => {
     }
     const menuList = [
         {
-        icon: IconSearch,
-        name: '검색',
-        link: 'ProductList',
+            icon: IconSearch,
+            name: '검색',
+            link: 'ProductList',
+            auth: false
         },
         {
-        icon: IconOrder,
-        name: '주문목록',
-        link: 'OrderList',
+            icon: IconOrder,
+            name: '주문목록',
+            link: 'OrderList',
+            auth: true
         },
     ];
     return (
@@ -64,6 +66,9 @@ const Footer = ({navigation = "", title = ""}) => {
                 </Menu>  
                 {menuList.map((item, index) => {
                     return (
+                        item.auth == true && (token == null || token == '') ?
+                        <View key={index}></View>
+                        :
                         <Menu key={index} onPress={() => goLink(item.link)}>
                             <MenuIcon source={item.icon} />
                             <MenuText>{item.name}</MenuText>
@@ -77,8 +82,8 @@ const Footer = ({navigation = "", title = ""}) => {
 };
 export default Footer;
 const MenuWrapper = styled.View`
-  flex-direction: row;
-  height: 80px;
+    flex-direction: row;
+    height: 70px;
 `;
 const Menu = styled(TouchableOpacity)`
   flex: 1;

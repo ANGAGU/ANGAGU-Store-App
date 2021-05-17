@@ -16,7 +16,7 @@ import ButtonWithText from '../component/atom/ButtonWithText';
 import login from '../api/auth/login';
 
 // react HTML
-const Login = ({navigation}) => {
+const Login = ({route, navigation}) => {
   // variables
   const [email, setEmail] = useState('');
   const [emailFormat, setEmailFormat] = useState('');
@@ -33,13 +33,20 @@ const Login = ({navigation}) => {
         
         AsyncStorage.setItem('token', token);
         Toast.show({
-          text1: '로그인 성공!',
-          text2: `안가구에 오신 것을 환영합니다.`
+          text2: '안가구의 다양한 상품을 AR로 즐겨보세요!',
+          text1: `${user.name}님 환영합니다.`
         })
-        navigation.navigate('Main', {
-          userEmail: user.email, // authData.data.user
-          authToken: token, // authData.data.token
-        });
+        // if (route.params.callback != undefined){
+        //   navigation.navigate('ProductDetail', {
+        //     productId: route.params.callback
+        //   });
+        // }
+        // else{
+          navigation.navigate('Main', {
+            userEmail: user.email, // authData.data.user
+            authToken: token, // authData.data.token
+          });
+        // }
     } 
     else 
       Alert.alert('로그인 실패', authData.message)

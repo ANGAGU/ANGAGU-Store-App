@@ -41,7 +41,7 @@ const Container = styled.View`
   justify-content: center;
   align-items: center;
   border-bottom-width: 1px;
-  border-bottom-color: #979797;
+  border-bottom-color: #D7D7D7;
 `;
 const Icon = styled.Image`
   height: 16px;

@@ -59,6 +59,7 @@ const Page = () => {
                     </Stack.Navigator>
                 </NavigationContainer>
             }
+            <Toast ref={(ref) => Toast.setRef(ref)} />
         </KeyboardAvoidingView>
     );  
 }

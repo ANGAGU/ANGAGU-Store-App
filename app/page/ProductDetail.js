@@ -7,6 +7,7 @@ import Stars from 'react-native-stars';
 // import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
 // import AutoHeightImage from 'react-native-fast-auto-height-image';
 import FastImage from 'react-native-fast-image'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 // import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 // local import 
@@ -24,32 +25,41 @@ import ep1 from '../asset/img/example_product_1.webp';
 // import ep4 from '../asset/img/example_product_4.jpeg';
 // import epd1 from '../asset/img/example_product_description.jpeg'
 import { View, Alert, Dimensions, Image, StyleSheet, Slider } from 'react-native';
-
+import { WebView } from 'react-native-webview';
+import AutoHeightWebView from 'react-native-autoheight-webview'
  
 // react HTML
 const ProductDetail = ({ navigation, route }) => {
     const SliderWidth = Dimensions.get('screen').width;
-    
+
     const [imgHeight, setImgHeight] = useState(0);
+    const [token, setToken] = useState("");
     useEffect(() => {
         const init = async () =>{
             const productObject = await getProduct(route.params.productId);
             if (productObject.status == "success") {
                 await setProductInfo(productObject.data);
-                
+                setToken(await AsyncStorage.getItem('token'));
                 setLoading(true);
             }
             else
                 Alert.alert('상품 정보 호출에 실패하였습니다.');
+
+            
         }
         init();
     },[])
     const [loading, setLoading] = useState(false);    
     const [productInfo, setProductInfo] = useState([])
     const onPurchaseClick = () => {
-        navigation.navigate('ProductPayment', {
-            productId: route.params.productId
-        });
+        if (token == '' || token == null)
+            navigation.navigate('SignIn', {
+                callback: route.params.productId   
+            });
+        else
+            navigation.navigate('ProductPayment', {
+                productId: route.params.productId
+            });
     }
     const onARClick = () => {
         navigation.navigate('ARView', {
@@ -89,14 +99,16 @@ const ProductDetail = ({ navigation, route }) => {
                 </ProductInfoWrapper>
                 
                 <ProductDescriptionWrapper>
-                    <FastImage 
+                    <AutoHeightWebView
                         source={{
-                            uri: BACKEND_ASSET_URL + '/' + productInfo.description_url,
-                            priority: FastImage.priority.normal
+                            // uri: BACKEND_ASSET_URL + '/' + productInfo.description_url,
+                            html: `<img width=${SliderWidth}px src="${BACKEND_ASSET_URL}/${productInfo.description_url}"/>`
+                        }}
+                        style={{
+                            marginTop: 20,
+                            width: SliderWidth
+                            
                         }} 
-                        style={{ width: SliderWidth, height: imgHeight}}
-                        onLoad={evt => setImgHeight(evt.nativeEvent.height / evt.nativeEvent.width * SliderWidth) }
-                        resizeMode={FastImage.resizeMode.contain}
                     />
                 </ProductDescriptionWrapper>
             </ProductWrapper>    
@@ -156,7 +168,9 @@ const ProductDeliveryCharge = styled(Text)`
     font-size: 12px;
 `
 const ProductDescriptionWrapper = styled.View`
-    margin-top: 20px;
+    border-top-width: 8px;
+    border-top-color: #E9E9E9;
+    
 `
 const ReviewWrapper = styled.View`
     flex-direction: row;

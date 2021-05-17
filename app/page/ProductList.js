@@ -9,6 +9,7 @@ import Stars from 'react-native-stars';
 // local import 
 import {screenWidth} from '../util/dimension';
 import Text from '../component/atom/Text';
+import Input from '../component/atom/Input'
 import Header from '../component/organization/Header';
 import { BACKEND_ASSET_URL } from '../api/constants';
 
@@ -23,6 +24,7 @@ import ep3 from '../asset/img/example_product_3.webp'
 // react HTML
 const ProductList = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
+    const [query, setQuery] = useState("")
     const ProductClick = (productId) => {
         navigation.navigate('ProductDetail', {
             productId,
@@ -33,8 +35,8 @@ const ProductList = ({ navigation }) => {
             let result = await getProduct();
             if (result.status == 'success'){
                 let temp_list = result.data;
-                temp_list.pop();
-                if (temp_list.length % 2 == 1) temp_list.push({id: -1})
+                // temp_list.pop();
+                if (temp_list.length % 2 == 1) temp_list.push({id: -1, name:""})
                 setProductList(temp_list);
                 setLoading(true);
             } else {
@@ -99,10 +101,15 @@ const ProductList = ({ navigation }) => {
     return (
         <Container >
             <Header navigation={navigation} title="상품 검색"/>
+            <SearchInput
+                value={query}
+                onChangeText={setQuery}
+                placeholder="상품명을 검색해주세요."
+            />
             { loading &&
             <ProductWrapper
                 columnWrapperStyle={{justifyContent:'space-between'}}
-                data={productList}
+                data={productList.filter(product => product.name.includes(query))}
                 numColumns={2}
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={({ item }) => (
@@ -139,15 +146,19 @@ const Container = styled.View`
 `;
 const ProductWrapper = styled.FlatList`
     flex: 1;
-    
+`
+const SearchInput = styled(Input)`
+    height: 40px;
+    width: ${screenWidth - 40}px;
+    margin: 10px 20px;
 `
 const ProductBox = styled.TouchableOpacity`
     flex: 1;
     width: ${(screenWidth) / 2}px;
     height: ${(screenWidth * 3 / 5)}px;
-    border-right-width: 1px;
-    border-bottom-width: 1px;
-    border-color: #979797;
+    border-right-width: 0.8px;
+    border-bottom-width: 0.8px;
+    border-color: #E7E7E7;
     padding: 10px 0px;
     align-items: center;
 `

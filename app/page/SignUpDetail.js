@@ -28,10 +28,11 @@ const SignUp = ({route, navigation}) => {
 
     // error message
     const [passwordMessage, setPasswordMessage] = useState(false);
+    const [checkPasswordMessage, setCheckPasswordMessage] = useState(false);
     const [nameMessage, setNameMessage] = useState(false);
     const [birthMessage, setBirthMessage] = useState(false);
 
-    // const [checkPassword, setCheckPassword] = useState("");
+    const [checkPassword, setCheckPassword] = useState("");
 
     const emailCheck = async () => {
         if (!emailFormat) return;
@@ -115,7 +116,6 @@ const SignUp = ({route, navigation}) => {
                     </FormButton> 
                     :
                     <>
-                    
                         <FormInput
                             label={'비밀번호'}
                             placeholder={'비밀번호를 입력해주세요'}
@@ -127,9 +127,12 @@ const SignUp = ({route, navigation}) => {
                         />
                         <FormInput
                             label={'비밀번호 확인'}
-                            placeholder={'example@abc.com'}
+                            placeholder={'비밀번호를 한번 더 입력해주세요.'}
+                            secureTextEntry
                             value={checkPassword}
                             onChangeText={setCheckPassword}
+                            onBlur={() => setCheckPasswordMessage(true)}
+                            errorLabel={(password != checkPassword && checkPasswordMessage) ? "비밀번호가 일치하지 않습니다." : ""}
                         />
                         <FormInput
                             label={'이름'}
