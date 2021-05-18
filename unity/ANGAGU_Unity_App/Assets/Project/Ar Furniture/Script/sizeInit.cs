@@ -43,7 +43,7 @@ public class sizeInit : MonoBehaviour
         Vector3 boundSize = totalBounds.size;
 
         float resizeRate = realSize.x / boundSize.x;
-        transform.localScale = new Vector3(resizeRate * 5, resizeRate * 5, resizeRate * 5);
+        transform.localScale = new Vector3(resizeRate, resizeRate, resizeRate);
         originModel.transform.localScale = new Vector3(resizeRate, resizeRate, resizeRate);
         originModel.transform.position = realSize;
     }
