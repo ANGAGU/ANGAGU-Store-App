@@ -10,7 +10,7 @@ public class sizeInit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        resizing(new Vector3(2.0f, 0.5f, 1.0f));
+        resizing(new Vector3(0.42f, 0.45f, 0.42f));
     }
 
     // Update is called once per frame
@@ -18,18 +18,18 @@ public class sizeInit : MonoBehaviour
     {
 
     }
-    void OnDrawGizmosSelected()
-    {
-        Bounds totalBounds = new Bounds();
-        foreach (MeshRenderer meshRenderer in GetComponentsInChildren<MeshRenderer>())
-        {
-            totalBounds.Encapsulate(meshRenderer.bounds);
-        }
-        Color temp = Color.red;
-        temp.a = 0.3f;
-        Gizmos.color = temp;
-        Gizmos.DrawCube(totalBounds.center, totalBounds.size);
-    }
+    //void OnDrawGizmosSelected()
+    //{
+    //    Bounds totalBounds = new Bounds();
+    //    foreach (MeshRenderer meshRenderer in GetComponentsInChildren<MeshRenderer>())
+    //    {
+    //        totalBounds.Encapsulate(meshRenderer.bounds);
+    //    }
+    //    Color temp = Color.red;
+    //    temp.a = 0.3f;
+    //    Gizmos.color = temp;
+    //    Gizmos.DrawCube(totalBounds.center, totalBounds.size);
+    //}
     void resizing(Vector3 realSize)
     {
         originModel = GameObject.FindWithTag("OriginModel");
@@ -43,8 +43,8 @@ public class sizeInit : MonoBehaviour
         Vector3 boundSize = totalBounds.size;
 
         float resizeRate = realSize.x / boundSize.x;
-        transform.localScale = new Vector3(resizeRate, resizeRate, resizeRate);
+        transform.localScale = new Vector3(resizeRate * 5, resizeRate * 5, resizeRate * 5);
         originModel.transform.localScale = new Vector3(resizeRate, resizeRate, resizeRate);
-        originModel.transform.position = new Vector3(boundSize.x * resizeRate, boundSize.y * resizeRate, boundSize.z * resizeRate);
+        originModel.transform.position = realSize;
     }
 }
