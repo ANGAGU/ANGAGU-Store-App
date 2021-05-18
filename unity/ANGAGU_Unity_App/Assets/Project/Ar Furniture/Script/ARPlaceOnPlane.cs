@@ -40,7 +40,7 @@ public class ARPlaceOnPlane : MonoBehaviour
     private float rotationRate = 0.15f;
     private float rotateY;
     private float originScale;
-    private bool modelOk = true;
+    private bool modelOk = false;
     private bool humanVis = false;
     public ARPlaneManager arPlaneManager;
     private int touchThreshold = 120;
