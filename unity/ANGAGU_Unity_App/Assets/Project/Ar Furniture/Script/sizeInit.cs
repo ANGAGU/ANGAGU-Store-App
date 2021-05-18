@@ -10,7 +10,7 @@ public class sizeInit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        resizing(new Vector3(0.42f, 0.45f, 0.42f));
+        resizing(new Vector3(1.7f, 0.25f, 0.25f));
     }
 
     // Update is called once per frame
