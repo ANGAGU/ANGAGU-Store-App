@@ -10,6 +10,7 @@ public class sizeInit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //*** 사이징 체 ***//
         resizing(new Vector3(1.7f, 0.25f, 0.25f));
     }
 
@@ -44,6 +45,7 @@ public class sizeInit : MonoBehaviour
 
         float resizeRate = realSize.x / boundSize.x;
         transform.localScale = new Vector3(resizeRate, resizeRate, resizeRate);
+        /*** 그림자 크기 및 모델 실제 사이즈 체크 ***/
         originModel.transform.localScale = new Vector3(resizeRate, resizeRate, resizeRate);
         originModel.transform.position = realSize;
     }

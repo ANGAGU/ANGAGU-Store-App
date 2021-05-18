@@ -191,7 +191,11 @@ public class ARPlaceOnPlane : MonoBehaviour
             checkObject.SetActive(true);
             placeObject.transform.position = position;
 
-            checkObject.transform.localScale = new Vector3(originModel.transform.position.x, 0, originModel.transform.position.z);
+            /*** 테스트용 그림자 사이즈 ***/
+            checkObject.transform.localScale = new Vector3(0.25f, 0, 0.25f);
+            /*** 이게 원래 코드 입니다. ***/
+            //checkObject.transform.localScale = new Vector3(originModel.transform.position.x, 0, originModel.transform.position.z);
+
             // checkObject.transform.SetPositionAndRotation(placementPose.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             checkObject.transform.position = placementPose.position;
         }
