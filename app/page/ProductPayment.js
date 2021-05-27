@@ -41,7 +41,7 @@ const ProductPayment = ({ navigation, route }) => {
     )
     const onOrder = async () => {
         // await createOrder(productInfo.id);
-        navigation.navigate("Main");
+        navigation.navigate("Payment");
     }
     
     return (

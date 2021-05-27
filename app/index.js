@@ -18,10 +18,12 @@ import SignIn from './page/SignIn.js';
 import ProductList from './page/ProductList.js';
 import ProductDetail from './page/ProductDetail.js';
 import ProductPayment from './page/ProductPayment.js';
+import Payment from './page/Payment.js';
 import Main from './page/Main.js';
 import OrderList from './page/OrderList.js';
 import SignUp from './page/SignUp.js';
 import SignUpDetail from './page/SignUpDetail.js';
+import AccountFind from './page/AccountFind.js';
 import ARView from './page/ARView.js';
 
 const Stack = createStackNavigator();
@@ -50,9 +52,11 @@ const Page = () => {
                         <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }}/>
                         <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }}/>
                         <Stack.Screen name="SignUpDetail" component={SignUpDetail} options={{ headerShown: false }}/>
+                        <Stack.Screen name="AccountFind" component={AccountFind} options={{ headerShown: false }}/>
                         <Stack.Screen name="ProductList" component={ProductList} options={{ headerShown: false }}/>
                         <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ headerShown: false }}/>
                         <Stack.Screen name="ProductPayment" component={ProductPayment} options={{ headerShown: false }}/>
+                        <Stack.Screen name="Payment" component={Payment} options={{ headerShown: false }}/>
                         <Stack.Screen name="Main" component={Main} options={{ headerShown: false }}/>
                         <Stack.Screen name="OrderList" component={OrderList} options={{ headerShown: false }}/>
                         <Stack.Screen name="ARView" component={ARView} options={{ headerShown: false }}/>

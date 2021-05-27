@@ -61,7 +61,6 @@ const SignUp = ({navigation}) => {
                     value={formatPhone(phone)}
                     onChangeText={setPhoneNumber}
                     keyboardType="numeric"
-                    
                 />
                 {!isRequest ? 
                     <FormButton

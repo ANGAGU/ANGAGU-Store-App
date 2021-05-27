@@ -45,7 +45,7 @@ const OrderList = ({navigation}) => {
                 <>
                     <MainWrapper>
                         <MenuWrapper>
-                            <MenuText>(๑˃̵ᴗ˂̵)و 인기 상품</MenuText>
+                            <MenuText>인기 상품</MenuText>
                             <MenuList
                                 showsHorizontalScrollIndicator={false}
                                 horizontal={true}
@@ -72,7 +72,7 @@ const OrderList = ({navigation}) => {
                             </MenuList>
                         </MenuWrapper>
                         <MenuWrapper>
-                            <MenuText>๑(◕‿◕)๑ 신상 상품</MenuText>
+                            <MenuText>신규 상품</MenuText>
                             <MenuList
                                 showsHorizontalScrollIndicator={false}
                                 horizontal={true}
@@ -99,7 +99,7 @@ const OrderList = ({navigation}) => {
                             </MenuList>
                         </MenuWrapper>
                         <MenuWrapper>
-                            <MenuText>ʕ•ﻌ•ʔ 매진 임박</MenuText>
+                            <MenuText>매진 임박</MenuText>
                             <MenuList
                                 showsHorizontalScrollIndicator={false}
                                 horizontal={true}
