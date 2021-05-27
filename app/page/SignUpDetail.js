@@ -151,9 +151,6 @@ const SignUp = ({route, navigation}) => {
                             errorLabel={(!birthFormat && birthMessage) ? "생년월일을 정확히 입력해주세요." : ""}
                             keyboardType="numeric"
                         />
-                    
-                    
-                
                     <FormButton
                         buttonColor={(emailFormat && passwordFormat && birthFormat && name != "") ? "#35BCD6" : "#E7E7E7"}
                         textColor="#ffffff"
