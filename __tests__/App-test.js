@@ -9,6 +9,7 @@ import 'react-native';
 import renderer from 'react-test-renderer';
 import SignIn from '../app/page/SignIn';
 import SignUp from '../app/page/SignUp';
+import AccountFind from '../app/page/AccountFind';
 import ProductList from '../app/page/ProductList';
 import ProductDetail from '../app/page/ProductDetail';
 import ProductPayment from '../app/page/ProductPayment';
@@ -53,6 +54,10 @@ it('Footer UI and Logout Render Test', () => {
 
 it('SignUp UI and Logout Render Test', () => {
   renderer.create(<SignUp />);
+})
+
+it('Account Find UI Render Test', () => {
+  renderer.create(<AccountFind />);
 })
 
 
