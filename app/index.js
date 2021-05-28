@@ -16,6 +16,10 @@ import Toast from 'react-native-toast-message';
 import Splash from './page/Splash.js';
 import Main from './page/Main.js';
 
+// address
+import AddressList from './page/address/AddressList';
+import AddressWrite from './page/address/AddressWrite';
+
 // account
 import SignIn from './page/account/SignIn.js';
 import SignUp from './page/account/SignUp.js';
@@ -61,6 +65,8 @@ const Page = () => {
                         <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }}/>
                         <Stack.Screen name="SignUpDetail" component={SignUpDetail} options={{ headerShown: false }}/>
                         <Stack.Screen name="AccountFind" component={AccountFind} options={{ headerShown: false }}/>
+                        <Stack.Screen name="AddressList" component={AddressList} options={{ headerShown: false }}/>
+                        <Stack.Screen name="AddressWrite" component={AddressWrite} options={{ headerShown: false }}/>
                         <Stack.Screen name="ProductList" component={ProductList} options={{ headerShown: false }}/>
                         <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ headerShown: false }}/>
                         <Stack.Screen name="ProductPayment" component={ProductPayment} options={{ headerShown: false }}/>
@@ -69,6 +75,7 @@ const Page = () => {
                         <Stack.Screen name="Mypage" component={Mypage} options={{ headerShown: false }}/>
                         <Stack.Screen name="OrderList" component={OrderList} options={{ headerShown: false }}/>
                         <Stack.Screen name="ARView" component={ARView} options={{ headerShown: false }}/>
+                        
                     </Stack.Navigator>
                 </NavigationContainer>
             }

@@ -66,12 +66,12 @@ const ProductPayment = ({ navigation, route }) => {
     }, [])
     return (
         <Container>
-            <Header navigation={navigation} title="뒤로가기"/>
+            <Header navigation={navigation} title="상품 결제"/>
             <OrderBox>
             <DeliveryWrapper>
                     <TitleWrapper>
                         <Title>배송지 정보</Title>
-                        <EditButton>수정</EditButton>
+                        <EditButton onPress={() => {navigation.navigate("AddressList")}}>수정</EditButton>
                     </TitleWrapper>
                     {/* <PostContainer
                         jsOptions={{ animated: true }}
