@@ -1,29 +1,25 @@
 // react import
 import React, {useEffect, useState} from 'react';
 import {
-  ScrollView,
-  Text,
-  TextInput,
-  View,
-  TouchableOpacity,
+
 } from 'react-native';
 
 // lib import
 import styled from 'styled-components/native';
 
 // local import
-import {screenWidth} from '../util/dimension';
-import Input from '../component/atom/Input';
-import ButtonWithText from '../component/atom/ButtonWithText';
-import ep1 from '../asset/img/example_product_1.webp'
-import ep2 from '../asset/img/example_product_2.webp'
+import {screenWidth} from '../../util/dimension';
+import Input from '../../component/atom/Input';
+import ButtonWithText from '../../component/atom/ButtonWithText';
+import ep1 from '../../asset/img/example_product_1.webp'
+import ep2 from '../../asset/img/example_product_2.webp'
 
 // local API
-import getOrder from '../api/order/getOrder';
+import getOrder from '../../api/order/getOrder';
 
 // local Components
-import Header from '../component/organization/Header';
-import Footer from '../component/organization/Footer';
+import Header from '../../component/organization/Header';
+import Footer from '../../component/organization/Footer';
 import { loadPartialConfigAsync } from '@babel/core';
 
 // react HTML

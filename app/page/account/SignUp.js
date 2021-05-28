@@ -3,13 +3,13 @@ import React, {useEffect, useState} from 'react';
 import styled from 'styled-components/native';
 
 // lib import
-import Header from '../component/organization/Header';
-import Input from '../component/atom/Input';
-import ButtonWithText from '../component/atom/ButtonWithText';
-import InputWithText from '../component/atom/InputWithText';
+import Header from '../../component/organization/Header';
+import Input from '../../component/atom/Input';
+import ButtonWithText from '../../component/atom/ButtonWithText';
+import InputWithText from '../../component/atom/InputWithText';
 
 // local api import
-import { signUpMessageRequest, signUpMessageResponse} from '../api/auth/signUp';
+import { signUpMessageRequest, signUpMessageResponse} from '../../api/auth/signUp';
 import { Alert } from 'react-native';
 const SignUp = ({navigation}) => {
     const [phone, setPhone] = useState("");             // 휴대폰 번호

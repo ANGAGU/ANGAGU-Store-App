@@ -7,19 +7,19 @@ import styled from 'styled-components/native';
 import Stars from 'react-native-stars';
 
 // local import 
-import {screenWidth} from '../util/dimension';
-import Text from '../component/atom/Text';
-import Input from '../component/atom/Input'
-import Header from '../component/organization/Header';
-import { BACKEND_ASSET_URL } from '../api/constants';
+import {screenWidth} from '../../util/dimension';
+import Text from '../../component/atom/Text';
+import Input from '../../component/atom/Input'
+import Header from '../../component/organization/Header';
+import { BACKEND_ASSET_URL } from '../../api/constants';
 
 // local API
-import { getProduct } from '../api/product/product';
+import { getProduct } from '../../api/product/product';
 
 // example Image
-import ep1 from '../asset/img/example_product_1.webp'
-import ep2 from '../asset/img/example_product_2.webp'
-import ep3 from '../asset/img/example_product_3.webp'
+import ep1 from '../../asset/img/example_product_1.webp'
+import ep2 from '../../asset/img/example_product_2.webp'
+import ep3 from '../../asset/img/example_product_3.webp'
 
 // react HTML
 const ProductList = ({ navigation }) => {
@@ -123,12 +123,12 @@ const ProductList = ({ navigation }) => {
                         <ProductName>{item.name}</ProductName>
                         <ProductPrice>￦ {item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</ProductPrice>
                         <Stars
-                                display={3.67}
-                                spacing={2}
-                                count={5}
-                                starSize={12}
-                                fullStar= {require('../asset/img/star_full.png')}
-                                emptyStar= {require('../asset/img/star_empty.png')}
+                            display={3.67}
+                            spacing={2}
+                            count={5}
+                            starSize={12}
+                            fullStar= {require('../../asset/img/star_full.png')}
+                            emptyStar= {require('../../asset/img/star_empty.png')}
                         />    
                     </ProductBox>
                     :

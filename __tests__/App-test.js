@@ -7,13 +7,13 @@ import 'react-native';
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
-import SignIn from '../app/page/SignIn';
+import SignIn from '../app/page/account/SignIn';
 import SignUp from '../app/page/SignUp';
-import AccountFind from '../app/page/AccountFind';
-import ProductList from '../app/page/ProductList';
-import ProductDetail from '../app/page/ProductDetail';
-import ProductPayment from '../app/page/ProductPayment';
-import OrderList from '../app/page/OrderList.js';
+import AccountFind from '../app/page/account/AccountFind';
+import ProductList from '../app/page/product/ProductList';
+import ProductDetail from '../app/page/product/ProductDetail';
+import ProductPayment from '../app/page/product/ProductPayment';
+import OrderList from '../app/page/mypage/OrderList.js';
 import Main from '../app/page/Main.js';
 import Footer from '../app/component/organization/Footer'
 import MockAsyncStorage from 'mock-async-storage';

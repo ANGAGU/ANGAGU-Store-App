@@ -13,7 +13,7 @@ import {
 
 // lib import
 import styled from 'styled-components/native';
-
+import api from '../../api/index';
 // local import
 import ButtonWithText from '../atom/ButtonWithText';
 import IconLogin from '../../asset/icon/icon_login.png';
@@ -30,7 +30,9 @@ const Footer = ({navigation = "", title = ""}) => {
     
     useEffect(()=> {
         initFunction = async () => {
-            setToken(await AsyncStorage.getItem('token'));
+            let t = await AsyncStorage.getItem('token');
+            api.defaults.headers.common.Authorization = t;
+            setToken(t);
             setIsLoading(true);
         }
         initFunction();
@@ -48,10 +50,16 @@ const Footer = ({navigation = "", title = ""}) => {
             link: 'ProductList',
             auth: false
         },
+        // {
+        //     icon: IconOrder,
+        //     name: '주문목록',
+        //     link: 'OrderList',
+        //     auth: true
+        // },
         {
             icon: IconOrder,
-            name: '주문목록',
-            link: 'OrderList',
+            name: '마이페이지',
+            link: 'Mypage',
             auth: true
         },
     ];

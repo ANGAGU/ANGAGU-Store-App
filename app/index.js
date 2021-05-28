@@ -12,19 +12,27 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Toast from 'react-native-toast-message';
 
-// local import
+// root
 import Splash from './page/Splash.js';
-import SignIn from './page/SignIn.js';
-import ProductList from './page/ProductList.js';
-import ProductDetail from './page/ProductDetail.js';
-import ProductPayment from './page/ProductPayment.js';
-import Payment from './page/Payment.js';
 import Main from './page/Main.js';
-import OrderList from './page/OrderList.js';
-import SignUp from './page/SignUp.js';
-import SignUpDetail from './page/SignUpDetail.js';
-import AccountFind from './page/AccountFind.js';
-import ARView from './page/ARView.js';
+
+// account
+import SignIn from './page/account/SignIn.js';
+import SignUp from './page/account/SignUp.js';
+import SignUpDetail from './page/account/SignUpDetail.js';
+import AccountFind from './page/account/AccountFind.js';
+
+// product
+import ProductList from './page/product/ProductList.js';
+import ProductDetail from './page/product/ProductDetail.js';
+import ProductPayment from './page/product/ProductPayment.js';
+import Payment from './page/product/Payment.js';
+import ARView from './page/product/ARView.js';
+
+// mypage
+import Mypage from './page/mypage/Mypage.js';
+import OrderList from './page/mypage/OrderList.js';
+
 
 const Stack = createStackNavigator();
 // react HTML (jsx)
@@ -58,6 +66,7 @@ const Page = () => {
                         <Stack.Screen name="ProductPayment" component={ProductPayment} options={{ headerShown: false }}/>
                         <Stack.Screen name="Payment" component={Payment} options={{ headerShown: false }}/>
                         <Stack.Screen name="Main" component={Main} options={{ headerShown: false }}/>
+                        <Stack.Screen name="Mypage" component={Mypage} options={{ headerShown: false }}/>
                         <Stack.Screen name="OrderList" component={OrderList} options={{ headerShown: false }}/>
                         <Stack.Screen name="ARView" component={ARView} options={{ headerShown: false }}/>
                     </Stack.Navigator>

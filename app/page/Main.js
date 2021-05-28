@@ -41,9 +41,10 @@ const OrderList = ({navigation}) => {
                 {/* <LogoSmallText>어디 밖에 매장</LogoSmallText> */}
                 <LogoText>Angagu</LogoText>
             </LogoWrapper>
+            <MainWrapper>
             {isLoading &&
                 <>
-                    <MainWrapper>
+                    
                         <MenuWrapper>
                             <MenuText>인기 상품</MenuText>
                             <MenuList
@@ -125,10 +126,9 @@ const OrderList = ({navigation}) => {
                                 })}
                             </MenuList>
                         </MenuWrapper>
-                    </MainWrapper>
-                    
                 </>
             }
+            </MainWrapper>
             <Footer navigation={navigation}/>
         </Container>
     );

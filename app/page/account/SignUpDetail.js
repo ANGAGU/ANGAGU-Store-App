@@ -3,13 +3,13 @@ import React, {useEffect, useState} from 'react';
 import styled from 'styled-components/native';
 
 // lib import
-import Header from '../component/organization/Header';
-import Input from '../component/atom/Input';
-import ButtonWithText from '../component/atom/ButtonWithText';
-import InputWithText from '../component/atom/InputWithText';
+import Header from '../../component/organization/Header';
+import Input from '../../component/atom/Input';
+import ButtonWithText from '../../component/atom/ButtonWithText';
+import InputWithText from '../../component/atom/InputWithText';
 
 // local api import
-import { signUp , signUpEmailCheck} from '../api/auth/signUp'
+import { signUp , signUpEmailCheck} from '../../api/auth/signUp'
 import { Alert, TextInput } from 'react-native';
 const SignUp = ({route, navigation}) => {
     // variables

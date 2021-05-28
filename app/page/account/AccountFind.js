@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components/native';
-import InputWithText from '../component/atom/InputWithText'
-import ButtonWithText from '../component/atom/ButtonWithText'
-import Text from '../component/atom/Text'
-import {formatEmail, formatPassword} from '../util/format';
-import Header from '../component/organization/Header';
+import InputWithText from '../../component/atom/InputWithText'
+import ButtonWithText from '../../component/atom/ButtonWithText'
+import Text from '../../component/atom/Text'
+import {formatEmail, formatPassword} from '../../util/format';
+import Header from '../../component/organization/Header';
 import { Alert } from 'react-native';
 export default AccountFind = ({navigation}) => {
     const [selectPw, setSelectPw] = useState(false)

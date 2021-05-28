@@ -8,12 +8,12 @@ import styled from 'styled-components/native';
 import Toast from 'react-native-toast-message';
 
 // local import
-import {screenWidth} from '../util/dimension';
-import Input from '../component/atom/Input';
-import ButtonWithText from '../component/atom/ButtonWithText';
+import {screenWidth} from '../../util/dimension';
+import Input from '../../component/atom/Input';
+import ButtonWithText from '../../component/atom/ButtonWithText';
 
 // local API
-import login from '../api/auth/login';
+import login from '../../api/auth/login';
 
 // react HTML
 const Login = ({route, navigation}) => {
