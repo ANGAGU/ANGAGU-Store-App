@@ -5,25 +5,29 @@ import ButtonWithText from '../../component/atom/ButtonWithText'
 import Text from '../../component/atom/Text'
 import {formatEmail, formatPassword} from '../../util/format';
 import Header from '../../component/organization/Header';
-import { Alert } from 'react-native';
+import { Alert, Button } from 'react-native';
 import Footer from '../../component/organization/Footer';
 // icon
 import IconLogin from '../../asset/icon/icon_login.png';
-import IconOrder from '../../asset/icon/icon_order.png';
+import IconOrder from '../../asset/icon/icon_order2.png';
 import IconSearch from '../../asset/icon/icon_search.png';
+import IconCart from '../../asset/icon/icon_cart.png';
 import IconHome from '../../asset/icon/icon_home.png';
 import IconMypage from '../../asset/icon/icon_mypage.png';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getAddress, getDefaultAddress } from '../../api/address/address';
 export default ({navigation, route}) => {
     const [token, setToken] = useState("")
+    const [zip, setZip] = useState("")
+    const [user, setUser] = useState({})
     useEffect( () => {
         setToken(AsyncStorage.getItem('token'));
     },[])
     const order = () => {
         navigation.navigate("OrderList");
     }
-    const qna = () => {
-        navigation.navigate("AddressList",{callback: () => {}});
+    const address = () => {
+        navigation.navigate("AddressList",{callback: getAddressState});
     }
     const login = () => {
         navigation.navigate("SignIn");
@@ -34,24 +38,50 @@ export default ({navigation, route}) => {
         Alert.alert("로그아웃", "로그아웃이 정상적으로 처리되었습니다.")
         return token;
     }
+
+    const getAddressState = async () => {
+        const addressList = await getAddress();
+        if (addressList.length != 0) {
+            const address = await getDefaultAddress();
+            
+            for (let i = 0; i < addressList.data.length; i++) {
+                
+                if (addressList.data[i].id == address.data[0].address_id) {
+                    setZip(addressList.data[i]);
+                    break;
+                }
+            }
+        }
+    }
+    useEffect( () => {
+        (async () => {
+            const token = await AsyncStorage.getItem("token")
+            setToken(token);
+            if (token != null && token != ""){    
+                await getAddressState();
+                const name = await AsyncStorage.getItem("name")
+                const email = await AsyncStorage.getItem("email")
+                const phone = await AsyncStorage.getItem("phone")
+                setUser({
+                    name,
+                    email,
+                    phone
+                })
+            }
+        })()
+    }, [])
     const mypageMenu = [
+        {
+            title: "장바구니",
+            icon: IconCart,
+            callback: login,
+            auth: true
+        },
         {
             title: "주문관리",
             icon: IconOrder,
             callback: order,
             auth: true
-        },
-        {
-            title: "배송지 관리",
-            icon: IconLogin,
-            callback: qna,
-            auth: true
-        },
-        {
-            title: "로그인",
-            icon: IconLogin,
-            callback: login,
-            auth: false
         },
         {
             title: "로그아웃",
@@ -68,6 +98,12 @@ export default ({navigation, route}) => {
                 {/* <LogoSmallText>어디 밖에 매장</LogoSmallText> */}
                 <LogoText>Angagu</LogoText>
             </LogoWrapper>
+            {(token == null || token == "") ?
+            <LoginWrapper>
+                <LoginButton textColor={'#ffffff'} onPress={login} >로그인 </LoginButton>
+            </LoginWrapper>
+            :
+            <>
             <InfoWrapper>
                 <InfoSpaceRow>
                     <InfoTitle>
@@ -82,7 +118,7 @@ export default ({navigation, route}) => {
                         고객명
                     </InfoLabel>
                     <InfoValue>
-                        이준호
+                        {user.name}
                     </InfoValue>
                 </InfoRow>
                 <InfoRow>
@@ -90,7 +126,7 @@ export default ({navigation, route}) => {
                         이메일
                     </InfoLabel>
                     <InfoValue>
-                        leejunho@ajou.ac.kr
+                        {user.email}
                     </InfoValue>
                 </InfoRow>
                 <InfoRow>
@@ -98,10 +134,46 @@ export default ({navigation, route}) => {
                         연락처
                     </InfoLabel>
                     <InfoValue>
-                        010-2576-7806
+                        {user.phone}
                     </InfoValue>
                 </InfoRow>
             </InfoWrapper>
+            <InfoWrapper>
+                <InfoSpaceRow>
+                    <InfoTitle>
+                        배송지 정보
+                    </InfoTitle>
+                    <InfoButton onPress={address}>
+                        배송지 정보 수정
+                    </InfoButton>
+                </InfoSpaceRow>
+                <InfoRow>
+                    <InfoLabel>
+                        수신인
+                    </InfoLabel>
+                    <InfoValue>
+                        {zip.recipient}
+                    </InfoValue>
+                </InfoRow>
+                <InfoRow>
+                    <InfoLabel>
+                        도로명 주소
+                    </InfoLabel>
+                    <InfoValue>
+                        {zip.road}
+                    </InfoValue>
+                </InfoRow>
+                <InfoRow>
+                    <InfoLabel>
+                        상세 주소
+                    </InfoLabel>
+                    <InfoValue>
+                        {zip.detail}
+                    </InfoValue>
+                </InfoRow>
+            </InfoWrapper>
+            </>
+            }
             <FormWrapper>
                 {/* <FormTitle>
                     메뉴
@@ -175,7 +247,13 @@ const LogoText = styled(Text)`
     color: #35bcd6;
     font-weight: 800;
 `;
+const LoginWrapper  = styled.View`
 
+`
+const LoginButton = styled(ButtonWithText)`
+    background-color: #35BCD6;
+    width: 100%;
+`
 const InfoWrapper = styled.View`
     padding: 20px;
     border-bottom-width: 1px;
@@ -202,7 +280,7 @@ const InfoLabel = styled(Text)`
     font-size: 14px;
     color: #888888;
     margin-right: 10px;
-    
+    width: 64px;
 `
 const InfoValue = styled(Text)`
     font-size: 15px;

@@ -30,8 +30,11 @@ const Login = ({route, navigation}) => {
 
     if (authData.status == 'success') {
         const {user, token} = authData.data;
-        
+        const {name, phone_number, email} = user;
         AsyncStorage.setItem('token', token);
+        AsyncStorage.setItem('name', name);
+        AsyncStorage.setItem('phone', phone_number);
+        AsyncStorage.setItem('email', email);
         Toast.show({
           text2: '안가구의 다양한 상품을 AR로 즐겨보세요!',
           text1: `${user.name}님 환영합니다.`

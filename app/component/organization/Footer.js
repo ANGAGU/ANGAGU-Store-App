@@ -17,7 +17,8 @@ import api from '../../api/index';
 // local import
 import ButtonWithText from '../atom/ButtonWithText';
 import IconLogin from '../../asset/icon/icon_login.png';
-import IconOrder from '../../asset/icon/icon_order.png';
+import IconCart from '../../asset/icon/icon_cart.png'
+import IconOrder from '../../asset/icon/icon_order2.png';
 import IconSearch from '../../asset/icon/icon_search.png';
 import IconHome from '../../asset/icon/icon_home.png';
 import IconMypage from '../../asset/icon/icon_mypage.png';
@@ -49,9 +50,10 @@ const Footer = ({navigation = "", route,  title = ""}) => {
             link: 'ProductList',
             auth: false
         },
+        
         {
             icon: IconHome,
-            name: '쿠팡홈',
+            name: '안가구 홈',
             link: 'Main',
             auth: false
         },
@@ -59,6 +61,12 @@ const Footer = ({navigation = "", route,  title = ""}) => {
             icon: IconMypage,
             name: '마이페이지',
             link: 'Mypage',
+            auth: false
+        },
+        {
+            icon: IconCart,
+            name: '장바구니',
+            link: 'OrderList',
             auth: false
         },
     ];
@@ -97,6 +105,7 @@ const MenuWrapper = styled.View`
     border-top-width: 1px;
     border-top-color: #e1e1e1;
     height: 64px;
+    background: #FEFEFE;
 `;
 const Menu = styled(TouchableOpacity)`
   flex: 1;
