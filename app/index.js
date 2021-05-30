@@ -36,6 +36,7 @@ import ARView from './page/product/ARView.js';
 // mypage
 import Mypage from './page/mypage/Mypage.js';
 import OrderList from './page/mypage/OrderList.js';
+import AddressSearch from './page/address/AddressSearch.js';
 
 
 const Stack = createStackNavigator();
@@ -67,6 +68,7 @@ const Page = () => {
                         <Stack.Screen name="AccountFind" component={AccountFind} options={{ headerShown: false }}/>
                         <Stack.Screen name="AddressList" component={AddressList} options={{ headerShown: false }}/>
                         <Stack.Screen name="AddressWrite" component={AddressWrite} options={{ headerShown: false }}/>
+                        <Stack.Screen name="AddressSearch" component={AddressSearch} options={{ headerShown: false }}/>
                         <Stack.Screen name="ProductList" component={ProductList} options={{ headerShown: false }}/>
                         <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ headerShown: false }}/>
                         <Stack.Screen name="ProductPayment" component={ProductPayment} options={{ headerShown: false }}/>

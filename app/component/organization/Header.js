@@ -36,6 +36,7 @@ const Header = ({navigation, title}) => {
 };
 
 const Container = styled.View`
+  background: #FEFEFE;
   height: 60px;
   flex-direction: row;
   justify-content: center;

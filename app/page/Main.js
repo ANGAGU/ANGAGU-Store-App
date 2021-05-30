@@ -13,7 +13,7 @@ import Text from '../component/atom/Text';
 import { getProduct } from '../api/product/product';
 
 // react HTML
-const OrderList = ({navigation}) => {
+const OrderList = ({navigation, route }) => {
   // variables
     const [isLoading, setIsLoading] = useState(false);
     const [productList, setProductList] = useState([])
@@ -129,7 +129,7 @@ const OrderList = ({navigation}) => {
                 </>
             }
             </MainWrapper>
-            <Footer navigation={navigation}/>
+            <Footer navigation={navigation} route={route}/>
         </Container>
     );
 };
@@ -161,6 +161,8 @@ const LogoSmallText = styled(Text)`
 `;
 const MenuWrapper = styled.View`
     height: 260px;
+    border-bottom-width: 1px;
+    border-bottom-color: #E7E7E7;
 `
 const MenuList = styled.ScrollView`
     flex: 1;
@@ -170,15 +172,17 @@ const MenuList = styled.ScrollView`
 const MenuProductWrapper = styled.TouchableOpacity`
     height: 210px;
     width: 180px;
-    border-bottom-width: 1px;
-    border-bottom-color: #E7E7E7;
+    padding-bottom: 5px;
+    
 `
 const MenuProductName = styled(Text)`
+    margin-top: 5px;
     font-weight: 800;   
     font-size: 16px;
 `
 const MenuProductPrice = styled(Text)`
     font-size: 12px;
+    color: #000000;
 `
 const MenuImage = styled.Image`
     height: 160px;
@@ -186,8 +190,8 @@ const MenuImage = styled.Image`
 `
 const MenuText = styled(Text)`
     font-size: 18px;
+    font-weight: bold;
     color: #575757;
-    font-weight: 600;
     margin: 10px 0px;
 `
 const MainWrapper = styled.ScrollView`

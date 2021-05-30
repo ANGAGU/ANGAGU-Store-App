@@ -10,6 +10,7 @@ const ButtonWithText = ({
   fontSize,
   fontWeight,
   textDecoration,
+  innerStyle,
   imageMode=false,
 }) => {
   return (
@@ -22,6 +23,7 @@ const ButtonWithText = ({
           textColor={textColor}
           fontSize={fontSize}
           fontWeight={fontWeight}
+          style={innerStyle}
           >
           {children}
         </ButtonInnerText>

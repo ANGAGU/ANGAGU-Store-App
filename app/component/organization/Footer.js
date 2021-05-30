@@ -19,9 +19,12 @@ import ButtonWithText from '../atom/ButtonWithText';
 import IconLogin from '../../asset/icon/icon_login.png';
 import IconOrder from '../../asset/icon/icon_order.png';
 import IconSearch from '../../asset/icon/icon_search.png';
+import IconHome from '../../asset/icon/icon_home.png';
+import IconMypage from '../../asset/icon/icon_mypage.png';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { roundToNearestPixel } from 'react-native/Libraries/Utilities/PixelRatio';
 
-const Footer = ({navigation = "", title = ""}) => {
+const Footer = ({navigation = "", route,  title = ""}) => {
     const [token, setToken] = useState("")
     const [isLoading, setIsLoading] = useState(false);
     const goLink = link => {
@@ -35,14 +38,10 @@ const Footer = ({navigation = "", title = ""}) => {
             setToken(t);
             setIsLoading(true);
         }
+        console.log(navigation)
         initFunction();
     })
-    const logout = async () => {
-        await AsyncStorage.setItem('token', '');
-        setToken(await AsyncStorage.getItem('token'));
-        Alert.alert("로그아웃", "로그아웃이 정상적으로 처리되었습니다.")
-        return token;
-    }
+    
     const menuList = [
         {
             icon: IconSearch,
@@ -50,17 +49,17 @@ const Footer = ({navigation = "", title = ""}) => {
             link: 'ProductList',
             auth: false
         },
-        // {
-        //     icon: IconOrder,
-        //     name: '주문목록',
-        //     link: 'OrderList',
-        //     auth: true
-        // },
         {
-            icon: IconOrder,
+            icon: IconHome,
+            name: '쿠팡홈',
+            link: 'Main',
+            auth: false
+        },
+        {
+            icon: IconMypage,
             name: '마이페이지',
             link: 'Mypage',
-            auth: true
+            auth: false
         },
     ];
     return (
@@ -68,18 +67,22 @@ const Footer = ({navigation = "", title = ""}) => {
         <MenuWrapper>
             {isLoading && 
             <>
-                <Menu onPress={() => token != null && token != '' ? logout() : goLink('SignIn')}>
+                {/* <Menu onPress={() => token != null && token != '' ? logout() : goLink('SignIn')}>
                     <MenuIcon source={IconLogin} />
                     <MenuText>{token != null && token != '' ? '로그아웃' : '로그인'}</MenuText>
-                </Menu>  
+                </Menu>   */}
                 {menuList.map((item, index) => {
                     return (
                         item.auth == true && (token == null || token == '') ?
                         <View key={index}></View>
                         :
                         <Menu key={index} onPress={() => goLink(item.link)}>
-                            <MenuIcon source={item.icon} />
-                            <MenuText>{item.name}</MenuText>
+                            {item.link != route.name ?
+                                <MenuIcon source={item.icon} />
+                            :
+                                <SelectedMenuIcon source={item.icon} />
+                            }
+                            <MenuText style={{color: item.link != route.name ? 'black' : '#35BCD6'}}>{item.name}</MenuText>
                         </Menu>
                     );
                 })}
@@ -91,7 +94,9 @@ const Footer = ({navigation = "", title = ""}) => {
 export default Footer;
 const MenuWrapper = styled.View`
     flex-direction: row;
-    height: 70px;
+    border-top-width: 1px;
+    border-top-color: #e1e1e1;
+    height: 64px;
 `;
 const Menu = styled(TouchableOpacity)`
   flex: 1;
@@ -100,12 +105,19 @@ const Menu = styled(TouchableOpacity)`
   align-items: center;
 `;
 const MenuIcon = styled.Image`
-  width: 30px;
-  height: 30px;
-  resize-mode: contain;
+    width: 24px;
+    height: 24px;
+    resize-mode: contain;  
+    tint-color: black;
+`;
+const SelectedMenuIcon = styled.Image`
+    width: 24px;
+    height: 24px;
+    resize-mode: contain;  
+    tint-color: #35BCD6;
 `;
 const MenuText = styled.Text`
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 10px;
+    
 `;
 

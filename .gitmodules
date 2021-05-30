@@ -1,0 +1,3 @@
+[submodule "unity/ANGAGU_Unity_App"]
+	path = unity/ANGAGU_Unity_App
+	url = https://github.com/ANGAGU/ANGAGU_Unity_App

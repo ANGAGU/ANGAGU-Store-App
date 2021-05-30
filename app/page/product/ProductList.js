@@ -20,9 +20,10 @@ import { getProduct } from '../../api/product/product';
 import ep1 from '../../asset/img/example_product_1.webp'
 import ep2 from '../../asset/img/example_product_2.webp'
 import ep3 from '../../asset/img/example_product_3.webp'
+import Footer from '../../component/organization/Footer';
 
 // react HTML
-const ProductList = ({ navigation }) => {
+const ProductList = ({ navigation, route }) => {
     const [loading, setLoading] = useState(false);
     const [query, setQuery] = useState("")
     const ProductClick = (productId) => {
@@ -100,7 +101,11 @@ const ProductList = ({ navigation }) => {
     ]);
     return (
         <Container >
-            <Header navigation={navigation} title="상품 검색"/>
+            {/* <Header navigation={navigation} title="상품 검색"/> */}
+            <LogoWrapper>
+                {/* <LogoSmallText>어디 밖에 매장</LogoSmallText> */}
+                <LogoText>Angagu</LogoText>
+            </LogoWrapper>
             <SearchInput
                 value={query}
                 onChangeText={setQuery}
@@ -136,6 +141,7 @@ const ProductList = ({ navigation }) => {
                 )}
             />
             }
+            <Footer navigation={navigation} route={route}/>
         </Container>
     )
 }
@@ -143,6 +149,19 @@ const ProductList = ({ navigation }) => {
 const Container = styled.View`
     background-color: #ffffff;
     flex: 1;
+`;
+const LogoWrapper = styled.View`
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    border-bottom-width: 1px;
+    border-bottom-color: #E7E7E7;
+`;
+const LogoText = styled(Text)`
+    margin-top: 5px;
+    font-size: 22px;
+    color: #35bcd6;
+    font-weight: 800;
 `;
 const ProductWrapper = styled.FlatList`
     flex: 1;
