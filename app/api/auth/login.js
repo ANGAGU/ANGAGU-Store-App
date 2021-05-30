@@ -8,6 +8,7 @@ export default async (email, password) => {
             password
         });
         api.defaults.headers.common.Authorization = token.token;
+        
         return token;
     } catch (error) {
         console.log(error, error.response);

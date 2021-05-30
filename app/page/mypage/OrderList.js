@@ -9,18 +9,16 @@ import styled from 'styled-components/native';
 
 // local import
 import {screenWidth} from '../../util/dimension';
-import Input from '../../component/atom/Input';
 import ButtonWithText from '../../component/atom/ButtonWithText';
 import ep1 from '../../asset/img/example_product_1.webp'
 import ep2 from '../../asset/img/example_product_2.webp'
 
 // local API
-import getOrder from '../../api/order/getOrder';
+
 
 // local Components
 import Header from '../../component/organization/Header';
-import Footer from '../../component/organization/Footer';
-import { loadPartialConfigAsync } from '@babel/core';
+import { getOrder } from '../../api/order/order';
 
 // react HTML
 const OrderList = ({navigation}) => {
@@ -48,22 +46,24 @@ const OrderList = ({navigation}) => {
   ])
   const [isLoading, setIsLoading] = useState(false)
   useEffect(() => {
-    // const Loading = async () => {
-    //   setOrderList(await getOrder());
-    //  setIsLoading(true);
-    // }
-    // Loading();
+    const Loading = async () => {
+      const result = await getOrder();
+      console.log(result)
+      setOrderList(result.data);
+      setIsLoading(true);
+    }
+    Loading();
   },[])
   return (
     <Container>
       <Header navigation={navigation} title="주문 목록"/>
       <OrderWrapper>
-        {orderList.map((order, index) => {
+        
+        {isLoading && orderList.map((order, index) => {
           return (
             <OrderItem key={index}>
-              <OrderImage source={order.image}/>
+              <OrderImage source={ep1}/>
               <OrderInfo>
-                <OrderBrand>{order.brand}</OrderBrand>
                 <OrderName>{order.name}</OrderName>
                 <OrderPrice>￦ {order.price.toLocaleString()}</OrderPrice>
                 <OrderState>{order.state}</OrderState>
@@ -94,7 +94,6 @@ const OrderWrapper = styled.ScrollView`
 const OrderItem = styled.View`
   flex-direction: row;
   width: ${(screenWidth)}px;
-  height: ${(screenWidth - 81) / 2}px;
   margin: 20px 20px;
   border-bottom-width: 1px;
   border-bottom-color: #E7E7E7;
@@ -118,8 +117,8 @@ const OrderState = styled.Text`
 `
 const OrderImage = styled.Image`
   resize-mode: contain;
-  width: ${(screenWidth - 120) / 2}px;
-  height: ${(screenWidth - 120) / 2}px;
+  width: ${(screenWidth - 120) / 3}px;
+  height: ${(screenWidth - 120) / 3}px;
 `
 const OrderButtonWrapper = styled.View`
   flex-direction: row;

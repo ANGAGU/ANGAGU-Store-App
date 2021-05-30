@@ -22,7 +22,6 @@ import Header from '../../component/organization/Header';
 import Postcode from '@actbase/react-daum-postcode';
 
 // local API
-import createOrder from "../../api/order/createOrder";
 import InputWithText from '../../component/atom/InputWithText';
 import { getProduct } from '../../api/product/product';
 import { getAddress, getDefaultAddress } from '../../api/address/address';
@@ -48,10 +47,14 @@ const ProductPayment = ({ navigation, route }) => {
         const { name, price, delivery_charge } = productInfo;
         navigation.navigate("Payment",{
             name,
-            // price: (price + delivery_charge) * productCount,
-            price: 100,
-            address: zip.roadAddress,
-            postcode: zip.zonecode
+            price: price * productCount,
+            delivery_charge: delivery_charge * productCount,
+            // price: 100,
+            address: zip.roadAddress + "," + zip.detail,
+            postcode: zip.zonecode,
+            productId: route.params.productId,
+            count: productCount,
+            addressId: zip.id
         });
     }
     const getAddressState = async () => {
