@@ -68,6 +68,12 @@ const OrderList = ({navigation, route}) => {
           <LogoText>Angagu</LogoText>
       </LogoWrapper>
       {auth ? 
+      isLoading && orderList.length == 0 ?
+        <LoginWrapper>
+          <LoginInfo>주문 내역이 없습니다.</LoginInfo>
+          <LoginButton textColor={"#fefefe"} onPress={() => {navigation.navigate("ProductList")}}>상품 보러 가기</LoginButton>
+        </LoginWrapper>
+      :
       <OrderWrapper>
           {isLoading && orderList.map((order, index) => {
             return (

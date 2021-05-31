@@ -84,7 +84,7 @@ export default ({navigation, route}) => {
                 
             </FormWrapper>
             <AddButton
-                onPress={()=> {navigation.navigate("AddressWrite", {mode: "add", id: -1})}}
+                onPress={()=> {navigation.navigate("AddressWrite", {mode: "add", id: -1, callback: getAddressFunc})}}
                 buttonColor="#35BCD6"
                 textColor="#ffffff"
             >

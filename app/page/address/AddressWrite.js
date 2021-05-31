@@ -7,7 +7,7 @@ import {formatEmail, formatPassword} from '../../util/format';
 import Header from '../../component/organization/Header';
 import Postcode from '@actbase/react-daum-postcode';
 import { Alert, Button, Modal, View } from 'react-native';
-import { setAddress as addAddress, modifyAddress } from '../../api/address/address';
+import { setAddress as addAddress, delAddress, modifyAddress, getDefaultAddress } from '../../api/address/address';
 
 export default ({navigation, route}) => {
     
@@ -32,6 +32,15 @@ export default ({navigation, route}) => {
         }
         
     }
+    const del = async () => {
+        let result = await delAddress(route.params.id);
+        console.log(result);
+        if (result.status == "success")
+        {
+            route.params.callback();
+            navigation.navigate("AddressList")
+        }
+    }
     useEffect(() => {
         (async () => {
             if (route.params.id != -1) {
@@ -49,12 +58,12 @@ export default ({navigation, route}) => {
             <FormWrapper>
                 <FormView>
                     <FormBox>
-                        <Input label="수취인" value={name} onChangeText={setName}/>
+                        <Input label="수신인" value={name} onChangeText={setName}/>
                     </FormBox>
                     <FormBox>
                         <LabelWrapper>
                             <Label>주소</Label>
-                            <ButtonWithText onPress={() => navigation.navigate("AddressSearch", {callback : setAddress})}>입력</ButtonWithText>
+                            <ButtonWithText onPress={() => navigation.navigate("AddressSearch", {callback : (e) => {setAddress(e); navigation.goBack()}})}>입력</ButtonWithText>
                         </LabelWrapper>
                         <Value>{address == "" ? "주소를 입력해주세요." : address}</Value>
                     </FormBox>
@@ -62,6 +71,15 @@ export default ({navigation, route}) => {
                         <Input label="상세 주소" value={detail} onChangeText={setDetail}/>
                     </FormBox>
                 </FormView>
+                {route.params.mode == "edit" && route.params.default == false && 
+                    <AddButton
+                        onPress={del}
+                        buttonColor="#fefefe"
+                        textColor="#E77777"
+                    >
+                        {"삭제하기"}
+                    </AddButton>
+                }
             </FormWrapper>
             <AddButton
                 onPress={route.params.mode == "edit" ? edit : add}
@@ -107,6 +125,7 @@ const AddButton = styled(ButtonWithText)`
     height: 45px;
     border-radius: 5px;
     margin: 10px;
+    border: 1px solid #E1E1E1;
 `
 const PostContainer  = styled(Postcode)`
     width: 100%;

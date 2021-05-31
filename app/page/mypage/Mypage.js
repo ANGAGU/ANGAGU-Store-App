@@ -32,6 +32,9 @@ export default ({navigation, route}) => {
     const login = () => {
         navigation.navigate("SignIn");
     }
+    const cart = () => {
+        navigation.navigate("Cart");
+    }
     const logout = async () => {
         await AsyncStorage.setItem('token', '');
         setToken(await AsyncStorage.getItem('token'));
@@ -74,7 +77,7 @@ export default ({navigation, route}) => {
         {
             title: "장바구니",
             icon: IconCart,
-            callback: login,
+            callback: cart,
             auth: true
         },
         {

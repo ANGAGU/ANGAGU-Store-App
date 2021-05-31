@@ -27,6 +27,17 @@ export const setAddress = async (recipient, road, detail) => {
     }
 };
 
+export const delAddress = async (id) => {
+    try {
+        const {data: token} = await api.delete(`/customer/address/${id}`);
+        
+        return token;
+    } catch (error) {
+        console.log(error, error.response);
+        return false;
+    }
+};
+
 export const modifyAddress = async (id, recipient, road, detail) => {
     try {
         const {data: token} = await api.put(`/customer/address/${id}`,{
