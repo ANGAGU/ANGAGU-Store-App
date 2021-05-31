@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import {
   FlatList,
   ScrollView,
-  Text,
   TextInput,
   View,
   TouchableOpacity,
@@ -16,6 +15,7 @@ import styled from 'styled-components/native';
 import api from '../../api/index';
 // local import
 import ButtonWithText from '../atom/ButtonWithText';
+import Text from '../atom/Text';
 import IconLogin from '../../asset/icon/icon_login.png';
 import IconCart from '../../asset/icon/icon_cart.png'
 import IconOrder from '../../asset/icon/icon_order2.png';
@@ -50,23 +50,28 @@ const Footer = ({navigation = "", route,  title = ""}) => {
             link: 'ProductList',
             auth: false
         },
-        
+        {
+            icon: IconCart,
+            name: '장바구니',
+            link: 'Cart',
+            auth: false
+        },
         {
             icon: IconHome,
-            name: '안가구 홈',
+            name: '안가구',
             link: 'Main',
             auth: false
         },
         {
-            icon: IconMypage,
-            name: '마이페이지',
-            link: 'Mypage',
+            icon: IconOrder,
+            name: '주문내역',
+            link: 'OrderList',
             auth: false
         },
         {
-            icon: IconCart,
-            name: '장바구니',
-            link: 'OrderList',
+            icon: IconMypage,
+            name: 'MY',
+            link: 'Mypage',
             auth: false
         },
     ];
@@ -120,13 +125,12 @@ const MenuIcon = styled.Image`
     tint-color: black;
 `;
 const SelectedMenuIcon = styled.Image`
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
     resize-mode: contain;  
     tint-color: #35BCD6;
 `;
-const MenuText = styled.Text`
+const MenuText = styled(Text)`
     font-size: 10px;
-    
 `;
 

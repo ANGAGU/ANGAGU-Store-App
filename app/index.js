@@ -19,6 +19,7 @@ import Main from './page/Main.js';
 // address
 import AddressList from './page/address/AddressList';
 import AddressWrite from './page/address/AddressWrite';
+import AddressSearch from './page/address/AddressSearch.js';
 
 // account
 import SignIn from './page/account/SignIn.js';
@@ -36,7 +37,7 @@ import ARView from './page/product/ARView.js';
 // mypage
 import Mypage from './page/mypage/Mypage.js';
 import OrderList from './page/mypage/OrderList.js';
-import AddressSearch from './page/address/AddressSearch.js';
+import Cart from './page/mypage/Cart'
 
 
 const Stack = createStackNavigator();
@@ -76,6 +77,7 @@ const Page = () => {
                         <Stack.Screen name="Main" component={Main} options={{ headerShown: false }}/>
                         <Stack.Screen name="Mypage" component={Mypage} options={{ headerShown: false }}/>
                         <Stack.Screen name="OrderList" component={OrderList} options={{ headerShown: false }}/>
+                        <Stack.Screen name="Cart" component={Cart} options={{ headerShown: false }}/>
                         <Stack.Screen name="ARView" component={ARView} options={{ headerShown: false }}/>
                         
                     </Stack.Navigator>

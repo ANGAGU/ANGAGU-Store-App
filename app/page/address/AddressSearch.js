@@ -6,6 +6,7 @@ import Text from '../../component/atom/Text'
 
 import Header from '../../component/organization/Header';
 import Postcode from '@actbase/react-daum-postcode';
+import { View } from 'react-native';
 
 
 export default ({navigation, route}) => {

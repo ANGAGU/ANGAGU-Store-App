@@ -100,6 +100,7 @@ export default ({navigation, route}) => {
             </LogoWrapper>
             {(token == null || token == "") ?
             <LoginWrapper>
+                <LoginInfo>로그인 후 이용하실 수 있는 페이지입니다.</LoginInfo>
                 <LoginButton textColor={'#ffffff'} onPress={login} >로그인 </LoginButton>
             </LoginWrapper>
             :
@@ -172,8 +173,8 @@ export default ({navigation, route}) => {
                     </InfoValue>
                 </InfoRow>
             </InfoWrapper>
-            </>
-            }
+            
+            
             <FormWrapper>
                 {/* <FormTitle>
                     메뉴
@@ -194,6 +195,8 @@ export default ({navigation, route}) => {
                     )
                 })}
             </FormWrapper>
+            </>
+            }
             <Footer navigation={navigation} route={route}/>
         </Container>
     )
@@ -248,11 +251,18 @@ const LogoText = styled(Text)`
     font-weight: 800;
 `;
 const LoginWrapper  = styled.View`
-
+    flex: 1;
+    justify-content: center;
+    align-items: center;
 `
 const LoginButton = styled(ButtonWithText)`
     background-color: #35BCD6;
-    width: 100%;
+    width: 66%;
+    
+`
+const LoginInfo = styled(Text)`
+    font-size: 12px;
+    margin-bottom: 20px;
 `
 const InfoWrapper = styled.View`
     padding: 20px;
