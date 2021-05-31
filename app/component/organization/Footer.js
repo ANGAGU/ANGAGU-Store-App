@@ -132,5 +132,6 @@ const SelectedMenuIcon = styled.Image`
 `;
 const MenuText = styled(Text)`
     font-size: 10px;
+    font-family: 'GmarketSansMedium';
 `;
 

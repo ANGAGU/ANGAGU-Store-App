@@ -20,5 +20,5 @@ const Text = styled.Text`
   };
   letter-spacing: -1px;
 `;
-
+// font-family: 'GmarketSansMedium';
 export default Text;

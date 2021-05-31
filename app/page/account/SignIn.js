@@ -11,7 +11,7 @@ import Toast from 'react-native-toast-message';
 import {screenWidth} from '../../util/dimension';
 import Input from '../../component/atom/Input';
 import ButtonWithText from '../../component/atom/ButtonWithText';
-
+import Text from '../../component/atom/Text';
 // local API
 import login from '../../api/auth/login';
 
@@ -121,13 +121,13 @@ const LogoWrapper = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
 `;
-const LogoText = styled.Text`
+const LogoText = styled(Text)`
   margin-top: 5px;
   font-size: 45px;
   color: #35bcd6;
   font-weight: 800;
 `;
-const LogoSmallText = styled.Text`
+const LogoSmallText = styled(Text)`
   font-size: 19.5px;
   color: #000000;
   font-weight: 500;

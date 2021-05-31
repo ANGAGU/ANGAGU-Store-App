@@ -41,21 +41,18 @@ const Logo = styled.View`
   justify-content: center;
   align-items: center;
 `
-const LogoText = styled.Text`
+const LogoText = styled(Text)`
   font-size: 44px;
   color: #ffffff;
   font-weight: 800;
+  font-family: 'GmarketSansMedium';
 `
-const LogoMediumText = styled.Text`
+const LogoMediumText = styled(Text)`
   font-size: 20px;
   color: #ffffff;
   font-weight: 600;
-`
-const LogoSmallText = styled.Text`
-  margin-top: 5px;
-  font-size: 20px;
-  color: #ffffff;
-  font-weight: 600;
+  margin-bottom: 2px;
+  font-family: 'GmarketSansMedium';
 `
 
 export default App;

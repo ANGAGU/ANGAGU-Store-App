@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, {css} from 'styled-components/native';
-
+import Text from './Text'
 const ButtonWithText = ({
   style,
   children,
@@ -64,4 +64,5 @@ const ButtonInnerText = styled.Text`
     css`
       color: ${textColor};
     `};
+    
 `;

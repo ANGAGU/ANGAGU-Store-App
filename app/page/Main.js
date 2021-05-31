@@ -153,11 +153,7 @@ const LogoText = styled(Text)`
     font-size: 22px;
     color: #35bcd6;
     font-weight: 800;
-`;
-const LogoSmallText = styled(Text)`
-    font-size: 20px;
-    color: #000000;
-    font-weight: 500;
+    font-family: 'GmarketSansMedium';
 `;
 const MenuWrapper = styled.View`
     height: 260px;
@@ -190,9 +186,9 @@ const MenuImage = styled.Image`
 `
 const MenuText = styled(Text)`
     font-size: 18px;
-    font-weight: bold;
+    font-family: 'GmarketSansMedium';
     color: #575757;
-    margin: 10px 0px;
+    margin: 12px 0px;
 `
 const MainWrapper = styled.ScrollView`
     flex: 1;

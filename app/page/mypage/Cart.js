@@ -89,6 +89,7 @@ const LogoText = styled(Text)`
     font-size: 22px;
     color: #35bcd6;
     font-weight: 800;
+    font-family: 'GmarketSansMedium';
 `;
 const OrderWrapper = styled.View`
   flex: 1;
@@ -102,10 +103,11 @@ const LoginWrapper  = styled.View`
 `
 const LoginButton = styled(ButtonWithText)`
     background-color: #35BCD6;
-    width: 66%;
+    width: 50%;
     
 `
 const LoginInfo = styled(Text)`
     font-size: 12px;
+    font-family: 'GmarketSansMedium';
     margin-bottom: 20px;
 `

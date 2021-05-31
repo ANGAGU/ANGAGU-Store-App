@@ -15,7 +15,7 @@ import ep1 from '../../asset/img/example_product_1.webp'
 import ep2 from '../../asset/img/example_product_2.webp'
 
 // local API
-
+import { BACKEND_API_URL, BACKEND_ASSET_URL } from '../../api/constants';
 
 // local Components
 import Header from '../../component/organization/Header';
@@ -50,10 +50,13 @@ const OrderList = ({navigation, route}) => {
   const [auth, setAuth] = useState(false);
   useEffect(() => {
     const Loading = async () => {
-      const result = await getOrder();
-
-      setOrderList(result.data);
-      setIsLoading(true);
+      const temp = await Auth();
+      setAuth(temp);
+      if (temp == true) {
+        const result = await getOrder();
+        setOrderList(result.data);
+        setIsLoading(true);
+      }
     }
     Loading();
   },[])
@@ -69,14 +72,38 @@ const OrderList = ({navigation, route}) => {
           {isLoading && orderList.map((order, index) => {
             return (
               <OrderItem key={index}>
-                <OrderImage source={ep1}/>
-                <OrderInfo>
-                  <OrderName>{order.name}</OrderName>
-                  <OrderPrice>￦ {order.price.toLocaleString()}</OrderPrice>
-                  <OrderState>{order.state}</OrderState>
-                </OrderInfo>
+                <OrderRow>
+                  <OrderTitle>{order.create_time.split("T")[0]}</OrderTitle>
+                  <OrderState>{order.delivery_number == null ? '배송 준비 중' : '배송 조회 (' + order.delivery_number + ')'}</OrderState>
+                </OrderRow>
+                <OrderContainer>
+                  <OrderImage source={{uri:`${BACKEND_ASSET_URL}/${order.thumb_url}`}}/>
+                  <OrderInfo>
+                    <OrderRow>
+                      <OrderLabel>주문번호</OrderLabel>
+                      <OrderValue>{order.id}</OrderValue>
+                    </OrderRow>
+                    <OrderRow>
+                      <OrderLabel>주문일자</OrderLabel>
+                      <OrderValue>{order.create_time.split("T")[0]}</OrderValue>
+                    </OrderRow>
+                    <OrderRow>
+                      <OrderLabel>상품명</OrderLabel>
+                      <OrderValue>{order.name}</OrderValue>
+                    </OrderRow>
+                    <OrderRow>
+                      <OrderLabel>개수</OrderLabel>
+                      <OrderValue>{order.count}</OrderValue>
+                    </OrderRow>
+                    <OrderRow>
+                      <OrderLabel>가격</OrderLabel>
+                      <OrderValue>{order.price}</OrderValue>
+                    </OrderRow>
+                    
+                  </OrderInfo>
+                </OrderContainer>
                 <OrderButtonWrapper>
-                  
+                  <ReviewButton textColor="#010101">{order.review_id == null ? "구매 후기 작성" : "구매 후기 수정"}</ReviewButton>
                 </OrderButtonWrapper>
               </OrderItem>
             );
@@ -85,7 +112,7 @@ const OrderList = ({navigation, route}) => {
       :
         <LoginWrapper>
           <LoginInfo>로그인 후 이용하실 수 있는 페이지입니다.</LoginInfo>
-          <LoginButton textColor={"#fefefe"} onPress={() => {navigation.navigate("SignIn")}} >로그인 </LoginButton>
+          <LoginButton innerStyle={"font-family: 'GmarketSansMedium'"} textColor={"#fefefe"} onPress={() => {navigation.navigate("SignIn")}} >로그인 </LoginButton>
         </LoginWrapper>
       }
       <Footer navigation={navigation} route={route}/>
@@ -112,44 +139,68 @@ const LogoText = styled(Text)`
     font-size: 22px;
     color: #35bcd6;
     font-weight: 800;
+    font-family: 'GmarketSansMedium';
 `;
+const OrderContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #E1E1E1;
+  padding: 10px 20px;
+  margin-top: 5px;
+  border-radius: 10px;
+`
 const OrderWrapper = styled.ScrollView`
   flex: 1;
-  
 `;
 const OrderItem = styled.View`
-  flex-direction: row;
-  width: ${(screenWidth)}px;
-  margin: 20px 20px;
+  background-color: #fefefe;
+  padding: 10px;
+  margin-bottom: 10px;
   border-bottom-width: 1px;
   border-bottom-color: #E7E7E7;
 `
+const OrderTitle = styled(Text)`
+  font-weight: bold;
+  font-size: 18px;
+  margin-left: 5px;
+`
+const OrderState = styled(Text)`
+  flex: 1;
+  text-align: right;
+  color: #35BCD6;
+  margin-right: 10px;
+`
 const OrderInfo = styled.View`
-
+  padding: 20px;
 `
-const OrderBrand = styled.Text`
-  font-weight: 700;
-  margin: 5px;
+const OrderRow = styled.View`
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 5px;
 `
-const OrderName = styled.Text`
-  margin: 5px;
+const OrderValue = styled(Text)`
+  font-size: 15px;
+  color: #111111;
 `
-const OrderPrice = styled.Text`
-  margin: 5px;
-`
-const OrderState = styled.Text`
-  font-size: 20px;
-  margin: 10px 5px;
+const OrderLabel = styled(Text)`
+  font-size: 12px;
+  width: 64px;
+  margin-left: 10px;
+  color: #777777;
 `
 const OrderImage = styled.Image`
   resize-mode: contain;
-  width: ${(screenWidth - 120) / 3}px;
-  height: ${(screenWidth - 120) / 3}px;
+  width: ${(screenWidth - 120) / 2}px;
+  height: ${(screenWidth - 120) / 2}px;
 `
 const OrderButtonWrapper = styled.View`
   flex-direction: row;
 `
 const ReviewButton = styled(ButtonWithText)`
+  margin-top: 10px;
+  flex: 1;
+  border: 1px solid #E5E5E5;
+  padding: 10px;
 `
 
 const LoginWrapper  = styled.View`
@@ -159,10 +210,11 @@ const LoginWrapper  = styled.View`
 `
 const LoginButton = styled(ButtonWithText)`
     background-color: #35BCD6;
-    width: 66%;
+    width: 50%;
     
 `
 const LoginInfo = styled(Text)`
     font-size: 12px;
+    font-family: 'GmarketSansMedium';
     margin-bottom: 20px;
 `

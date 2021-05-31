@@ -100,6 +100,7 @@ const ProductList = ({ navigation, route }) => {
         }
     ]);
     return (
+        <>
         <Container >
             {/* <Header navigation={navigation} title="상품 검색"/> */}
             <LogoWrapper>
@@ -141,8 +142,10 @@ const ProductList = ({ navigation, route }) => {
                 )}
             />
             }
-            <Footer navigation={navigation} route={route}/>
+            
         </Container>
+        <Footer navigation={navigation} route={route}/>
+        </>
     )
 }
 
@@ -162,6 +165,7 @@ const LogoText = styled(Text)`
     font-size: 22px;
     color: #35bcd6;
     font-weight: 800;
+    font-family: 'GmarketSansMedium';
 `;
 const ProductWrapper = styled.FlatList`
     flex: 1;
