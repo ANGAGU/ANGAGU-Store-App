@@ -50,6 +50,7 @@ export default ({navigation, route}) => {
                 setDetail(route.params.detail)
                 // setAddressList(address.data);
             }
+            console.log(route.params.default);
         })()
     },[])
     return (
@@ -66,12 +67,10 @@ export default ({navigation, route}) => {
                             <ButtonWithText onPress={() => navigation.navigate("AddressSearch", {callback : (e) => {setAddress(e); navigation.goBack()}})}>입력</ButtonWithText>
                         </LabelWrapper>
                         <Value>{address == "" ? "주소를 입력해주세요." : address}</Value>
-                    </FormBox>
-                    <FormBox>
                         <Input label="상세 주소" value={detail} onChangeText={setDetail}/>
                     </FormBox>
                 </FormView>
-                {route.params.mode == "edit" && route.params.default == false && 
+                {(route.params.mode == "edit") && (route.params.default == false) && 
                     <AddButton
                         onPress={del}
                         buttonColor="#fefefe"
@@ -83,7 +82,7 @@ export default ({navigation, route}) => {
             </FormWrapper>
             <AddButton
                 onPress={route.params.mode == "edit" ? edit : add}
-                buttonColor="#35BCD6"
+                buttonColor={address == "" ? "#E1E1E1" : "#35BCD6"}
                 textColor="#ffffff"
             >
                 {route.params.mode == "edit" ? "수정하기" : "추가하기"}
@@ -114,12 +113,13 @@ const Label = styled(Text)`
     margin: 10px 0px;
 `
 const Value = styled(Text)`
-    margin: 5px 5px 10px;
+    margin: 5px 5px 24px;
     color: #777777;
 `
 const LabelWrapper = styled.View`
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 10px;
 `
 const AddButton = styled(ButtonWithText)`
     height: 45px;

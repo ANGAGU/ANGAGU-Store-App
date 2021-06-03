@@ -126,11 +126,13 @@ const LogoText = styled(Text)`
   font-size: 45px;
   color: #35bcd6;
   font-weight: 800;
+  font-family: 'GmarketSansMedium';
 `;
 const LogoSmallText = styled(Text)`
   font-size: 19.5px;
   color: #000000;
   font-weight: 500;
+  font-family: 'GmarketSansMedium';
 `;
 const LoginWrapper = styled.View`
   flex: 1.618;

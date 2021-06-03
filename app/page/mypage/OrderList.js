@@ -54,7 +54,7 @@ const OrderList = ({navigation, route}) => {
       setAuth(temp);
       if (temp == true) {
         const result = await getOrder();
-        setOrderList(result.data);
+        setOrderList(result.data.reverse());
         setIsLoading(true);
       }
     }

@@ -62,6 +62,7 @@ export default ({navigation, route}) => {
                                         {
                                             mode: "edit",
                                             id: address.id,
+                                            default: (address.id == defaultId),
                                             recipient: address.recipient,
                                             road: address.road,
                                             detail: address.detail,
