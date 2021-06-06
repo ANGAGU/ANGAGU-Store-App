@@ -28,6 +28,7 @@ import { View, Alert, Dimensions, Image, StyleSheet, Slider, Modal, Button } fro
 import { WebView } from 'react-native-webview';
 import AutoHeightWebView from 'react-native-autoheight-webview'
 import { getQna } from '../../api/product/qna';
+import { addCart, delCart, getCart } from '../../api/product/cart';
  
 // react HTML
 const ProductDetail = ({ navigation, route }) => {
@@ -37,7 +38,8 @@ const ProductDetail = ({ navigation, route }) => {
     const [token, setToken] = useState("");
     const [modal, setModal] = useState(false);
     const [qnaCount, setQnaCount]= useState(0);
-    
+    const [toggle, setToggle] = useState(false);
+    const [toggleId, setToggleId] = useState(0);
     useEffect(() => {
         const init = async () =>{
             const productObject = await getProduct(route.params.productId);
@@ -46,6 +48,15 @@ const ProductDetail = ({ navigation, route }) => {
                 setQnaCount(qna.data.length);
                 await setProductInfo(productObject.data);
                 setToken(await AsyncStorage.getItem('token'));
+                const result = await getCart();
+                result.data.map(
+                    (item) => {
+                        if (item.product_id == route.params.productId){
+                            setToggle(true);
+                            setToggleId(item.id);
+                        }
+                    }
+                )
                 setLoading(true);
             }
             else
@@ -53,6 +64,7 @@ const ProductDetail = ({ navigation, route }) => {
         }
         init();
     },[])
+    
     const [loading, setLoading] = useState(false);    
     const [productInfo, setProductInfo] = useState({
 
@@ -75,7 +87,25 @@ const ProductDetail = ({ navigation, route }) => {
             productId: route.params.productId
         });
     }
-
+    const onCart = async () => {
+        if (token == '' || token == null)
+            navigation.navigate('SignIn', {
+                callback: route.params.productId   
+            });
+        else {
+            if (toggle){
+                const result = await delCart(toggleId);
+                if (result.status == "success")
+                    Alert.alert("장바구니 제거", "장바구니에서 제거되었습니다.")
+            } else {
+                const result = await addCart(route.params.productId);
+                
+                if (result.status == "success")
+                    Alert.alert("장바구니 추가", "장바구니에 추가되었습니다.")
+            }
+            setToggle(!toggle);
+        }
+    }
     // const carousel = useRef(null);
     return (
         <Container>
@@ -188,14 +218,25 @@ const ProductDetail = ({ navigation, route }) => {
                             <CounterName>{productInfo.name}</CounterName>
                             <Counter value={productCount} setValue={setProductCount} min={1} max={10}/>
                         </CounterWrapper>
-                        <ModalButton
+                        <PurchaseWrapper>
+                            <PurchaseButton onPress={onCart}>{toggle ? '장바구니 제거': '장바구니 담기'}</PurchaseButton>
+                            <PurchaseButton
+                                buttonColor="#35BCD6"
+                                textColor="#ffffff"
+                                // onPress={onPurchaseClick}
+                                onPress={onPurchaseClick}
+                            >
+                                {'구매하기'}
+                            </PurchaseButton>
+                        </PurchaseWrapper>
+                        {/* <ModalButton
                             buttonColor="#35BCD6"
                             textColor="#ffffff"
                             onPress={onPurchaseClick}
                             // onPress={() => setModal(true)}
                         >
                             {'구매하기'}
-                        </ModalButton>
+                        </ModalButton> */}
                     </ModalView>
                 </ModalBackground>
 

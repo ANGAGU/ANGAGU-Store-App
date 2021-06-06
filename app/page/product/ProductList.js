@@ -21,11 +21,13 @@ import ep1 from '../../asset/img/example_product_1.webp'
 import ep2 from '../../asset/img/example_product_2.webp'
 import ep3 from '../../asset/img/example_product_3.webp'
 import Footer from '../../component/organization/Footer';
+import ButtonWithText from '../../component/atom/ButtonWithText';
 
 // react HTML
 const ProductList = ({ navigation, route }) => {
     const [loading, setLoading] = useState(false);
     const [query, setQuery] = useState("")
+    const [filter, setFilter] = useState("poplular")
     const ProductClick = (productId) => {
         navigation.navigate('ProductDetail', {
             productId,
@@ -45,60 +47,18 @@ const ProductList = ({ navigation, route }) => {
             }
         }
         init();
-        // const productObject = product();
-        // if (productObject.status == "success")
-        //     setProductList(productObject.data)
-        // else
-        //     alert("상품 정보를 불러오는데, 실패하였습니다.")
     },[])
-    const [productList, setProductList] = useState([
-        {
-            id: 1,
-            image: ep1,
-            brand: 'SVENBERTIL',
-            name: '스벤베르틸 의자',
-            price: 49900,
-            commentCount: '7',
-            likeCount: '0',
-            rating: '4.6',
-            // "id": 1,
-            // "company_id": 1,
-            // "description_url": "product/desc/UBill5Imv",
-            // "thumb_url": "product/thumb/HyV_GXzk-i",
-            // "3d_model_url": "product/ar/FBwNaU1ev",
-            // "description": "updated description",
-            // "name": "updated name",
-            // "price": 100000000,
-            // "stock": 11111,
-            // "sell_count": 0,
-            // "view_count": 17,
-            // "delivery_charge": 2222222,
-            // "free_delivery_condition": null,
-            // "is_approve": 1,
-            // "create_time": "2021-04-18T04:14:22.000Z",
-            // "update_time": "2021-05-14T06:36:44.000Z"
-        },
-        {
-            id: 2,
-            image: ep2,
-            brand: 'LEIFARNE',
-            name: '레이파르네 팔걸이의자',
-            price: 69900,
-            commentCount: '0',
-            likeCount: '0',
-            rating: '0'
-        },
-        {
-            id: 3,
-            image: ep2,
-            brand: 'LEIFARNE',
-            name: '레이파르네 팔걸이의자',
-            price: 69900,
-            commentCount: '0',
-            likeCount: '0',
-            rating: '0'
-        }
-    ]);
+    const [productList, setProductList] = useState([]);
+    const filteredProductList = () => {
+        if (filter == "poplular")
+            return productList.sort((a,b) => b.sell_count - a.sell_count);
+        else if (filter == "new")
+            return productList.sort((a,b) => Number(b.create_time.split(".")[0].replace(/-/g,"").replace("T","").replace(/:/g,"")) - Number(a.create_time.split(".")[0].replace(/-/g,"").replace("T","").replace(/:/g,"")));
+        else if (filter == "margin")
+            return productList.sort((a,b) => a.stock - b.stock);
+        else
+            return  productList;
+    }
     return (
         <>
         <Container >
@@ -112,10 +72,15 @@ const ProductList = ({ navigation, route }) => {
                 onChangeText={setQuery}
                 placeholder="상품명을 검색해주세요."
             />
+            <ButtonWrapper>
+                <FliterButton onPress={() => {setFilter("poplular")}} textColor={filter == "poplular" ? "#35BCD6" : "#000000"}>인기순</FliterButton>
+                <FliterButton onPress={() => {setFilter("margin")}} textColor={filter == "margin" ? "#35BCD6" : "#000000"}>매진임박순</FliterButton>
+                <FliterButton onPress={() => {setFilter("new")}} textColor={filter == "new" ? "#35BCD6" : "#000000"}>최신순</FliterButton>
+            </ButtonWrapper>
             { loading &&
             <ProductWrapper
                 columnWrapperStyle={{justifyContent:'space-between'}}
-                data={productList.filter(product => product.name.includes(query))}
+                data={filteredProductList().filter(product => product.name.includes(query))}
                 numColumns={2}
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={({ item }) => (
@@ -202,6 +167,13 @@ const ProductName = styled(Text)`
 `
 const ProductPrice = styled(Text)`
     font-size: 12px;
+`
+const ButtonWrapper = styled.View`
+    flex-direction: row;
+    justify-content: space-around;
+`
+const FliterButton = styled(ButtonWithText)`
+    
 `
 export default ProductList;
 

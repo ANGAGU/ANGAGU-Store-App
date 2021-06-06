@@ -18,7 +18,9 @@ import Auth from '../../api/authCheck'
 import Header from '../../component/organization/Header';
 import Footer from '../../component/organization/Footer';
 import { getOrder } from '../../api/order/order';
-import { getCart } from '../../api/product/cart';
+import { delCart, getCart } from '../../api/product/cart';
+import { BACKEND_ASSET_URL } from '../../api/constants';
+import { Alert,  TouchableOpacity } from 'react-native';
 
 // react HTML
 const OrderList = ({navigation, route}) => {
@@ -27,6 +29,16 @@ const OrderList = ({navigation, route}) => {
   const [isLoading, setIsLoading] = useState(false)
   const [auth, setAuth] = useState(false);
   const [cart, setCart] = useState([]);
+  const del = async (cartId) => {
+    const result = await delCart(cartId);
+    if (result.status == "success"){
+      const Cart = await getCart();
+      setCart(Cart.data);
+      Alert.alert("삭제 완료", "해당 물품이 장바구니에서 삭제되었습니다.")
+    } else {
+      Alert.alert("삭제 실패", "알 수 없는 오류가 발생하였습니다.")
+    }
+  }
   useEffect(() => {
     const Loading = async () => {
       
@@ -37,7 +49,6 @@ const OrderList = ({navigation, route}) => {
       if (result == true){
         const Cart = await getCart();
         setCart(Cart.data);
-        console.log(Cart);
       }
         
       
@@ -60,13 +71,26 @@ const OrderList = ({navigation, route}) => {
           </LoginWrapper>
           :
           <CartWrapper>
-            {cart.map((item) => {
+            {cart.map((item, key) => {
               return (
-                <CartItem>
-                  <CartRow>
-                    <CartTitle>상품 명</CartTitle>
-                    <CartData>{item.name}</CartData>
-                  </CartRow>
+                <CartItem key={key}>
+                  <CartText>{item.create_time.split("T")[0]}에 장바구니 등록한 상품입니다.</CartText>
+                  <TouchableOpacity onPress={() => {navigation.navigate("ProductDetail",{productId: item.product_id})}}>
+                    <CartRow>
+                      <CartImg source={{uri:`${BACKEND_ASSET_URL}/${item.thumb_url}`}}/>
+                      <CartCol>
+                        <CartRow>
+                          <CartTitle>상품 명</CartTitle>
+                          <CartData>{item.name}</CartData>
+                        </CartRow>
+                        <CartRow>
+                          <CartTitle>가격</CartTitle>
+                          <CartData>{item.price}</CartData>
+                        </CartRow>
+                      </CartCol>
+                    </CartRow>
+                  </TouchableOpacity>
+                  <CartDelButton onPress={() => del(item.id)}>삭제하기</CartDelButton>
                 </CartItem>
               )
             })}
@@ -111,18 +135,42 @@ const LogoText = styled(Text)`
 `;
 const CartWrapper = styled.ScrollView`
   flex: 1;
-  justify-content: center;
-  align-items: center;
 `;
 const CartItem = styled.View`
-
+  background-color: #fefefe;
+  padding: 20px;
+  margin: 10px 10px 0px;
+  border: 1px solid #D7D7D7;
+  border-radius: 10px;
 `
 const CartRow = styled.View`
   flex-direction: row;
+  margin-bottom: 5px;
+`
+const CartCol = styled.View`
+  margin-left: 20px;
+`
+const CartImg = styled.Image`
+  resize-mode: contain;
+  width: ${(screenWidth - 120) / 2}px;
+  height: ${(screenWidth - 120) / 2}px;
+  border: 1px solid #E7E7E7;
 `
 const CartTitle = styled(Text)`
   font-size: 15px;
-  color: #E7E7E7;
+  color: #666666;
+  margin-right: 20px;
+  width: 60px;
+  
+`
+const CartText = styled(Text)`
+  color: #666666;
+  
+  margin-bottom: 20px;
+`
+const CartDelButton = styled(ButtonWithText)`
+  margin-top: 10px;
+  border: 1px solid #35BCD6;
 `
 const CartData = styled(Text)`
   font-size: 16px;
