@@ -19,7 +19,6 @@ export default ({navigation}) => {
         } else {
             Alert.alert("비밀번호 변경 실패", result.message);
         }
-            
     }
     return (
         <Container>
