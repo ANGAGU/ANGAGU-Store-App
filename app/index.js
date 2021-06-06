@@ -23,6 +23,7 @@ import AddressSearch from './page/address/AddressSearch.js';
 
 // account
 import SignIn from './page/account/SignIn.js';
+import SignUpCondition from './page/account/SignUpCondition.js';
 import SignUp from './page/account/SignUp.js';
 import SignUpDetail from './page/account/SignUpDetail.js';
 import AccountFind from './page/account/AccountFind.js';
@@ -69,6 +70,7 @@ const Page = () => {
                 <NavigationContainer>
                     <Stack.Navigator initialRouteName="Main">
                         <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }}/>
+                        <Stack.Screen name="SignUpCondition" component={SignUpCondition} options={{ headerShown: false }}/>
                         <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }}/>
                         <Stack.Screen name="SignUpDetail" component={SignUpDetail} options={{ headerShown: false }}/>
                         <Stack.Screen name="AccountFind" component={AccountFind} options={{ headerShown: false }}/>

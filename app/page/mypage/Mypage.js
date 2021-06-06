@@ -96,9 +96,13 @@ export default ({navigation, route}) => {
 
     ]
     const formatPhone = (phoneNumber) => {
-        if (phoneNumber.length > 7) return phoneNumber.substr(0,3) + '-' +phoneNumber.substr(3,4) + '-' + phoneNumber.substr(7,4);
-        else if (phoneNumber.length > 3) return phoneNumber.substr(0,3) + '-' +phoneNumber.substr(3,4) 
-        else return phoneNumber;
+        try {
+            if (phoneNumber.length > 7) return phoneNumber.substr(0,3) + '-' +phoneNumber.substr(3,4) + '-' + phoneNumber.substr(7,4);
+            else if (phoneNumber.length > 3) return phoneNumber.substr(0,3) + '-' +phoneNumber.substr(3,4) 
+            else return phoneNumber;
+        } catch (error) {
+            return phoneNumber;
+        }
     }
     return (
         <Container>
