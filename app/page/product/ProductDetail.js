@@ -118,14 +118,14 @@ const ProductDetail = ({ navigation, route }) => {
                     {!showDetail && 
                     <>
                         <LinearGradient
-                            colors={['rgba(255,255,255,0)', '#979797']}
+                            colors={['rgba(255,255,255,0)', '#333333']}
                             start={{x:0, y:0}}
                             end={{x:0, y:1}}
                             style={{ position: 'absolute', height: 200, bottom: 0, width: SliderWidth}}
                         />
                         <ShowMoreButton 
-                            buttonColor="#35BCD6"
-                            textColor="#ffffff"
+                            buttonColor="rgba(0,0,0,0)"
+                            textColor="#F7F7F7"
                             onPress={() => {setShowDetail(true)}}
                         >
                             상품정보 더보기 ▾
@@ -134,13 +134,19 @@ const ProductDetail = ({ navigation, route }) => {
                     }
 
                 </ProductDescriptionWrapper>
-                <ReviewWrapper>
-                    <Title>{`구매 후기 (20)`}</Title>
-                    <SubTitle>{'>'}</SubTitle>
+                <ReviewWrapper onPress={()=> {navigation.navigate("Review")}} imageMode={true} textColor={'#000000'}>
+                    <TitleWrapper>
+                        <Title >{`구매 후기`}</Title>
+                        <SubTitle>{`(20)`}</SubTitle>
+                    </TitleWrapper>
+                    <Title>{'>'}</Title>
                 </ReviewWrapper>
-                <QnaWrapper>
-                    <Title>{`상품 문의 (0)`}</Title>
-                    <SubTitle>{'>'}</SubTitle>
+                <QnaWrapper imageMode={true} textColor={'#000000'}>
+                    <TitleWrapper>
+                        <Title >{`상품 문의`}</Title>
+                        <SubTitle>{`(1)`}</SubTitle>
+                    </TitleWrapper>
+                    <Title>{'>'}</Title>
                 </QnaWrapper>
                 <Announce>
                     <AnnounceText>
@@ -240,15 +246,17 @@ const ProductDeliveryCharge = styled(Text)`
 const ProductDescriptionWrapper = styled.View`
     margin-bottom: 10px;
 `
-const ReviewWrapper = styled.View`
+const ReviewWrapper = styled(ButtonWithText)`
     margin-bottom: 10px;
-    padding: 20px;   
+    padding: 16px 20px;   
     background-color: #FEFEFE;
     justify-content: space-between;
     flex-direction: row;
+    border-radius: 0px;
 `
-const QnaWrapper = styled.View`
-    padding: 20px;
+const QnaWrapper = styled(ButtonWithText)`
+    padding: 16px 20px;
+    border-radius: 0px;
     background-color: #FEFEFE;
     justify-content: space-between;
     flex-direction: row;
@@ -263,10 +271,16 @@ const AnnounceText = styled(Text)`
 `
 const Title = styled(Text)`
     font-size: 16px;
+
+`
+const TitleWrapper = styled.View`
+    flex-direction: row;
+    align-items: center;
 `
 const SubTitle = styled(Text)`
-    font-size: 15px;
+    font-size: 12px;
     color: #A7A7A7;
+    margin-left: 4px;
 `
 const StarWrapper = styled.View`
     flex-direction: row;
@@ -328,7 +342,7 @@ const CounterDelivery = styled(Text)`
     color: #777777;
 `
 const ShowMoreButton = styled(ButtonWithText)`
-    
+    border: 1px solid #E7E7E7;
     margin: 10px 10px;
 `
 export default ProductDetail;

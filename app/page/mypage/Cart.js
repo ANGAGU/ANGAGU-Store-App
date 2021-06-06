@@ -18,6 +18,7 @@ import Auth from '../../api/authCheck'
 import Header from '../../component/organization/Header';
 import Footer from '../../component/organization/Footer';
 import { getOrder } from '../../api/order/order';
+import { getCart } from '../../api/product/cart';
 
 // react HTML
 const OrderList = ({navigation, route}) => {
@@ -25,13 +26,19 @@ const OrderList = ({navigation, route}) => {
 
   const [isLoading, setIsLoading] = useState(false)
   const [auth, setAuth] = useState(false);
+  const [cart, setCart] = useState([]);
   useEffect(() => {
     const Loading = async () => {
-      // const result = await getOrder();
+      
       // console.log(result);
       // setOrderList(result.data);
       const result = await Auth();
       setAuth(result);
+      if (result == true){
+        const Cart = await getCart();
+        setCart(Cart.data);
+      }
+        
       console.log(result)
       setIsLoading(true);
     }
@@ -46,8 +53,14 @@ const OrderList = ({navigation, route}) => {
         </LogoWrapper>
         {auth ? 
         <OrderWrapper>
-          <LoginInfo>장바구니에 상품이 없습니다.</LoginInfo>
-          <LoginButton textColor={"#fefefe"} onPress={() => {navigation.navigate("ProductList")}}>상품 보러 가기</LoginButton>
+          {cart.length == 0 ?
+          <>
+            <LoginInfo>장바구니에 상품이 없습니다.</LoginInfo>
+            <LoginButton textColor={"#fefefe"} onPress={() => {navigation.navigate("ProductList")}}>상품 보러 가기</LoginButton>
+          </>
+          :
+          <></>
+          }
         </OrderWrapper>
         :
         <LoginWrapper>

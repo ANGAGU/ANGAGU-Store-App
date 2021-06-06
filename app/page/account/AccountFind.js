@@ -6,6 +6,7 @@ import Text from '../../component/atom/Text'
 import {formatEmail, formatPassword} from '../../util/format';
 import Header from '../../component/organization/Header';
 import { Alert } from 'react-native';
+import { findAuthPhone, findId as findIdAPI, findVeryInfo, findVeryPhone, findPw as findPwAPI } from '../../api/auth/findAccount';
 export default AccountFind = ({navigation}) => {
     const [selectPw, setSelectPw] = useState(false)
     const [email, setEmail] = useState('');
@@ -18,21 +19,53 @@ export default AccountFind = ({navigation}) => {
     const [smsSend, setSmsSend] = useState(false)
     const [showResult, setShowResult] = useState(false);
     const [auth, setAuth] = useState(null)
-    const findId = () => {
+    const [resultId, setResultId] = useState("");
+    const [passwordToken, setPasswordToken] = useState("");
+    const findId = async () => {
         //api
-        setShowResult(1);
-    }
-    const findPw = () => {
         if (smsSend == false){
-            setSmsSend(true);
+            const result = await findAuthPhone(phone);
+            if (result.status == "success")
+                setSmsSend(true);
         } else {
-            setShowResult(2);
+            const result = await findIdAPI(phone, name, auth);
+            setResultId(result.data.email);
+            setShowResult(true);
+        }
+    }
+    const findPw = async () => {
+        if (smsSend == false){
+            const result = await findAuthPhone(phone);
+            if (result.status == "success")
+                setSmsSend(true);
+        } else {
+            const result = await findVeryPhone(phone,auth);
+            
+            if (result.status == "success"){
+                const result2 = await findVeryInfo(name,email,result.data.token);
+                console.log(result2);
+                if (result2.status == "success"){
+                    setPasswordToken(result2.data.token);
+                    setShowResult(true);
+                }
+                else {
+                    Alert.alert("입력한 정보가 올바르지 않습니다.");
+                }
+            } else {
+                Alert.alert("핸드폰 인증번호가 올바르지 않습니다.");
+            }
         }
         //api
     }
-    const changePw = () => {
-        Alert.alert("비밀번호 변경 성공", "비밀번호가 성공적으로 변경되었습니다.")
-        navigation.navigate("SignIn")
+    const changePw = async () => {
+        
+        const result = await findPwAPI(password, passwordToken);
+        console.log(passwordToken);
+        console.log(result);
+        if (result.status == "success"){
+            Alert.alert("비밀번호 변경 성공", "비밀번호가 성공적으로 변경되었습니다.")
+            navigation.navigate("SignIn")
+        }
     }
     // 핸드폰 번호의 format 을 맞춘다.
     const formatPhone = (phoneNumber) => {
@@ -91,7 +124,7 @@ export default AccountFind = ({navigation}) => {
                     onChangeText={(e) => setPhone(e.replace(/-/g, ""))}
                     keyboardType="numeric"
                 />
-                { selectPw && smsSend &&
+                { smsSend &&
                     <FormInput
                         label={'인증번호'}
                         placeholder={'000000'}
@@ -118,7 +151,7 @@ export default AccountFind = ({navigation}) => {
                                 회원님의 계정은 다음과 같습니다.
                             </ResultText>
                             <ResultRichText>
-                                lhsljh123@ajou.ac.kr
+                                {resultId}
                             </ResultRichText>
                         </>
                         :

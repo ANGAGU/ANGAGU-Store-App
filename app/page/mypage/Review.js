@@ -62,7 +62,7 @@ const OrderList = ({navigation, route}) => {
   },[])
   return (
     <Container>
-        <Header navigation={navigation} title="리뷰 보기"/>
+        <Header navigation={navigation} title="상품 리뷰"/>
         {isLoading ? 
             <>
             </>
