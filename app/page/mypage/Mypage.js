@@ -56,6 +56,7 @@ export default ({navigation, route}) => {
             }
         }
     }
+
     useEffect( () => {
         (async () => {
             const token = await AsyncStorage.getItem("token")
@@ -94,6 +95,11 @@ export default ({navigation, route}) => {
         },
 
     ]
+    const formatPhone = (phoneNumber) => {
+        if (phoneNumber.length > 7) return phoneNumber.substr(0,3) + '-' +phoneNumber.substr(3,4) + '-' + phoneNumber.substr(7,4);
+        else if (phoneNumber.length > 3) return phoneNumber.substr(0,3) + '-' +phoneNumber.substr(3,4) 
+        else return phoneNumber;
+    }
     return (
         <Container>
             {/* <Header navigation={navigation} title="My Page"/> */}
@@ -113,7 +119,7 @@ export default ({navigation, route}) => {
                     <InfoTitle>
                         회원 정보
                     </InfoTitle>
-                    <InfoButton>
+                    <InfoButton onPress={()=> {navigation.navigate("AccountEdit")}}>
                         회원 정보 수정
                     </InfoButton>
                 </InfoSpaceRow>
@@ -138,7 +144,7 @@ export default ({navigation, route}) => {
                         연락처
                     </InfoLabel>
                     <InfoValue>
-                        {user.phone}
+                        {formatPhone(user.phone)}
                     </InfoValue>
                 </InfoRow>
             </InfoWrapper>

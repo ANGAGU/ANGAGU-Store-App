@@ -50,6 +50,11 @@ const OrderList = ({navigation, route}) => {
   const [isLoading, setIsLoading] = useState(false)
   const [auth, setAuth] = useState(false);
   const [qna, setQna] = useState([]);
+  const callback = async () => {
+    const result = await getQna(route.params.productId);
+    console.log(result.data);
+    setQna(result.data);
+  }
   useEffect(() => {
     const Loading = async () => {
         // login check
@@ -70,9 +75,10 @@ const OrderList = ({navigation, route}) => {
         <>
             {qna.length != 0 ?
             <QnaWrapper>
-                {qna.map((item, index) => {
+                {qna.reverse().map((item, index) => {
                     return (
-                        <QuestionBox>
+                        <QuestionBox key={index}>
+                            <QuestionDate>[{item.create_time.split("T")[0]}] 에 등록된 문의글 입니다.</QuestionDate>
                             <QuestionTitle>
                                 Q) {item.content}        
                             </QuestionTitle>
@@ -93,7 +99,7 @@ const OrderList = ({navigation, route}) => {
         </>
         }
         {auth && 
-            <QuestionButton onPress={() => {navigation.navigate("QnaAdd", {productId: route.params.productId})}}>
+            <QuestionButton onPress={() => {navigation.navigate("QnaAdd", {productId: route.params.productId, callback: callback})}}>
                 상품 문의하기
             </QuestionButton>
         }
@@ -114,6 +120,11 @@ const QuestionBox = styled.View`
     margin-bottom: 10px;
     padding: 20px;
     background-color: #fefefe;
+`
+const QuestionDate = styled(Text)`
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 10px;
 `
 const QuestionTitle = styled(Text)`
     font-size: 16px;

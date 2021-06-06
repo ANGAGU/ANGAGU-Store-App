@@ -37,9 +37,10 @@ const OrderList = ({navigation, route}) => {
       if (result == true){
         const Cart = await getCart();
         setCart(Cart.data);
+        console.log(Cart);
       }
         
-      console.log(result)
+      
       setIsLoading(true);
     }
     Loading();
@@ -53,10 +54,10 @@ const OrderList = ({navigation, route}) => {
         </LogoWrapper>
         {auth ? 
           cart.length == 0 ?
-          <>
+          <LoginWrapper>
             <LoginInfo>장바구니에 상품이 없습니다.</LoginInfo>
             <LoginButton textColor={"#fefefe"} onPress={() => {navigation.navigate("ProductList")}}>상품 보러 가기</LoginButton>
-          </>
+          </LoginWrapper>
           :
           <CartWrapper>
             {cart.map((item) => {
@@ -92,6 +93,7 @@ const ProductButton = styled(ButtonWithText)`
   border: 1px solid #35BCD6;
   padding: 10px 20px;
 `
+
 const LogoWrapper = styled.View`
   height: 60px;
   justify-content: center;

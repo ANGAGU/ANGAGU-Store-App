@@ -139,7 +139,7 @@ const ProductDetail = ({ navigation, route }) => {
                     }
 
                 </ProductDescriptionWrapper>
-                <ReviewWrapper onPress={()=> {navigation.navigate("Review")}} imageMode={true} textColor={'#000000'}>
+                <ReviewWrapper onPress={()=> {navigation.navigate("Review", {review: productInfo.reviews})}} imageMode={true} textColor={'#000000'}>
                     <TitleWrapper>
                         <Title >{`구매 후기`}</Title>
                         <SubTitle>{`(${productInfo.reviews.length})`}</SubTitle>

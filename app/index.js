@@ -26,6 +26,7 @@ import SignIn from './page/account/SignIn.js';
 import SignUp from './page/account/SignUp.js';
 import SignUpDetail from './page/account/SignUpDetail.js';
 import AccountFind from './page/account/AccountFind.js';
+import AccountEdit from './page/account/AccountEdit.js';
 
 // product
 import ProductList from './page/product/ProductList.js';
@@ -37,9 +38,11 @@ import ARView from './page/product/ARView.js';
 // mypage
 import Mypage from './page/mypage/Mypage.js';
 import Review from './page/mypage/Review.js';
+import ReviewAdd from './page/mypage/ReviewAdd.js';
 import OrderList from './page/mypage/OrderList.js';
 import Cart from './page/mypage/Cart';
 import Qna from './page/mypage/Qna';
+import QnaAdd from './page/mypage/QnaAdd';
 
 
 const Stack = createStackNavigator();
@@ -69,6 +72,7 @@ const Page = () => {
                         <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }}/>
                         <Stack.Screen name="SignUpDetail" component={SignUpDetail} options={{ headerShown: false }}/>
                         <Stack.Screen name="AccountFind" component={AccountFind} options={{ headerShown: false }}/>
+                        <Stack.Screen name="AccountEdit" component={AccountEdit} options={{ headerShown: false }}/>
                         <Stack.Screen name="AddressList" component={AddressList} options={{ headerShown: false }}/>
                         <Stack.Screen name="AddressWrite" component={AddressWrite} options={{ headerShown: false }}/>
                         <Stack.Screen name="AddressSearch" component={AddressSearch} options={{ headerShown: false }}/>
@@ -77,11 +81,13 @@ const Page = () => {
                         <Stack.Screen name="ProductPayment" component={ProductPayment} options={{ headerShown: false }}/>
                         <Stack.Screen name="Payment" component={Payment} options={{ headerShown: false }}/>
                         <Stack.Screen name="Review" component={Review} options={{ headerShown: false }}/>
+                        <Stack.Screen name="ReviewAdd" component={ReviewAdd} options={{ headerShown: false }}/>
                         <Stack.Screen name="Main" component={Main} options={{ headerShown: false }}/>
                         <Stack.Screen name="Mypage" component={Mypage} options={{ headerShown: false }}/>
                         <Stack.Screen name="OrderList" component={OrderList} options={{ headerShown: false }}/>
                         <Stack.Screen name="Cart" component={Cart} options={{ headerShown: false }}/>
                         <Stack.Screen name="Qna" component={Qna} options={{ headerShown: false }}/>
+                        <Stack.Screen name="QnaAdd" component={QnaAdd} options={{ headerShown: false }}/>
                         <Stack.Screen name="ARView" component={ARView} options={{ headerShown: false }}/>
                         
                     </Stack.Navigator>

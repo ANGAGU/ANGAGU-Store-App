@@ -10,9 +10,11 @@ const InputWithText = ({
     errorLabel="",
     placeholder="",
     enable=true,
+    multiline=false,
     secureTextEntry=null,
     keyboardType="default",
     onBlur=null,
+    inputStyle,
 }) => {
     
     return (
@@ -26,7 +28,9 @@ const InputWithText = ({
 
             {/* Input */}
             <InputText 
+                style={inputStyle}
                 value={value}
+                multiline={multiline}
                 onChangeText={enable && onChangeText}
                 placeholder={placeholder}
                 secureTextEntry={secureTextEntry}

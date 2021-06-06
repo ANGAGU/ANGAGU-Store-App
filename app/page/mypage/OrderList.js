@@ -60,6 +60,18 @@ const OrderList = ({navigation, route}) => {
     }
     Loading();
   },[])
+  const review = (id) => {
+
+    navigation.navigate("ReviewAdd", {orderId: id, type: "add", callback: reviewCallback})
+  }
+  const reviewEdit = (id) => {
+    navigation.navigate("ReviewAdd", {orderId: id, type: "edit", callback: reviewCallback})
+  }
+  const reviewCallback = async () => {
+    const result = await getOrder();
+    setOrderList(result.data.reverse());
+    setIsLoading(true);
+  }
   return (
     <Container>
       {/* <Header navigation={navigation} title="주문 목록"/> */}
@@ -109,7 +121,7 @@ const OrderList = ({navigation, route}) => {
                   </OrderInfo>
                 </OrderContainer>
                 <OrderButtonWrapper>
-                  <ReviewButton textColor="#010101">{order.review_id == null ? "구매 후기 작성" : "구매 후기 수정"}</ReviewButton>
+                  <ReviewButton onPress={() => order.review_id == null ? review(order.id) : reviewEdit(order.id)} textColor="#010101">{order.review_id == null ? "구매 후기 작성" : "구매 후기 수정"}</ReviewButton>
                 </OrderButtonWrapper>
               </OrderItem>
             );
