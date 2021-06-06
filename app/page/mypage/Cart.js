@@ -52,16 +52,24 @@ const OrderList = ({navigation, route}) => {
             <LogoText>Angagu</LogoText>
         </LogoWrapper>
         {auth ? 
-        <OrderWrapper>
-          {cart.length == 0 ?
+          cart.length == 0 ?
           <>
             <LoginInfo>장바구니에 상품이 없습니다.</LoginInfo>
             <LoginButton textColor={"#fefefe"} onPress={() => {navigation.navigate("ProductList")}}>상품 보러 가기</LoginButton>
           </>
           :
-          <></>
-          }
-        </OrderWrapper>
+          <CartWrapper>
+            {cart.map((item) => {
+              return (
+                <CartItem>
+                  <CartRow>
+                    <CartTitle>상품 명</CartTitle>
+                    <CartData>{item.name}</CartData>
+                  </CartRow>
+                </CartItem>
+              )
+            })}
+          </CartWrapper>
         :
         <LoginWrapper>
           <LoginInfo>로그인 후 이용하실 수 있는 페이지입니다.</LoginInfo>
@@ -99,20 +107,32 @@ const LogoText = styled(Text)`
   font-weight: 800;
   font-family: 'GmarketSansMedium';
 `;
-const OrderWrapper = styled.View`
+const CartWrapper = styled.ScrollView`
   flex: 1;
   justify-content: center;
   align-items: center;
 `;
+const CartItem = styled.View`
+
+`
+const CartRow = styled.View`
+  flex-direction: row;
+`
+const CartTitle = styled(Text)`
+  font-size: 15px;
+  color: #E7E7E7;
+`
+const CartData = styled(Text)`
+  font-size: 16px;
+`
 const LoginWrapper  = styled.View`
-    flex: 1;
-    justify-content: center;
-    align-items: center;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
 `
 const LoginButton = styled(ButtonWithText)`
-    background-color: #35BCD6;
-    width: 50%;
-    
+  background-color: #35BCD6;
+  width: 50%;
 `
 const LoginInfo = styled(Text)`
     font-size: 12px;

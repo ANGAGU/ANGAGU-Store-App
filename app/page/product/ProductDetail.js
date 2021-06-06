@@ -27,6 +27,7 @@ import ep1 from '../../asset/img/example_product_1.webp';
 import { View, Alert, Dimensions, Image, StyleSheet, Slider, Modal, Button } from 'react-native';
 import { WebView } from 'react-native-webview';
 import AutoHeightWebView from 'react-native-autoheight-webview'
+import { getQna } from '../../api/product/qna';
  
 // react HTML
 const ProductDetail = ({ navigation, route }) => {
@@ -35,10 +36,14 @@ const ProductDetail = ({ navigation, route }) => {
     const [imgHeight, setImgHeight] = useState(0);
     const [token, setToken] = useState("");
     const [modal, setModal] = useState(false);
+    const [qnaCount, setQnaCount]= useState(0);
+    
     useEffect(() => {
         const init = async () =>{
             const productObject = await getProduct(route.params.productId);
             if (productObject.status == "success") {
+                const qna = await getQna(route.params.productId);
+                setQnaCount(qna.data.length);
                 await setProductInfo(productObject.data);
                 setToken(await AsyncStorage.getItem('token'));
                 setLoading(true);
@@ -137,14 +142,14 @@ const ProductDetail = ({ navigation, route }) => {
                 <ReviewWrapper onPress={()=> {navigation.navigate("Review")}} imageMode={true} textColor={'#000000'}>
                     <TitleWrapper>
                         <Title >{`구매 후기`}</Title>
-                        <SubTitle>{`(20)`}</SubTitle>
+                        <SubTitle>{`(${productInfo.reviews.length})`}</SubTitle>
                     </TitleWrapper>
                     <Title>{'>'}</Title>
                 </ReviewWrapper>
-                <QnaWrapper imageMode={true} textColor={'#000000'}>
+                <QnaWrapper onPress={()=> {navigation.navigate("Qna",{productId: route.params.productId})}} imageMode={true} textColor={'#000000'}>
                     <TitleWrapper>
                         <Title >{`상품 문의`}</Title>
-                        <SubTitle>{`(1)`}</SubTitle>
+                        <SubTitle>{`(${qnaCount})`}</SubTitle>
                     </TitleWrapper>
                     <Title>{'>'}</Title>
                 </QnaWrapper>

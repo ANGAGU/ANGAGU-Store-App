@@ -39,7 +39,7 @@ const Footer = ({navigation = "", route,  title = ""}) => {
             setToken(t);
             setIsLoading(true);
         }
-        console.log(navigation)
+        
         initFunction();
     })
     

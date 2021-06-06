@@ -39,6 +39,7 @@ import Mypage from './page/mypage/Mypage.js';
 import Review from './page/mypage/Review.js';
 import OrderList from './page/mypage/OrderList.js';
 import Cart from './page/mypage/Cart';
+import Qna from './page/mypage/Qna';
 
 
 const Stack = createStackNavigator();
@@ -80,6 +81,7 @@ const Page = () => {
                         <Stack.Screen name="Mypage" component={Mypage} options={{ headerShown: false }}/>
                         <Stack.Screen name="OrderList" component={OrderList} options={{ headerShown: false }}/>
                         <Stack.Screen name="Cart" component={Cart} options={{ headerShown: false }}/>
+                        <Stack.Screen name="Qna" component={Qna} options={{ headerShown: false }}/>
                         <Stack.Screen name="ARView" component={ARView} options={{ headerShown: false }}/>
                         
                     </Stack.Navigator>

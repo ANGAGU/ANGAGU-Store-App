@@ -50,13 +50,7 @@ const OrderList = ({navigation, route}) => {
   const [auth, setAuth] = useState(false);
   useEffect(() => {
     const Loading = async () => {
-      const temp = await Auth();
-      setAuth(temp);
-      if (temp == true) {
-        // const result = await getOrder();
-        // setOrderList(result.data.reverse());
-        setIsLoading(true);
-      }
+      
     }
     Loading();
   },[])
@@ -65,10 +59,14 @@ const OrderList = ({navigation, route}) => {
         <Header navigation={navigation} title="상품 리뷰"/>
         {isLoading ? 
             <>
+            
             </>
         :
-            <>
-            </>
+            <Announce>
+              <AnnounceText>
+                등록 된 상품 리뷰가 없습니다.
+              </AnnounceText>
+            </Announce>
         }
 
         {/* <Footer navigation={navigation} route={route}/> */}
@@ -82,3 +80,13 @@ const Container = styled.View`
   background-color: #eeeeee;
   flex: 1;
 `;
+const Announce = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`
+const AnnounceText = styled(Text)`
+  font-size: 12px;
+  font-family: 'GmarketSansMedium';
+  margin-bottom: 20px;
+`
