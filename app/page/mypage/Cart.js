@@ -46,19 +46,14 @@ const OrderList = ({navigation, route}) => {
         </LogoWrapper>
         {auth ? 
         <OrderWrapper>
-            <>
-              <LoginInfo>장바구니에 상품이 없습니다.</LoginInfo>
-              <LoginButton textColor={"#fefefe"} onPress={() => {navigation.navigate("ProductList")}}>상품 보러 가기</LoginButton>
-            </>
-          
-          
-          
+          <LoginInfo>장바구니에 상품이 없습니다.</LoginInfo>
+          <LoginButton textColor={"#fefefe"} onPress={() => {navigation.navigate("ProductList")}}>상품 보러 가기</LoginButton>
         </OrderWrapper>
         :
-            <LoginWrapper>
-              <LoginInfo>로그인 후 이용하실 수 있는 페이지입니다.</LoginInfo>
-              <LoginButton textColor={"#fefefe"} onPress={() => {navigation.navigate("SignIn")}} >로그인 </LoginButton>
-            </LoginWrapper>
+        <LoginWrapper>
+          <LoginInfo>로그인 후 이용하실 수 있는 페이지입니다.</LoginInfo>
+          <LoginButton textColor={"#fefefe"} onPress={() => {navigation.navigate("SignIn")}} >로그인 </LoginButton>
+        </LoginWrapper>
         }
         <Footer navigation={navigation} route={route}/>
     </Container>
@@ -77,19 +72,19 @@ const ProductButton = styled(ButtonWithText)`
   padding: 10px 20px;
 `
 const LogoWrapper = styled.View`
-    height: 60px;
-    justify-content: center;
-    align-items: center;
-    border-bottom-width: 1px;
-    border-bottom-color: #E7E7E7;
-    background-color: #fefefe;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  border-bottom-width: 1px;
+  border-bottom-color: #E7E7E7;
+  background-color: #fefefe;
 `;
 const LogoText = styled(Text)`
-    margin-top: 5px;
-    font-size: 22px;
-    color: #35bcd6;
-    font-weight: 800;
-    font-family: 'GmarketSansMedium';
+  margin-top: 5px;
+  font-size: 22px;
+  color: #35bcd6;
+  font-weight: 800;
+  font-family: 'GmarketSansMedium';
 `;
 const OrderWrapper = styled.View`
   flex: 1;

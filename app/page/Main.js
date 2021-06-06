@@ -94,8 +94,6 @@ const OrderList = ({navigation, route }) => {
                                             </MenuProductPrice>
                                         </MenuProductWrapper>
                                     )
-                                    
-                                    // return <Text key={inx}>Hi</Text>
                                 })}
                             </MenuList>
                         </MenuWrapper>
@@ -121,8 +119,6 @@ const OrderList = ({navigation, route }) => {
                                             </MenuProductPrice>
                                         </MenuProductWrapper>
                                     )
-                                    
-                                    // return <Text key={inx}>Hi</Text>
                                 })}
                             </MenuList>
                         </MenuWrapper>

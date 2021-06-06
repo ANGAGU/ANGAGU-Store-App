@@ -10,7 +10,6 @@ import { setOrder } from '../../api/order/order';
 export function Payment({ navigation, route }) {
   /* [필수입력] 결제 종료 후, 라우터를 변경하고 결과를 전달합니다. */
   const callback = async(response) => {
-    console.log(response);
     if (response.imp_success == "true"){
       await setOrder(route.params.productId, route.params.count, response.imp_uid, response.merchant_uid, route.params.addressId, price, deliveryCharge);
       navigation.navigate("ProductDetail", {productId: route.params.productId})

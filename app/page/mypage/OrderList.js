@@ -15,7 +15,7 @@ import ep1 from '../../asset/img/example_product_1.webp'
 import ep2 from '../../asset/img/example_product_2.webp'
 
 // local API
-import { BACKEND_API_URL, BACKEND_ASSET_URL } from '../../api/constants';
+import { BACKEND_ASSET_URL } from '../../api/constants';
 
 // local Components
 import Header from '../../component/organization/Header';

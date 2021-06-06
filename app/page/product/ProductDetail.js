@@ -7,7 +7,7 @@ import Stars from 'react-native-stars';
 import CounterInput from "react-native-counter-input";
 import FastImage from 'react-native-fast-image'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-
+import LinearGradient from 'react-native-linear-gradient';
 
 // local import 
 import {screenWidth} from '../../util/dimension';
@@ -24,14 +24,14 @@ import {getProduct} from "../../api/product/product";
 import ep1 from '../../asset/img/example_product_1.webp';
 // import ep4 from '../asset/img/example_product_4.jpeg';
 // import epd1 from '../asset/img/example_product_description.jpeg'
-import { View, Alert, Dimensions, Image, StyleSheet, Slider, Modal } from 'react-native';
+import { View, Alert, Dimensions, Image, StyleSheet, Slider, Modal, Button } from 'react-native';
 import { WebView } from 'react-native-webview';
 import AutoHeightWebView from 'react-native-autoheight-webview'
  
 // react HTML
 const ProductDetail = ({ navigation, route }) => {
     const SliderWidth = Dimensions.get('screen').width;
-
+    const [showDetail, setShowDetail] = useState(false);
     const [imgHeight, setImgHeight] = useState(0);
     const [token, setToken] = useState("");
     const [modal, setModal] = useState(false);
@@ -77,12 +77,13 @@ const ProductDetail = ({ navigation, route }) => {
             <Header navigation={navigation} title='상품 정보'/>
             {loading &&
             <ProductWrapper>
+                
                 <ProductImage source={{uri: BACKEND_ASSET_URL + '/' + productInfo.thumb_url}}/>
                 
                 <ProductInfoWrapper>
                     <ProductName>{productInfo.name}</ProductName>
                     <ProductPrice>￦ {productInfo.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</ProductPrice>
-                    <ReviewWrapper>
+                    <StarWrapper>
                     
                         {/* <ProductBrand>
                             {productInfo.brand}
@@ -99,22 +100,53 @@ const ProductDetail = ({ navigation, route }) => {
                             배송비 {productInfo.delivery_charge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} 원
                         </ProductDeliveryCharge>
                         
-                    </ReviewWrapper>
+                    </StarWrapper>
                 </ProductInfoWrapper>
                 
-                <ProductDescriptionWrapper>
+                <ProductDescriptionWrapper style={showDetail ? null: {height: 800}}>
+
                     <AutoHeightWebView
                         source={{
                             // uri: BACKEND_ASSET_URL + '/' + productInfo.description_url,
                             html: `<img width=${SliderWidth}px src="${BACKEND_ASSET_URL}/${productInfo.description_url}"/>`
                         }}
                         style={{
-                            marginTop: 20,
                             width: SliderWidth
-                            
                         }} 
                     />
+                    {/* gradient for showing cut */}
+                    {!showDetail && 
+                    <>
+                        <LinearGradient
+                            colors={['rgba(255,255,255,0)', '#979797']}
+                            start={{x:0, y:0}}
+                            end={{x:0, y:1}}
+                            style={{ position: 'absolute', height: 200, bottom: 0, width: SliderWidth}}
+                        />
+                        <ShowMoreButton 
+                            buttonColor="#35BCD6"
+                            textColor="#ffffff"
+                            onPress={() => {setShowDetail(true)}}
+                        >
+                            상품정보 더보기 ▾
+                        </ShowMoreButton>
+                    </>
+                    }
+
                 </ProductDescriptionWrapper>
+                <ReviewWrapper>
+                    <Title>{`구매 후기 (20)`}</Title>
+                    <SubTitle>{'>'}</SubTitle>
+                </ReviewWrapper>
+                <QnaWrapper>
+                    <Title>{`상품 문의 (0)`}</Title>
+                    <SubTitle>{'>'}</SubTitle>
+                </QnaWrapper>
+                <Announce>
+                    <AnnounceText>
+                        개별 판매자가 등록한 마켓플레이스(오픈마켓) 상품에 대한 광고, 상품주문, 배송 및 환불의 의무와 책임은 각 판매자가 부담하고, 이에 대해서 안가구는 통신판매중개자로서 통신판매의 당사자가 아니므로 일체 책임을 지지 않습니다.
+                    </AnnounceText>
+                </Announce>
             </ProductWrapper>    
             }
             <PurchaseWrapper>
@@ -166,14 +198,16 @@ const Container = styled.View`
     flex: 1;
 `;
 const ProductWrapper = styled.ScrollView`
+    background-color: #E7E7E7;
     flex: 1;
     flex-direction: column;
 `
 const ProductInfoWrapper = styled.View`
+    background-color: #FEFEFE;
     flex: 1;
-    margin: 20px;
-    width: ${(screenWidth - 40)}px;
+    padding: 20px;
     flex-direction: column;
+    margin-bottom: 10px;
 `
 const ProductImage = styled.Image`
     width: ${(screenWidth)}px;
@@ -204,15 +238,42 @@ const ProductDeliveryCharge = styled(Text)`
     font-size: 12px;
 `
 const ProductDescriptionWrapper = styled.View`
-    border-top-width: 8px;
-    border-top-color: #E9E9E9;
-    
+    margin-bottom: 10px;
 `
 const ReviewWrapper = styled.View`
+    margin-bottom: 10px;
+    padding: 20px;   
+    background-color: #FEFEFE;
+    justify-content: space-between;
+    flex-direction: row;
+`
+const QnaWrapper = styled.View`
+    padding: 20px;
+    background-color: #FEFEFE;
+    justify-content: space-between;
+    flex-direction: row;
+`
+const Announce = styled.View`
+    padding: 20px;
+`
+const AnnounceText = styled(Text)`
+    color: #888888;
+    text-align: justify;
+    font-size: 11px;
+`
+const Title = styled(Text)`
+    font-size: 16px;
+`
+const SubTitle = styled(Text)`
+    font-size: 15px;
+    color: #A7A7A7;
+`
+const StarWrapper = styled.View`
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
 `
+
 const PurchaseButton = styled(ButtonWithText)`
     height: 48px;
     width: 49%;
@@ -265,6 +326,10 @@ const CounterPrice = styled(Text)`
 const CounterDelivery = styled(Text)`
     font-size: 12px;
     color: #777777;
+`
+const ShowMoreButton = styled(ButtonWithText)`
+    
+    margin: 10px 10px;
 `
 export default ProductDetail;
 

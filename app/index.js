@@ -36,8 +36,9 @@ import ARView from './page/product/ARView.js';
 
 // mypage
 import Mypage from './page/mypage/Mypage.js';
+import Review from './page/mypage/Review.js';
 import OrderList from './page/mypage/OrderList.js';
-import Cart from './page/mypage/Cart'
+import Cart from './page/mypage/Cart';
 
 
 const Stack = createStackNavigator();
@@ -74,6 +75,7 @@ const Page = () => {
                         <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ headerShown: false }}/>
                         <Stack.Screen name="ProductPayment" component={ProductPayment} options={{ headerShown: false }}/>
                         <Stack.Screen name="Payment" component={Payment} options={{ headerShown: false }}/>
+                        <Stack.Screen name="Review" component={Review} options={{ headerShown: false }}/>
                         <Stack.Screen name="Main" component={Main} options={{ headerShown: false }}/>
                         <Stack.Screen name="Mypage" component={Mypage} options={{ headerShown: false }}/>
                         <Stack.Screen name="OrderList" component={OrderList} options={{ headerShown: false }}/>
