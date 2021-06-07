@@ -27,6 +27,7 @@
 2. Screenshots
 3. Setup
 4. Tech
+5. Design Pattern
 
 <br>
 
@@ -158,4 +159,17 @@ Runs the app in the ios environment.\
 |Axios|Version ^0.21.1|
 
 
+## 5. Design Pattern
+---
+<br>
 
+|path|description|
+|------|---|
+|/unity/| unity project that used in AR|
+|/app/index/| router for all files|
+|/app/api/| use to connect with backend (using axios)|
+|/app/asset/| files like icons and images|
+|/app/component/| components that use for common like text, input, button|
+|/app/pages/| view that people actually access|
+|/app/util/|common functions that use for get format or screen size|
+|/\_\_tests\_\_/|react native ui render test files|
