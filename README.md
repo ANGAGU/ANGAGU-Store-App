@@ -172,11 +172,11 @@ Runs the app in the ios environment.\
 
 |path|description|
 |------|---|
-|/unity/| unity project that used in AR|
-|/app/index/| router for all files|
-|/app/api/| use to connect with backend (using axios)|
-|/app/asset/| files like icons and images|
-|/app/component/| components that use for common like text, input, button|
-|/app/pages/| view that people actually access|
-|/app/util/|common functions that use for get format or screen size|
+|/unity/| AR 기능에 사용되는 Unity Project를 보관하는 경로입니다.|
+|/app/index/| Router 기능을 담당하여, 화면을 연결해줍니다.|
+|/app/api/| Axios 통신을 담당하여, Backend와 연결해줍니다.|
+|/app/asset/| file 저장을 담당하여, image와 icon을 보관합니다.|
+|/app/component/| component를 담당하여, 공용으로 사용되는 component를 작성합니다. (Header, Footer, Button, Text, Input)|
+|/app/pages/| view page를 담당하여, 사용자에게 보여지는 화면들을 작성합니다.|
+|/app/util/| common function을 담당하여, 화면 크기와 format과 같이 공용으로 사용되는 함수를 관리합니다.|
 |/\_\_tests\_\_/|react native ui render test files|
