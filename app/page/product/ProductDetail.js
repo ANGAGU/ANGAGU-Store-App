@@ -40,6 +40,17 @@ const ProductDetail = ({ navigation, route }) => {
     const [qnaCount, setQnaCount]= useState(0);
     const [toggle, setToggle] = useState(false);
     const [toggleId, setToggleId] = useState(0);
+    const refreshCart = async () => {
+        const result = await getCart();
+            result.data.map(
+                (item) => {
+                    if (item.product_id == route.params.productId){
+                        setToggle(true);
+                        setToggleId(item.id);
+                    }
+                }
+            )
+    }
     useEffect(() => {
         const init = async () =>{
             const productObject = await getProduct(route.params.productId);
@@ -47,16 +58,19 @@ const ProductDetail = ({ navigation, route }) => {
                 const qna = await getQna(route.params.productId);
                 setQnaCount(qna.data.length);
                 await setProductInfo(productObject.data);
-                setToken(await AsyncStorage.getItem('token'));
-                const result = await getCart();
-                result.data.map(
-                    (item) => {
-                        if (item.product_id == route.params.productId){
-                            setToggle(true);
-                            setToggleId(item.id);
+                const token = await AsyncStorage.getItem('token')
+                setToken(token);
+                if (token != null && token != ""){
+                    const result = await getCart();
+                    result.data.map(
+                        (item) => {
+                            if (item.product_id == route.params.productId){
+                                setToggle(true);
+                                setToggleId(item.id);
+                            }
                         }
-                    }
-                )
+                    )
+                }
                 setLoading(true);
             }
             else
@@ -100,10 +114,12 @@ const ProductDetail = ({ navigation, route }) => {
             } else {
                 const result = await addCart(route.params.productId);
                 
-                if (result.status == "success")
+                if (result.status == "success"){
                     Alert.alert("장바구니 추가", "장바구니에 추가되었습니다.")
+                }
             }
-            setToggle(!toggle);
+            setToggle(false);
+            refreshCart();
         }
     }
     // const carousel = useRef(null);
