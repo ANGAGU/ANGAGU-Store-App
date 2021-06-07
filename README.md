@@ -38,11 +38,9 @@
 
 - 회원가입/로그인
 - 상품검색
-- 상품결제
-- 주문내역
+- 상품결제/장바구니/주문내역
 - 구매후기
 - 상품문의
-- 장바구니
 - 배송지관리
 - 회원정보관리
 
@@ -58,24 +56,44 @@
   
   - 회원가입/로그인
     <br>
-    <img style="margin: 20px" alt="로그인" width="20%" src="https://user-images.githubusercontent.com/56831352/120944353-fa9f3580-c76e-11eb-9493-5b2aa80ace0e.jpeg"/>
-    <img style="margin: 20px" alt="로그인" width="20%" src="https://user-images.githubusercontent.com/56831352/120944354-fd018f80-c76e-11eb-9672-4f429bb71f16.jpeg"/>
-    <img style="margin: 20px" alt="로그인" width="20%" src="https://user-images.githubusercontent.com/56831352/120944355-fe32bc80-c76e-11eb-829b-5efe0e2345cf.jpeg"/>
-    <img style="margin: 20px" alt="로그인" width="20%" src="https://user-images.githubusercontent.com/56831352/120944356-fecb5300-c76e-11eb-8831-7d19916d1c4b.jpeg"/>
-    <img style="margin: 20px" alt="로그인" width="20%" src="https://user-images.githubusercontent.com/56831352/120944359-ff63e980-c76e-11eb-9833-43b382e78d10.jpeg"/>
-    <img style="margin: 20px" alt="로그인" width="20%" src="https://user-images.githubusercontent.com/56831352/120944360-fffc8000-c76e-11eb-9170-bcace39bd1cd.jpeg"/>
-    <img style="margin: 20px" alt="로그인" width="20%" src="https://user-images.githubusercontent.com/56831352/120944361-00951680-c76f-11eb-908b-5ffaae64ace1.jpeg"/>
-    <img style="margin: 20px" alt="로그인" width="20%" src="https://user-images.githubusercontent.com/56831352/120944362-00951680-c76f-11eb-98bc-a48b87d4155b.jpeg"/>
+    <img alt="로그인" width="100%" src="https://user-images.githubusercontent.com/56831352/120950008-d2b8cd80-c780-11eb-8871-befd27db50ec.PNG"/>
+    <img alt="로그인" width="100%" src="https://user-images.githubusercontent.com/56831352/120950014-d3e9fa80-c780-11eb-822c-f20108f63655.PNG"/>
+    <img alt="로그인" width="100%" src="https://user-images.githubusercontent.com/56831352/120950015-d3e9fa80-c780-11eb-843f-33236f6caa34.PNG"/>
     <br>
     <br>
   - 상품검색
-  - 상품결제
-  - 주문내역
+    <br>
+    <img alt="상품검색" width="100%" src="https://user-images.githubusercontent.com/56831352/120950017-d4829100-c780-11eb-80a7-e207bfc89a6c.PNG"/>
+    <img alt="상품검색" width="100%" src="https://user-images.githubusercontent.com/56831352/120950021-d51b2780-c780-11eb-9c5f-e518d2b3d418.PNG"/>
+    <br>
+    <br>
+  - 상품결제/장바구니/주문내역
+    <br>
+    <img alt="상품결제" width="100%" src="https://user-images.githubusercontent.com/56831352/120950022-d51b2780-c780-11eb-876b-f69daf7b93a8.PNG"/>
+    <img alt="상품결제" width="100%" src="https://user-images.githubusercontent.com/56831352/120950024-d5b3be00-c780-11eb-9c5d-b99be3ebf22c.PNG"/>
+    <br>
+    <br>
   - 구매후기
+    <br>
+    <img alt="구매후기" width="100%" src="https://user-images.githubusercontent.com/56831352/120950025-d5b3be00-c780-11eb-802e-41e0c65a4747.PNG"/>
+    <br>
+    <br>
   - 상품문의
-  - 장바구니
+    <br>
+    <img alt="구매후기" width="100%" src="https://user-images.githubusercontent.com/56831352/120950026-d64c5480-c780-11eb-9a9b-a44dc3aec840.PNG"/>
+    <br>
+    <br>
   - 배송지관리
+    <br>
+    <img alt="구매후기" width="100%" src="https://user-images.githubusercontent.com/56831352/120950028-d64c5480-c780-11eb-8463-909ef77a21fb.PNG"/>
+    <img alt="구매후기" width="100%" src="https://user-images.githubusercontent.com/56831352/120950032-d6e4eb00-c780-11eb-8a1a-ecd5ce670f4e.PNG"/>
+    <br>
+    <br>
   - 회원정보관리
+    <br>
+    <img alt="구매후기" width="100%" src="https://user-images.githubusercontent.com/56831352/120950033-d6e4eb00-c780-11eb-9bbb-a7af2de37833.PNG"/>
+    <br>
+    <br>
 
 </p>
 
