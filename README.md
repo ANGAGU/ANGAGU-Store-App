@@ -58,14 +58,14 @@
   
   - 회원가입/로그인
     <br>
-    <img alt="로그인" width="25%" src="https://user-images.githubusercontent.com/56831352/120944353-fa9f3580-c76e-11eb-9493-5b2aa80ace0e.jpeg"/>
-    <img alt="로그인" width="25%" src="https://user-images.githubusercontent.com/56831352/120944354-fd018f80-c76e-11eb-9672-4f429bb71f16.jpeg"/>
-    <img alt="로그인" width="25%" src="https://user-images.githubusercontent.com/56831352/120944355-fe32bc80-c76e-11eb-829b-5efe0e2345cf.jpeg"/>
-    <img alt="로그인" width="25%" src="https://user-images.githubusercontent.com/56831352/120944356-fecb5300-c76e-11eb-8831-7d19916d1c4b.jpeg"/>
-    <img alt="로그인" width="25%" src="https://user-images.githubusercontent.com/56831352/120944359-ff63e980-c76e-11eb-9833-43b382e78d10.jpeg"/>
-    <img alt="로그인" width="25%" src="https://user-images.githubusercontent.com/56831352/120944360-fffc8000-c76e-11eb-9170-bcace39bd1cd.jpeg"/>
-    <img alt="로그인" width="25%" src="https://user-images.githubusercontent.com/56831352/120944361-00951680-c76f-11eb-908b-5ffaae64ace1.jpeg"/>
-    <img alt="로그인" width="25%" src="https://user-images.githubusercontent.com/56831352/120944362-00951680-c76f-11eb-98bc-a48b87d4155b.jpeg"/>
+    <img alt="로그인" width="20%" src="https://user-images.githubusercontent.com/56831352/120944353-fa9f3580-c76e-11eb-9493-5b2aa80ace0e.jpeg"/>
+    <img alt="로그인" width="20%" src="https://user-images.githubusercontent.com/56831352/120944354-fd018f80-c76e-11eb-9672-4f429bb71f16.jpeg"/>
+    <img alt="로그인" width="20%" src="https://user-images.githubusercontent.com/56831352/120944355-fe32bc80-c76e-11eb-829b-5efe0e2345cf.jpeg"/>
+    <img alt="로그인" width="20%" src="https://user-images.githubusercontent.com/56831352/120944356-fecb5300-c76e-11eb-8831-7d19916d1c4b.jpeg"/>
+    <img alt="로그인" width="20%" src="https://user-images.githubusercontent.com/56831352/120944359-ff63e980-c76e-11eb-9833-43b382e78d10.jpeg"/>
+    <img alt="로그인" width="20%" src="https://user-images.githubusercontent.com/56831352/120944360-fffc8000-c76e-11eb-9170-bcace39bd1cd.jpeg"/>
+    <img alt="로그인" width="20%" src="https://user-images.githubusercontent.com/56831352/120944361-00951680-c76f-11eb-908b-5ffaae64ace1.jpeg"/>
+    <img alt="로그인" width="20%" src="https://user-images.githubusercontent.com/56831352/120944362-00951680-c76f-11eb-98bc-a48b87d4155b.jpeg"/>
     <br>
     <br>
   - 상품검색
