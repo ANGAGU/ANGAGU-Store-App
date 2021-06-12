@@ -28,9 +28,12 @@ const ProductList = ({ navigation, route }) => {
     const [loading, setLoading] = useState(false);
     const [query, setQuery] = useState("")
     const [filter, setFilter] = useState("poplular")
-    const ProductClick = (productId) => {
+    const ProductClick = (productId, modelUrl, modelName) => {
+        
         navigation.navigate('ProductDetail', {
             productId,
+            modelUrl,
+            modelName
         });
     }
     useEffect(() => {
@@ -85,7 +88,9 @@ const ProductList = ({ navigation, route }) => {
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={({ item }) => (
                     item.id != -1 ?
-                    <ProductBox onPress={() => ProductClick(item.id)}>
+                    <ProductBox onPress={() => {
+                        console.log(item);
+                        ProductClick(item.id, item["3d_model_url"], item["3d_model_name"] + " " + item["width"] + " " + item["depth"] + " " + item["height"])}}>
                         {/* <ProductImage source={require("https://angagu.s3.ap-northeast-2.amazonaws.com/" + item.image)}/> */}
                         {/* <ProductImage source={{uri: "https://angagu.s3.ap-northeast-2.amazonaws.com/product/desc/aUj2027nQa.png"}}/> */}
                         <ProductImage source={{uri: BACKEND_ASSET_URL + '/' + item.thumb_url}}/>

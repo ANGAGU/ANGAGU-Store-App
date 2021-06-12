@@ -6,6 +6,7 @@ TagManager:
   tags:
   - OriginModel
   - Model
+  - MessageTag
   layers:
   - Default
   - TransparentFX

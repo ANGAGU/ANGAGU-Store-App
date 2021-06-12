@@ -64,11 +64,13 @@ public class ARPlaceOnPlane : MonoBehaviour
         humanGirl.SetActive(false);
         lightPanel.SetActive(false);
         mode = 1;
+        UnityMessageManager.Instance.SendMessageToRN("click");
     }
     void Update()
     {
         sliderValue = slider.value;
         if(placeObject) rotateObject();
+        
         log.text = mode.ToString();
         
         if (humanVis)

@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MessageHandler
 {
@@ -101,7 +102,7 @@ public class UnityMessageManager : MonoBehaviour
     {
         if (Application.platform == RuntimePlatform.Android)
         {
-            using (AndroidJavaClass jc = new AndroidJavaClass("com.reactnative.unity.view.UnityUtils"))
+            using (AndroidJavaClass jc = new AndroidJavaClass("no.asmadsen.unity.view.UnityUtils"))
             {
                 jc.CallStatic("onUnityMessage", message);
             }
@@ -109,6 +110,7 @@ public class UnityMessageManager : MonoBehaviour
         else if (Application.platform == RuntimePlatform.IPhonePlayer)
         {
 #if UNITY_IOS && !UNITY_EDITOR
+            Debug.Log("SendMessageToRN: " + message);
             onUnityMessage(message);
 #endif
         }
@@ -134,6 +136,29 @@ public class UnityMessageManager : MonoBehaviour
 
     void onMessage(string message)
     {
+        // GameObject placeObject = GameObject.FindWithTag("MessageURL");
+        //  = message;
+        if (message == "quit")
+        {
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().name) ;
+            Caching.CleanCache();
+             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+            // MessageURL.url = "";
+            // AssetBundleLoader.loading = false;
+        }
+        else{
+
+        
+            string[] mes = message.Split(' ');
+            MessageURL.url = mes[0];
+            MessageURL.name = mes[1];
+            MessageURL.w = mes[2];
+            MessageURL.d = mes[3];
+            MessageURL.h = mes[4];
+            UnityMessageManager.Instance.SendMessageToRN(message);
+        }
+        // UnityMessageManager.Instance.SendMessageToRN("" + OnMessage);
         if (OnMessage != null)
         {
             OnMessage(message);

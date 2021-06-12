@@ -98,7 +98,9 @@ const ProductDetail = ({ navigation, route }) => {
     }
     const onARClick = () => {
         navigation.navigate('ARView', {
-            productId: route.params.productId
+            productId: route.params.productId,
+            modelUrl: route.params.modelUrl,
+            modelName: route.params.modelName
         });
     }
     const onCart = async () => {

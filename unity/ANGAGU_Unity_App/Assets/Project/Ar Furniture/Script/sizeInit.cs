@@ -49,4 +49,5 @@ public class sizeInit : MonoBehaviour
         originModel.transform.localScale = new Vector3(resizeRate, resizeRate, resizeRate);
         originModel.transform.position = realSize;
     }
+    
 }
