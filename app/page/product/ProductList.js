@@ -42,6 +42,7 @@ const ProductList = ({ navigation, route }) => {
             if (result.status == 'success'){
                 let temp_list = result.data;
                 // temp_list.pop();
+                
                 if (temp_list.length % 2 == 1) temp_list.push({id: -1, name:""})
                 setProductList(temp_list);
                 setLoading(true);
@@ -89,7 +90,7 @@ const ProductList = ({ navigation, route }) => {
                 renderItem={({ item }) => (
                     item.id != -1 ?
                     <ProductBox onPress={() => {
-                        console.log(item);
+                        
                         ProductClick(item.id, item["3d_model_url"], item["3d_model_name"] + " " + item["width"] + " " + item["depth"] + " " + item["height"])}}>
                         {/* <ProductImage source={require("https://angagu.s3.ap-northeast-2.amazonaws.com/" + item.image)}/> */}
                         {/* <ProductImage source={{uri: "https://angagu.s3.ap-northeast-2.amazonaws.com/product/desc/aUj2027nQa.png"}}/> */}

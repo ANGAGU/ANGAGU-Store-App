@@ -58,6 +58,8 @@ const ProductDetail = ({ navigation, route }) => {
                 const qna = await getQna(route.params.productId);
                 setQnaCount(qna.data.length);
                 await setProductInfo(productObject.data);
+                
+                
                 const token = await AsyncStorage.getItem('token')
                 setToken(token);
                 if (token != null && token != ""){
@@ -142,13 +144,14 @@ const ProductDetail = ({ navigation, route }) => {
                             {productInfo.brand}
                         </ProductBrand> */}
                         <Stars
-                            display={3.67}
+                            display={productInfo.reviews.length == 0 ? 0 : productInfo.reviews.reduce((sum, review) => {return sum + review.star},0)}
                             spacing={2}
                             count={5}
                             starSize={12}
                             fullStar= {require('../../asset/img/star_full.png')}
                             emptyStar= {require('../../asset/img/star_empty.png')}
-                        />    
+                        />
+                        <StarNum>{`(${productInfo.reviews.length})`}</StarNum>    
                         <ProductDeliveryCharge>
                             배송비 {productInfo.delivery_charge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} 원
                         </ProductDeliveryCharge>
@@ -284,7 +287,11 @@ const ProductImage = styled.Image`
     height: ${(screenWidth)}px;
     resize-mode: contain;
 `
-
+const StarNum = styled(Text)`
+    font-size: 11px;
+    color: #777777;
+    margin-left: 2px;
+`
 const ProductName = styled(Text)`
     margin-top: 10px;
     font-size: 22px;
