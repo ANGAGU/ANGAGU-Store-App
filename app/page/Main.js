@@ -62,6 +62,7 @@ const OrderList = ({navigation, route }) => {
                                                 
                                                 source={{uri: BACKEND_ASSET_URL + '/' + product.thumb_url}}
                                             />
+                                            {product["3d_model_url"] != null && <ARText>AR</ARText>}
                                             <MenuProductName>
                                                 {product.name}
                                             </MenuProductName>
@@ -89,6 +90,7 @@ const OrderList = ({navigation, route }) => {
                                                 
                                                 source={{uri: BACKEND_ASSET_URL + '/' + product.thumb_url}}
                                             />
+                                            {product["3d_model_url"] != null && <ARText>AR</ARText>}
                                             <MenuProductName>
                                                 {product.name}
                                             </MenuProductName>
@@ -114,6 +116,7 @@ const OrderList = ({navigation, route }) => {
                                                 
                                                 source={{uri: BACKEND_ASSET_URL + '/' + product.thumb_url}}
                                             />
+                                            {product["3d_model_url"] != null && <ARText>AR</ARText>}
                                             <MenuProductName>
                                                 {product.name}
                                             </MenuProductName>
@@ -192,4 +195,20 @@ const MenuText = styled(Text)`
 const MainWrapper = styled.ScrollView`
     flex: 1;
     padding: 10px 20px;
+`
+const ARText = styled(Text)`
+    position: absolute;
+    margin: 5px;
+    font-size: 12px;
+    color: #E77777;
+    font-family: 'GmarketSansMedium';
+`
+const ReviewCount = styled(Text)`
+    font-size: 11px;
+    color: #777777;
+    margin-left: 2px;
+`
+const Grid = styled.View`
+    flex-direction: row;
+    align-items: center;
 `

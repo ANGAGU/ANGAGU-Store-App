@@ -60,6 +60,8 @@ const ProductList = ({ navigation, route }) => {
             return productList.sort((a,b) => Number(b.create_time.split(".")[0].replace(/-/g,"").replace("T","").replace(/:/g,"")) - Number(a.create_time.split(".")[0].replace(/-/g,"").replace("T","").replace(/:/g,"")));
         else if (filter == "margin")
             return productList.sort((a,b) => a.stock - b.stock);
+        else if (filter == "lowPrice")
+            return productList.sort((a,b) => a.price - b.price);
         else
             return  productList;
     }
@@ -80,6 +82,7 @@ const ProductList = ({ navigation, route }) => {
                 <FliterButton onPress={() => {setFilter("poplular")}} textColor={filter == "poplular" ? "#35BCD6" : "#000000"}>인기순</FliterButton>
                 <FliterButton onPress={() => {setFilter("margin")}} textColor={filter == "margin" ? "#35BCD6" : "#000000"}>매진임박순</FliterButton>
                 <FliterButton onPress={() => {setFilter("new")}} textColor={filter == "new" ? "#35BCD6" : "#000000"}>최신순</FliterButton>
+                <FliterButton onPress={() => {setFilter("lowPrice")}} textColor={filter == "lowPrice" ? "#35BCD6" : "#000000"}>낮은 가격 순</FliterButton>
             </ButtonWrapper>
             { loading &&
             <ProductWrapper
@@ -95,18 +98,22 @@ const ProductList = ({ navigation, route }) => {
                         {/* <ProductImage source={require("https://angagu.s3.ap-northeast-2.amazonaws.com/" + item.image)}/> */}
                         {/* <ProductImage source={{uri: "https://angagu.s3.ap-northeast-2.amazonaws.com/product/desc/aUj2027nQa.png"}}/> */}
                         <ProductImage source={{uri: BACKEND_ASSET_URL + '/' + item.thumb_url}}/>
+                        {item["3d_model_url"] != null && <ARText>AR</ARText>}
                         {/* <ProductImage source={ep1}/> */}
                         {/* <ProductBrand>{item.brand}</ProductBrand> */}
                         <ProductName>{item.name}</ProductName>
                         <ProductPrice>￦ {item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</ProductPrice>
-                        <Stars
-                            display={3.67}
-                            spacing={2}
-                            count={5}
-                            starSize={12}
-                            fullStar= {require('../../asset/img/star_full.png')}
-                            emptyStar= {require('../../asset/img/star_empty.png')}
-                        />    
+                        <Grid>
+                            <Stars
+                                display={item.average_star}
+                                spacing={2}
+                                count={5}
+                                starSize={12}
+                                fullStar= {require('../../asset/img/star_full.png')}
+                                emptyStar= {require('../../asset/img/star_empty.png')}
+                            />    
+                            <ReviewCount>{`(${item.review_count})`}</ReviewCount>
+                        </Grid>
                     </ProductBox>
                     :
                     <ProductBox />
@@ -180,6 +187,25 @@ const ButtonWrapper = styled.View`
 `
 const FliterButton = styled(ButtonWithText)`
     
+`
+
+const ARText = styled(Text)`
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    margin: 10px;
+    font-size: 12px;
+    color: #E77777;
+    font-family: 'GmarketSansMedium';
+`
+const ReviewCount = styled(Text)`
+    font-size: 11px;
+    color: #777777;
+    margin-left: 2px;
+`
+const Grid = styled.View`
+    flex-direction: row;
+    align-items: center;
 `
 export default ProductList;
 

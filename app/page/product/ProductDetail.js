@@ -40,6 +40,7 @@ const ProductDetail = ({ navigation, route }) => {
     const [qnaCount, setQnaCount]= useState(0);
     const [toggle, setToggle] = useState(false);
     const [toggleId, setToggleId] = useState(0);
+    const [isAR, setIsAR] = useState(false);
     const refreshCart = async () => {
         const result = await getCart();
             result.data.map(
@@ -59,7 +60,7 @@ const ProductDetail = ({ navigation, route }) => {
                 setQnaCount(qna.data.length);
                 await setProductInfo(productObject.data);
                 
-                
+                if (productObject.data["3d_model_url"] != null) setIsAR(true);
                 const token = await AsyncStorage.getItem('token')
                 setToken(token);
                 if (token != null && token != ""){
@@ -77,6 +78,7 @@ const ProductDetail = ({ navigation, route }) => {
             }
             else
                 Alert.alert('상품 정보 호출에 실패하였습니다.');            
+            
         }
         init();
     },[])
@@ -212,15 +214,29 @@ const ProductDetail = ({ navigation, route }) => {
             </ProductWrapper>    
             }
             <PurchaseWrapper>
-                <PurchaseButton onPress={onARClick}>AR View</PurchaseButton>
-                <PurchaseButton
-                    buttonColor="#35BCD6"
-                    textColor="#ffffff"
-                    // onPress={onPurchaseClick}
-                    onPress={() => setModal(true)}
-                >
-                    {'구매하기'}
-                </PurchaseButton>
+
+                {isAR ? 
+                    <>
+                        <PurchaseButton onPress={onARClick}>AR View</PurchaseButton>
+                        <PurchaseButton
+                            buttonColor="#35BCD6"
+                            textColor="#ffffff"
+                            // onPress={onPurchaseClick}
+                            onPress={() => setModal(true)}
+                        >
+                            {'구매하기'}
+                        </PurchaseButton>
+                    </> 
+                :
+                    <FullPurchaseButton
+                        buttonColor="#35BCD6"
+                        textColor="#ffffff"
+                        // onPress={onPurchaseClick}
+                        onPress={() => setModal(true)}
+                    >
+                        {'구매하기'}
+                    </FullPurchaseButton>
+                }
             </PurchaseWrapper>
             {loading &&
             <Modal
@@ -365,6 +381,12 @@ const PurchaseButton = styled(ButtonWithText)`
     border: 1px solid #E7E7E7;
     border-radius: 5px;
 `
+const FullPurchaseButton = styled(ButtonWithText)`
+    height: 48px;
+    width: 99%;
+    border: 1px solid #E7E7E7;
+    border-radius: 5px;
+`
 const ModalButton = styled(ButtonWithText)`
     height: 48px;
     width: 100%;
@@ -416,5 +438,6 @@ const ShowMoreButton = styled(ButtonWithText)`
     border: 1px solid #E7E7E7;
     margin: 10px 10px;
 `
+
 export default ProductDetail;
 
