@@ -15,9 +15,9 @@ public class MessageURL : MonoBehaviour
     {
         url = "";
         name = "";
-        w = "1";
-        d = "1";
-        h = "1";
+        w = "-1";
+        d = "-1";
+        h = "-1";
     }
 
     // Update is called once per frame

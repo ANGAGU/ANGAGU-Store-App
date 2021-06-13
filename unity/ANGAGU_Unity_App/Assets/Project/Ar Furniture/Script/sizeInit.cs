@@ -7,17 +7,26 @@ public class sizeInit : MonoBehaviour
     [SerializeField]
     private GameObject originModel;
 
+    public static bool loading;
     // Start is called before the first frame update
     void Start()
     {
-        //*** 사이징 체크 ***//
-        resizing(new Vector3(1.8f, 1.8f, 1.8f));
+        loading = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        
 
+        if (MessageURL.w != "-1" && loading == false)
+        {
+            loading = true;
+
+            Vector3 temp = new Vector3(float.Parse(MessageURL.w) / 100.0f, float.Parse(MessageURL.h) / 100.0f, float.Parse(MessageURL.d) / 100.0f);
+            resizing(temp);
+        }
     }
     //void OnDrawGizmosSelected()
     //{
