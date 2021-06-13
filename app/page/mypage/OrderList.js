@@ -1,8 +1,6 @@
 // react import
 import React, {useEffect, useState} from 'react';
-import {
-
-} from 'react-native';
+import { Alert } from 'react-native';
 
 // lib import
 import styled from 'styled-components/native';
@@ -20,7 +18,7 @@ import { BACKEND_ASSET_URL } from '../../api/constants';
 // local Components
 import Header from '../../component/organization/Header';
 import Footer from '../../component/organization/Footer';
-import { getOrder } from '../../api/order/order';
+import { getOrder, refund } from '../../api/order/order';
 import Auth from '../../api/authCheck.js'
 // react HTML
 const OrderList = ({navigation, route}) => {
@@ -72,6 +70,12 @@ const OrderList = ({navigation, route}) => {
     setOrderList(result.data.reverse());
     setIsLoading(true);
   }
+  const refundFnc = async (id) => {
+    await refund(id, "소비자 단순 변심")
+    const result = await getOrder();
+    setOrderList(result.data.reverse());
+    Alert.alert("환불 요청이 완료되었습니다.");
+  }
   return (
     <Container>
       {/* <Header navigation={navigation} title="주문 목록"/> */}
@@ -120,10 +124,24 @@ const OrderList = ({navigation, route}) => {
                     
                   </OrderInfo>
                 </OrderContainer>
-                <OrderButtonWrapper>
-                <ReviewButton onPress={() => order.review_id == null ? review(order.id) : reviewEdit(order.id)} textColor="#010101">{order.review_id == null ? "구매 후기 작성" : "구매 후기 수정"}</ReviewButton>
-                  <ReviewButton onPress={() => order.review_id == null ? review(order.id) : reviewEdit(order.id)} textColor="#010101">{order.review_id == null ? "구매 후기 작성" : "구매 후기 수정"}</ReviewButton>
-                </OrderButtonWrapper>
+                {order.refund_state == 0 &&
+                  <OrderButtonWrapper>
+                    <ReviewButton onPress={() => refundFnc(order.id)} textColor="#E77777">{ "환불 요청"}</ReviewButton>
+                    <ReviewButton onPress={() => order.review_id == null ? review(order.id) : reviewEdit(order.id)} textColor="#010101">{order.review_id == null ? "구매 후기 작성" : "구매 후기 수정"}</ReviewButton>
+                  </OrderButtonWrapper>
+                }
+                {order.refund_state == 1 &&
+                  
+                  <RefundInfo>
+                      환불 요청 중인 상품입니다.
+                  </RefundInfo>
+                  
+                }
+                {order.refund_state == 2 &&
+                  <RefundInfo>
+                    환불 완료 된 상품입니다.
+                  </RefundInfo>
+                }
               </OrderItem>
             );
           })}
@@ -236,4 +254,8 @@ const LoginInfo = styled(Text)`
     font-size: 12px;
     font-family: 'GmarketSansMedium';
     margin-bottom: 20px;
+`
+const RefundInfo = styled(Text)`
+  text-align: center;
+  margin: 20px 0px 10px;
 `
