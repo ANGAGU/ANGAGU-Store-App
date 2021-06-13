@@ -31,9 +31,9 @@ const ProductList = ({ navigation, route }) => {
     const ProductClick = (productId, modelUrl, modelName) => {
         
         navigation.navigate('ProductDetail', {
-            productId,
-            modelUrl,
-            modelName
+            productId, // int
+            modelUrl, // path
+            modelName // name width depth height
         });
     }
     useEffect(() => {

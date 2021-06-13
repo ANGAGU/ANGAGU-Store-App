@@ -17,11 +17,12 @@ const OrderList = ({navigation, route }) => {
   // variables
     const [isLoading, setIsLoading] = useState(false);
     const [productList, setProductList] = useState([])
-    const ProductClick = (productId, model_url) => {
-        console.log(model_url);
+    const ProductClick = (productId, modelUrl, modelName) => {
+        
         navigation.navigate('ProductDetail', {
-            productId,
-            modelUrl: model_url
+            productId, // int
+            modelUrl, // path
+            modelName // name width depth height
         });
     }
     useEffect(()=> {
@@ -56,7 +57,7 @@ const OrderList = ({navigation, route }) => {
                             >
                                 {productList.sort((a,b) => b.sell_count - a.sell_count).map((product, inx) => { 
                                     return (
-                                        <MenuProductWrapper onPress={() => ProductClick(product.id, product["3d_model_url"])} key={inx} >
+                                        <MenuProductWrapper onPress={() => ProductClick(product.id, product["3d_model_url"], product["3d_model_name"] + " " + product['width'] + ' ' + product['depth'] + ' ' + product['height'])} key={inx} >
                                             <MenuImage 
                                                 
                                                 source={{uri: BACKEND_ASSET_URL + '/' + product.thumb_url}}
@@ -83,7 +84,7 @@ const OrderList = ({navigation, route }) => {
                             >
                                 {productList.sort((a,b) => Number(b.create_time.split(".")[0].replace(/-/g,"").replace("T","").replace(/:/g,"")) - Number(a.create_time.split(".")[0].replace(/-/g,"").replace("T","").replace(/:/g,""))).map((product, inx) => { 
                                     return (
-                                        <MenuProductWrapper onPress={() => ProductClick(product.id, product["3d_model_url"])} key={inx}>
+                                        <MenuProductWrapper onPress={() => ProductClick(product.id, product["3d_model_url"], product["3d_model_name"] + " " + product['width'] + ' ' + product['depth'] + ' ' + product['height'])} key={inx} >
                                             <MenuImage 
                                                 
                                                 source={{uri: BACKEND_ASSET_URL + '/' + product.thumb_url}}
@@ -108,7 +109,7 @@ const OrderList = ({navigation, route }) => {
                             >
                                 {productList.sort((a,b) => a.stock - b.stock).map((product, inx) => { 
                                     return (
-                                        <MenuProductWrapper onPress={() => ProductClick(product.id, product["3d_model_url"])} key={inx}>
+                                        <MenuProductWrapper onPress={() => ProductClick(product.id, product["3d_model_url"], product["3d_model_name"] + " " + product['width'] + ' ' + product['depth'] + ' ' + product['height'])} key={inx} >
                                             <MenuImage 
                                                 
                                                 source={{uri: BACKEND_ASSET_URL + '/' + product.thumb_url}}
