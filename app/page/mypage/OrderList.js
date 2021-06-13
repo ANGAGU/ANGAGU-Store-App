@@ -96,7 +96,9 @@ const OrderList = ({navigation, route}) => {
               <OrderItem key={index}>
                 <OrderRow>
                   <OrderTitle>{order.create_time.split("T")[0]}</OrderTitle>
-                  <OrderState>{order.delivery_number == null ? '배송 준비 중' : '배송 조회 (' + order.delivery_number + ')'}</OrderState>
+                  {order.refund_state == 0 && 
+                    <OrderState>{order.delivery_number == null ? '배송 준비 중' : '배송 조회 (' + order.delivery_number + ')'}</OrderState>
+                  }
                 </OrderRow>
                 <OrderContainer>
                   <OrderImage source={{uri:`${BACKEND_ASSET_URL}/${order.thumb_url}`}}/>
