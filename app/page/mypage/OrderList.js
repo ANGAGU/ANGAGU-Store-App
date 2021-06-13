@@ -121,6 +121,7 @@ const OrderList = ({navigation, route}) => {
                   </OrderInfo>
                 </OrderContainer>
                 <OrderButtonWrapper>
+                <ReviewButton onPress={() => order.review_id == null ? review(order.id) : reviewEdit(order.id)} textColor="#010101">{order.review_id == null ? "구매 후기 작성" : "구매 후기 수정"}</ReviewButton>
                   <ReviewButton onPress={() => order.review_id == null ? review(order.id) : reviewEdit(order.id)} textColor="#010101">{order.review_id == null ? "구매 후기 작성" : "구매 후기 수정"}</ReviewButton>
                 </OrderButtonWrapper>
               </OrderItem>

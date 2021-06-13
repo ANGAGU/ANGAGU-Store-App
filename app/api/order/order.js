@@ -33,3 +33,18 @@ export const getOrder = async () => {
         return false;
     }
 };
+
+export const refund = async (orderId, text) => {
+    try {
+        let endPoint = `/customer/refund/${orderId}`
+        
+        const {data: order} = await api.post(endPoint, {
+            text
+        });
+
+        return order;
+    } catch (error) {
+        console.log(error, error.response);
+        return false;
+    }
+}
