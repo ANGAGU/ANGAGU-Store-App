@@ -143,7 +143,12 @@ public class UnityMessageManager : MonoBehaviour
             // SceneManager.LoadScene(SceneManager.GetActiveScene().name) ;
             Caching.CleanCache();
              SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
+            MessageURL.url = "";
+            MessageURL.name = "";
+            AssetBundleLoader.loading = false;
+            MessageURL.w = "-1";
+            MessageURL.d = "-1";
+            MessageURL.h = "-1";
             // MessageURL.url = "";
             // AssetBundleLoader.loading = false;
         }
